@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend;
 
@@ -11,9 +12,11 @@ using backend;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230330201740_OfferCompletes")]
+    partial class OfferCompletes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,10 +36,6 @@ namespace backend.Migrations
                     b.Property<string>("AuthorName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Company_Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Company_Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -49,12 +48,17 @@ namespace backend.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("StatusId");
 
                     b.ToTable("Offers");
                 });
 
-            modelBuilder.Entity("backend.Entities.Transaction", b =>
+            modelBuilder.Entity("backend.Entities.TierList", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,42 +66,18 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("OfferId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TierFour")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TierOne")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TierThree")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TierTwo")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("OfferId")
-                        .IsUnique();
-
-                    b.ToTable("Transactions");
-                });
-
-            modelBuilder.Entity("backend.Entities.Transaction", b =>
-                {
-                    b.HasOne("backend.Entities.Offer", null)
-                        .WithOne("Transaction")
-                        .HasForeignKey("backend.Entities.Transaction", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("TierList");
                 });
 
             modelBuilder.Entity("backend.Entities.Offer", b =>
                 {
-                    b.Navigation("Transaction")
-                        .IsRequired();
+                    b.HasOne("backend.Entities.TierList", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId");
+
+                    b.Navigation("Status");
                 });
 #pragma warning restore 612, 618
         }
