@@ -11,9 +11,6 @@ namespace backend.Controllers
     public class OfferController : ControllerBase
     {
         private readonly ApplicationDbContext _dbContext;
-        //Transaction / Add to interest new class si ala imi trimite tierList la Offer COntroll 
-        // Aka new Transaction class cu id la offer samd, si un TierList var. si ala se trimite la controllerOffer
-        // New function receiveTransaction care cand primeste de la database o  transactie pune Tierlistul de la oferta x (IdOffer + comapny name + TierListVar)
         public OfferController(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -131,7 +128,11 @@ namespace backend.Controllers
 
             return Ok();
         }
-
+        //to make each tier cost money, for example 
+        // if offer.cs make 4 more fields with TierOne Cost, tier2 cost samd/
+        // to add modifications to all controllers
+        // And fool proof the controller.
+        //teamplate for description, value on market:, 
 
     
     }
