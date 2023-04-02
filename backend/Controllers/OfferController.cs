@@ -33,7 +33,8 @@ namespace backend.Controllers
     }*/
         [HttpPost]
         public async Task<IActionResult> CreateOffer(string AuthorName, string Description,
-            string Company_Name, string Company_Email ,DateTime Deadline)
+            string Company_Name, string Company_Email ,DateTime Deadline, 
+            int CostTierOne, int CostTierTwo, int Cost_TierThree, int Cost_TierFour)
         {
             
 
@@ -41,10 +42,15 @@ namespace backend.Controllers
                 Description = Description, Created = DateTime.Now, Company_Name = Company_Name, Company_Email = Company_Email,
                 Transaction = new Transaction
                 {
-                    TierOne = 0,
-                    TierTwo = 0,
-                    TierThree = 0,
-                    TierFour = 0
+                    TierOne = false,
+                    TierTwo = false,
+                    TierThree = false,
+                    TierFour = false,
+                    Cost_TierOne = CostTierOne,
+                    Cost_TierTwo = CostTierTwo,
+                    Cost_TierThree = Cost_TierThree,
+                    Cost_TierFour = Cost_TierFour,
+
                 }
             };
             await _dbContext.Offers.AddAsync(offer);
@@ -73,22 +79,21 @@ namespace backend.Controllers
         }
 
         [HttpPut("/api/offers/{offerId:int}/transaction")]
-        public async Task<IActionResult> UpdateTransaction(int offerId, [FromBody] Transaction transaction)
+        public async Task<IActionResult> UpdateTier(int offerId, bool TierOne, bool TierTwo, bool TierThree, bool TierFour)
         {
             var offer = await _dbContext.Offers.Include(o => o.Transaction).SingleOrDefaultAsync(o => o.Id == offerId);
-
             if (offer == null)
             {
                 return NotFound();
             }
-            if(transaction.TierOne!= null)
-                offer.Transaction.TierOne = transaction.TierOne;
-            if (transaction.TierTwo != null)
-                offer.Transaction.TierTwo = transaction.TierTwo;
-            if (transaction.TierThree != null)
-                offer.Transaction.TierThree = transaction.TierThree;
-            if (transaction.TierFour != null)
-                offer.Transaction.TierFour = transaction.TierFour;
+            if (offer.Transaction.TierOne == false && TierOne == true)
+                offer.Transaction.TierOne = true;
+            if (offer.Transaction.TierTwo == false && TierTwo == true)
+                offer.Transaction.TierTwo = true;
+            if (offer.Transaction.TierThree == false && TierThree == true)
+                offer.Transaction.TierThree = true;
+            if (offer.Transaction.TierFour == false && TierFour == true)
+                offer.Transaction.TierFour = true;
 
             await _dbContext.SaveChangesAsync();
 
@@ -128,8 +133,6 @@ namespace backend.Controllers
 
             return Ok();
         }
-        //to make each tier cost money, for example 
-        // if offer.cs make 4 more fields with TierOne Cost, tier2 cost samd/
         // to add modifications to all controllers
         // And fool proof the controller.
         //teamplate for description, value on market:, 
