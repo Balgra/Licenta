@@ -15,22 +15,6 @@ namespace backend.Controllers
         {
             _dbContext = dbContext;
         }
-        /*    public class Offer
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string? AuthorName { get; set; }
-        public string? Description { get; set; }
-        public DateTime Created { get; set; }
-
-        public string? Company_Name { get; set; }
-
-        public Transaction? Transaction { get; set; }
-
-        public DateTime? Deadline { get; set; }
-
-    }*/
         [HttpPost]
         public async Task<IActionResult> CreateOffer(string AuthorName, string Description,
             string Company_Name, string Company_Email ,DateTime Deadline, 
