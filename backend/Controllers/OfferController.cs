@@ -1,4 +1,5 @@
 ﻿using backend.Entities;
+using backend.Migrations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
@@ -6,7 +7,7 @@ using static backend.Entities.Transaction;
 
 namespace backend.Controllers
 {
-    [ApiController]
+    [ApiController ]
     [Route("/api/offers")]
     public class OfferController : ControllerBase
     {
@@ -16,14 +17,21 @@ namespace backend.Controllers
             _dbContext = dbContext;
         }
         [HttpPost]
-        public async Task<IActionResult> CreateOffer(string AuthorName, string Description,
+        public async Task<IActionResult> CreateOffer(string AuthorName,
             string Company_Name, string Company_Email ,DateTime Deadline, 
             int CostTierOne, int CostTierTwo, int Cost_TierThree, int Cost_TierFour)
         {
             
 
-            var offer = new Offer() { AuthorName = AuthorName, Deadline = Deadline, 
-                Description = Description, Created = DateTime.Now, Company_Name = Company_Name, Company_Email = Company_Email,
+            var offer = new Entities.Offer() { AuthorName = AuthorName, Deadline = Deadline, 
+                Description = new Entities.Description {
+                    MarketSize="",
+                    BusinessModel = "",
+                    Competitiveness = "",
+                    FinancialStatus = "",
+                    RiskFactors = ""
+                }, 
+                Created = DateTime.Now, Company_Name = Company_Name, Company_Email = Company_Email,
                 Transaction = new Transaction
                 {
                     TierOne = false,
@@ -53,14 +61,25 @@ namespace backend.Controllers
             return Ok(offers);
         }
         
-       [HttpGet("{id}")]
+       /*[HttpGet("{id}")]
         public async Task<IActionResult> GetOffersbyid(int id)
         {
             var offers = await _dbContext.Offers.FirstOrDefaultAsync(d => d.Id == id);
 
             if (offers == null) return NotFound();
             return Ok(offers);
+        }*/
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetOffersTransactionbyid(int id)
+        {
+            var offers = await _dbContext.Offers.Include(o => o.Transaction).SingleOrDefaultAsync(o => o.Id == id);
+
+            if (offers == null) return NotFound();
+            return Ok(offers);
         }
+
+
 
         [HttpPut("/api/offers/{offerId:int}/transaction")]
         public async Task<IActionResult> UpdateTier(int offerId, bool TierOne, bool TierTwo, bool TierThree, bool TierFour)
@@ -84,9 +103,35 @@ namespace backend.Controllers
             return Ok(offer);
         }
 
-        
+        /*MarketSize="",
+                    BusinessModel = "",
+                    Competitiveness = "",
+                    FinancialStatus = "",
+                    RiskFactors = ""*/
+
+        [HttpPut("/api/offers/{offerId:int}/description")]
+        public async Task<IActionResult> UpdateDescription(int offerId, string MarketSize, 
+            string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors)
+        {
+            var offer = await _dbContext.Offers.Include(o => o.Description).SingleOrDefaultAsync(o => o.Id == offerId);
+            if (offer == null)
+            {
+                return NotFound();
+            }
+            offer.Description.MarketSize =  MarketSize;
+            offer.Description.BusinessModel = BusinessModel;
+            offer.Description.Competitiveness = Competitiveness;
+            offer.Description.FinancialStatus = FinancialStatus;
+            offer.Description.RiskFactors = RiskFactors;
+
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(offer);
+        }
+
+
         [HttpPut]
-        public async Task<IActionResult> EditOffer(int id, string Description, string Company_Email, DateTime Deadline)
+        public async Task<IActionResult> EditOffer(int id, Entities.Description Description, string Company_Email, DateTime Deadline)
         {
 
             var offer = await _dbContext.Offers.FirstOrDefaultAsync(d => d.Id == id);

@@ -15,5 +15,7 @@ namespace backend
         public DbSet<Offer> Offers { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
+        public DbSet<Description> Descriptions { get; set; }
+
     }
 }

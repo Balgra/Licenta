@@ -10,7 +10,7 @@ namespace backend.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string? AuthorName { get; set; }
-        public string? Description { get; set; }
+        public Description Description { get; set; }
         public DateTime Created { get; set; }
 
         public string? Company_Name { get; set; }
