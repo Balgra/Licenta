@@ -12,6 +12,11 @@ const LearnPage = () =>{
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 			allowFullScreen
 	/>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/zp8MCLxdTs8"
+	title="YouTube video player"
+	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+	allowFullScreen/>
+			
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy
 				lacus quis nunc. Duis tincidunt. Mauris feugiat, dolor sit amet
