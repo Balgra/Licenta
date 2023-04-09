@@ -1,7 +1,7 @@
-
+import Learn from "../components/LearnPages/learn-page";
 const LearnPage = () =>{
 	return (
-		<div>
+		/*<div>
 			<h1>Welcome to Mentorship Page!</h1>
 			<p>Here is a YouTube video about programming:</p>
 			<iframe
@@ -31,6 +31,8 @@ const LearnPage = () =>{
 				leo, vitae sagittis mauris nisi sed nulla. Nullam at metus.
 			</p>
 		</div>
+	);*/
+	<><Learn/></>
 	);
 };
 
