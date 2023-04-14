@@ -1,5 +1,6 @@
 ﻿using backend.Entities;
 using backend.Migrations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
@@ -8,6 +9,7 @@ using static backend.Entities.Transaction;
 namespace backend.Controllers
 {
     [ApiController ]
+    [Authorize]
     [Route("/api/offers")]
     public class OfferController : ControllerBase
     {
