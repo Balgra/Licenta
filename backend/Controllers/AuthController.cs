@@ -6,6 +6,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Xml;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using backend.Requests;
 
 namespace backend.Controllers
 {
@@ -13,65 +17,77 @@ namespace backend.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public static User user = new User();
+        private readonly ApplicationDbContext _dbContext;
+        private readonly SHA256 _sha256;
         private readonly IConfiguration _configuration;
-
-        public AuthController(IConfiguration configuration)
+        public AuthController(ApplicationDbContext dbContext, IConfiguration configuration)
         {
+            _dbContext = dbContext;
+            _sha256 = SHA256.Create();
             _configuration = configuration;
         }
 
-        [HttpPost("register")]
-        public ActionResult<User> Register(UserDto request)
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-           string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            var users = await _dbContext.Users.ToListAsync();
 
-            user.Username = request.Username;
-            user.PasswordHash = passwordHash;
+            return Ok(users);
+        }
 
-            return Ok(user);
+        [HttpPost("register")]
+        public async Task<IActionResult> AddUser(AddUserRequest User)
+        {
+            var userEmail = await _dbContext.Users.Where(u => u.Email == User.Email).FirstOrDefaultAsync();
+            var userUsername = await _dbContext.Users.Where(u => u.Username == User.Username).FirstOrDefaultAsync();
+
+            if (userEmail != null)
+            {
+                return BadRequest(new { errorMessage = "Email already in use" });
+            }
+
+            if (userUsername != null)
+            {
+                return BadRequest(new { errorMessage = "Username is already taken" });
+            }
+
+            var result = new User() { Username = User.Username, Email = User.Email, Password = Convert.ToHexString(_sha256.ComputeHash(Encoding.UTF8.GetBytes(User.Password))) };
+            await _dbContext.Users.AddAsync(result);
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(result);
         }
 
         [HttpPost("login")]
-        public ActionResult<User> Login(UserDto request)
+        public async Task<IActionResult> Login(LoginRequest User)
         {
-            if (user.Username != request.Username)
+            var user = await _dbContext.Users.Where(u => u.Username == User.Username && u.Password == Convert.ToHexString(_sha256.ComputeHash(Encoding.UTF8.GetBytes(User.Password)))).FirstOrDefaultAsync();
+
+            if (user == null)
+                return BadRequest(new { error = "User does not exist or wrong password!" });
+
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var claims = new List<Claim>
+                {
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim("userId", user.Id.ToString())
+                };
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                return BadRequest("User not Found.");
-            }
-
-            if(!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-            {
-                return BadRequest("Bad request");
-            }
-
-            string token = CreateToken(user);
-
-
-            return Ok(token);
-        }
-
-        private string CreateToken(User user)
-        {
-            List<Claim> claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Username)
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddDays(10),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                   SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value!));
-
-            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-            var token = new JwtSecurityToken(
-                    claims: claims,
-                    expires: DateTime.Now.AddDays(1),
-                    signingCredentials: cred
-                );
-
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return jwt;
+            var token = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
+            return Ok(new { Token = token });
         }
+
 
 
     }

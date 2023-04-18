@@ -4720,11 +4720,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Balgra\\Licenta\\Licenta\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Balgra\\Licenta\\mylicenta\\Licenta\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Balgra\\Licenta\\Licenta\\backend\\backend.csproj",
+      "projectPath": "C:\\Balgra\\Licenta\\mylicenta\\Licenta\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\Balgra\\.nuget\\packages\\",
-      "outputPath": "C:\\Balgra\\Licenta\\Licenta\\backend\\obj\\",
+      "outputPath": "C:\\Balgra\\Licenta\\mylicenta\\Licenta\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Balgra\\AppData\\Roaming\\NuGet\\NuGet.Config",
