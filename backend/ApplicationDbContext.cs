@@ -17,5 +17,7 @@ namespace backend
 
         public DbSet<Description> Descriptions { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
     }
 }

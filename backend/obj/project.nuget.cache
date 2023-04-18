@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GKrY6yyY0OYz5ZLqXFtrbL1bzWeecgUhp+/UrgyUIWF3lsnvBhSV28vV9pGY14WrRTbtqs7Y/IejPj/ZiNWLDA==",
+  "dgSpecHash": "pZ77eA1RvmHVfYhHefefiN/5UrXgyVhJOMk3uVwp+WAb2dYwmDCY0w5QjgSZ16zksc3eWYG+zMnYO5Bl1o8kcw==",
   "success": true,
-  "projectFilePath": "C:\\Balgra\\Licenta\\Licenta\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Balgra\\Licenta\\mylicenta\\Licenta\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Balgra\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
