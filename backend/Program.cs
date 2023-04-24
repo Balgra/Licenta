@@ -5,6 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using Backend.Services;
+using Backend.Services.Services.Abstractions;
+using Backend.Services.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +51,9 @@ builder.Services.AddSwaggerGen(c => {
 
 builder.Services.AddDbContext<ApplicationDbContext>(
         options => options.UseSqlServer("data source=DESKTOP-2JKCO5S;initial catalog=BizBoost;trusted_connection=true;TrustServerCertificate=True"));
+
+//how to add a clas into dependency injection
+builder.Services.AddScoped<IOfferService, OfferService>();
 
 builder.Services.AddAuthentication(x =>
 {

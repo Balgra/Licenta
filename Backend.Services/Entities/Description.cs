@@ -1,12 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace backend.Entities
+namespace Backend.Services.Entities
 {
     public class Description
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int OfferId { get; set; }
+
+        //public Offer? Offer { get; set; }
 
         public string MarketSize { get; set; }
 

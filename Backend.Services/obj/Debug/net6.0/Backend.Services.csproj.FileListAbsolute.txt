@@ -1,0 +1,12 @@
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.csproj.AssemblyReference.cache
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.AssemblyInfoInputs.cache
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.AssemblyInfo.cs
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.csproj.CoreCompileInputs.cache
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\bin\Debug\net6.0\Backend.Services.deps.json
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\bin\Debug\net6.0\Backend.Services.dll
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\bin\Debug\net6.0\Backend.Services.pdb
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.dll
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\refint\Backend.Services.dll
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.pdb
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\ref\Backend.Services.dll

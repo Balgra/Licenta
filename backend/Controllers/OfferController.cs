@@ -1,32 +1,45 @@
-﻿using backend.Entities;
-using backend.Migrations;
+﻿
+using Backend.Services.Entities;
+using Backend.Services.Services.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
-using static backend.Entities.Transaction;
 
 namespace backend.Controllers
 {
     [ApiController ]
-    [Authorize]
+    //[Authorize]
     [Route("/api/offers")]
     public class OfferController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
-        public OfferController(ApplicationDbContext dbContext)
+
+        private readonly IOfferService _offerService;
+        public OfferController(IOfferService offerService)
         {
-            _dbContext = dbContext;
+            _offerService = offerService;
         }
+
         [HttpPost]
+        public async Task<IActionResult> CreateOffer(string AuthorName,
+            string Company_Name, string Company_Email, DateTime Deadline,
+            int CostTierOne, int CostTierTwo, int Cost_TierThree, int Cost_TierFour)
+        {
+            
+            var offer = await _offerService.CreateOffer(AuthorName, Company_Name, Company_Email, Deadline, CostTierOne, CostTierTwo, Cost_TierThree, Cost_TierFour);
+
+            return Ok(offer);
+        }
+
+
+       /* [HttpPost]
         public async Task<IActionResult> CreateOffer(string AuthorName,
             string Company_Name, string Company_Email ,DateTime Deadline, 
             int CostTierOne, int CostTierTwo, int Cost_TierThree, int Cost_TierFour)
         {
             
 
-            var offer = new Entities.Offer() { AuthorName = AuthorName, Deadline = Deadline, 
-                Description = new Entities.Description {
+            var offer = new Offer() { AuthorName = AuthorName, Deadline = Deadline, 
+                Description = new Description {
                     MarketSize="",
                     BusinessModel = "",
                     Competitiveness = "",
@@ -52,16 +65,16 @@ namespace backend.Controllers
             await _dbContext.SaveChangesAsync();
 
             return Ok(offer);
+       
+        }*/
 
-        }
-
-       [HttpGet]
+     /*  [HttpGet]
         public async Task<IActionResult> GetOffers()
         {
             var offers = await _dbContext.Offers.ToListAsync();
 
             return Ok(offers);
-        }
+        }*/
         
        /*[HttpGet("{id}")]
         public async Task<IActionResult> GetOffersbyid(int id)
@@ -72,7 +85,7 @@ namespace backend.Controllers
             return Ok(offers);
         }*/
 
-        [HttpGet("{id}")]
+      /*  [HttpGet("{id}")]
         public async Task<IActionResult> GetOffersTransactionbyid(int id)
         {
             var offers = await _dbContext.Offers.Include(o => o.Transaction).SingleOrDefaultAsync(o => o.Id == id);
@@ -103,14 +116,14 @@ namespace backend.Controllers
             await _dbContext.SaveChangesAsync();
 
             return Ok(offer);
-        }
+        }*/
 
         /*MarketSize="",
                     BusinessModel = "",
                     Competitiveness = "",
                     FinancialStatus = "",
                     RiskFactors = ""*/
-
+        /*
         [HttpPut("/api/offers/{offerId:int}/description")]
         public async Task<IActionResult> UpdateDescription(int offerId, string MarketSize, 
             string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors)
@@ -131,7 +144,7 @@ namespace backend.Controllers
             return Ok(offer);
         }
 
-
+        //de pus cu Id la descriptuion
         [HttpPut]
         public async Task<IActionResult> EditOffer(int id, Entities.Description Description, string Company_Email, DateTime Deadline)
         {
@@ -167,7 +180,7 @@ namespace backend.Controllers
         // to add modifications to all controllers
         // And fool proof the controller.
         //teamplate for description, value on market:, 
-
+        */
     
     }
 }

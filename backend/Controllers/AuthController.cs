@@ -1,4 +1,4 @@
-﻿using backend.Entities;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -13,7 +13,7 @@ using backend.Requests;
 
 namespace backend.Controllers
 {
-    [Route("api/auth")]
+   /* [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -87,8 +87,8 @@ namespace backend.Controllers
             var token = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
             return Ok(new { Token = token });
         }
+   
 
 
-
-    }
+    }*/
 }

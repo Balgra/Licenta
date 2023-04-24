@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace backend.Entities
+namespace Backend.Services.Entities
 {
     public class Transaction
     {
