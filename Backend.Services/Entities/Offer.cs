@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Entities
+namespace Backend.Services.Entities
 {
     public class Offer
     {
