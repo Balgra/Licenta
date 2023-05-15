@@ -5,6 +5,7 @@ namespace Core.Entities
 {
     public class Transaction : BaseEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public bool? TierOne { get; set; }
         public bool? TierTwo { get; set; }
         public bool? TierThree { get; set; }

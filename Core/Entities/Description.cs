@@ -6,7 +6,7 @@ namespace Core.Entities
     {
 
         //public Offer? Offer { get; set; }
-
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string MarketSize { get; set; }
 
         public string BusinessModel { get; set; } // Subscription , E-commerce, Advertising, Freemium, Affiliate, Pay-As-You-Go

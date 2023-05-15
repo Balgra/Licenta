@@ -4,16 +4,19 @@ using Backend.Services.Services.Abstractions;
 using Core.Data;
 using Core.Requests;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Backend.Services.Services.Services
 {
     public class OfferService : IOfferService
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly IOfferRepository _offerRepo;
 
-        public OfferService(ApplicationDbContext dbContext, IGenericRepository<Offer> offerRepo)
+        public OfferService(ApplicationDbContext dbContext, IOfferRepository offerRepo)
         {
             _dbContext = dbContext;
+            _offerRepo = offerRepo;
         }
 
         public async Task<Offer> CreateOffer(OfferRequest Offer)
@@ -54,57 +57,76 @@ namespace Backend.Services.Services.Services
             return offer;
         }
 
-        public Task DeleteOffer(int id)
+       
+
+        public async Task<IReadOnlyList<Offer>> GetOffers()
         {
-            throw new NotImplementedException();
+            var Offers = await _offerRepo.GetOffersAsync();
+
+            return Offers;
         }
 
-        public async Task<Offer> GetOfferByIdAsync(int id)
+        public async Task<IReadOnlyList<Transaction>> GetOfferTransactionsAsync()
         {
-            return await _dbContext.Offers
-                .Include(p => p.Transaction)
-                .Include(p => p.Description)
-                .FirstOrDefaultAsync(p => p.Id == id);
+            return await _offerRepo.GetOfferTransactionAsync();
         }
 
-        public Task<IReadOnlyList<Description>> GetOfferDescriptionsAsync()
+        public async Task<IReadOnlyList<Description>> GetOfferDescriptionsAsync()
         {
-            throw new NotImplementedException();
+            return await _offerRepo.GetOfferDescriptionAsync();
         }
 
-        public Task GetOffers()
+        public async Task<Offer> GetOfferbyIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _offerRepo.GetOfferbyIdAsync(id);
         }
 
-        public Task<IReadOnlyList<Offer>> GetOffersAsync()
+        public async Task<Transaction> GetOffersTransactionbyid(int id)
         {
-            throw new NotImplementedException();
+            return await _offerRepo.GetOfferTransactionbyIdAsync(id);
         }
 
-        public Task GetOffersDescriptionbyid(int id)
+        public async Task<Description> GetOffersDescriptionbyid(int id)
         {
-            throw new NotImplementedException();
+            return await _offerRepo.GetOfferDescriptionbyIdAsync(id);
         }
 
-        public Task GetOffersTransactionbyid(int id)
+        public async Task<Transaction> UpdateTiersAsync(int id, bool TierOne, bool TierTwo,
+            bool TierThree, bool TierFour)
         {
-            throw new NotImplementedException();
+            var transaction = await _offerRepo.GetOfferTransactionbyIdAsync(id);
+
+            if (transaction == null)
+            {
+                return null;
+            }
+            transaction.TierOne = TierOne;
+            transaction.TierTwo = TierTwo;
+            transaction.TierThree = TierThree;
+            transaction.TierFour = TierFour;
+
+            await _dbContext.SaveChangesAsync();
+
+            return transaction;
         }
 
-        public Task<IReadOnlyList<Transaction>> GetOfferTransactionsAsync()
+        public async Task<Description> UpdateDescriptionAsync(int id, string MarketSize, string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors)
         {
-            throw new NotImplementedException();
-        }
+            var description = await _offerRepo.GetOfferDescriptionbyIdAsync(id);
 
-        public Task UpdateDescription(int offerId, string MarketSize, string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors)
-        {
-            throw new NotImplementedException();
-        }
+            if (description == null)
+            {
+                return null;
+            }
+            description.MarketSize = MarketSize;
+            description.BusinessModel = BusinessModel;
+            description.Competitiveness = Competitiveness;
+            description.FinancialStatus = FinancialStatus;
+            description.RiskFactors = RiskFactors;
 
-        public Task UpdateTier(int offerId, bool TierOne, bool TierTwo, bool TierThree, bool TierFour)
-        {
-            throw new NotImplementedException();
+            await _dbContext.SaveChangesAsync();
+
+            return description;
         }
     }
 }

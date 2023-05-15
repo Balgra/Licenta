@@ -44,6 +44,7 @@ namespace Core.Data.Migrations
 
                     b.Property<string>("MarketSize")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RiskFactors")
@@ -65,6 +66,7 @@ namespace Core.Data.Migrations
 
                     b.Property<string>("AuthorName")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -122,6 +124,7 @@ namespace Core.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool?>("TierOne")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bit");
 
                     b.Property<bool?>("TierThree")
