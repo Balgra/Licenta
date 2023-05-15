@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w6/u2kTvGuBihWgfy8S++oumos9XRNaE+w4TEVBeq8Q+4yQ3Dkuo9cGV172JWOTh32b/4KDVgXKPqCglCvcq4w==",
+  "dgSpecHash": "Qt6+A4+yrRMfaQeRhPqZT1pq0inJnLkw8UkuadHxPkPuqERJnw7Dpgvhfi3C2NqUVmDqbuL8cow5nll3wTO8MQ==",
   "success": true,
   "projectFilePath": "C:\\Balgra\\Licenta\\mylicenta\\Licenta\\backend\\backend.csproj",
   "expectedPackageFiles": [
@@ -33,8 +33,8 @@
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.4\\microsoft.entityframeworkcore.design.7.0.4.nupkg.sha512",
-    "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.4\\microsoft.entityframeworkcore.relational.7.0.4.nupkg.sha512",
-    "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.4\\microsoft.entityframeworkcore.sqlserver.7.0.4.nupkg.sha512",
+    "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.5\\microsoft.entityframeworkcore.relational.7.0.5.nupkg.sha512",
+    "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.5\\microsoft.entityframeworkcore.sqlserver.7.0.5.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",

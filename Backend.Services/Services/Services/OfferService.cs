@@ -1,53 +1,49 @@
 ﻿
-using Backend.Services.Entities;
+using Core.Entities;
 using Backend.Services.Services.Abstractions;
+using Core.Data;
+using Core.Requests;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Services.Services.Services
 {
     public class OfferService : IOfferService
     {
-       //rivate readonly IRepository<Offer> _offerRepository;
         private readonly ApplicationDbContext _dbContext;
 
-        public OfferService(/*epository<Offer> offerRepository,*/  ApplicationDbContext dbContext)
+        public OfferService(ApplicationDbContext dbContext, IGenericRepository<Offer> offerRepo)
         {
-           //offerRepository = offerRepository;
             _dbContext = dbContext;
         }
 
- 
-
-        public async Task<Offer> CreateOffer(string AuthorName,
-            string Company_Name, string Company_Email, DateTime Deadline,
-            int CostTierOne, int CostTierTwo, int Cost_TierThree, int Cost_TierFour)
+        public async Task<Offer> CreateOffer(OfferRequest Offer)
         {
 
             var offer = new Offer()
             {
-                AuthorName = AuthorName,
-                Deadline = Deadline,
+                AuthorName = Offer.AuthorName,
+                Deadline =  Offer.Deadline,
                 Description = new Description
                 {
-                    MarketSize = "",
-                    BusinessModel = "",
-                    Competitiveness = "",
-                    FinancialStatus = "",
-                    RiskFactors = ""
+                    MarketSize = Offer.MarketSize,
+                    BusinessModel = Offer.BusinessModel,
+                    Competitiveness = Offer.Competitiveness,
+                    FinancialStatus = Offer.FinancialStatus,
+                    RiskFactors = Offer.RiskFactors
                 },
                 Created = DateTime.Now,
-                Company_Name = Company_Name,
-                Company_Email = Company_Email,
+                Company_Name = Offer.Company_Name,
+                Company_Email = Offer.Company_Email,
                 Transaction = new Transaction
                 {
                     TierOne = false,
                     TierTwo = false,
                     TierThree = false,
                     TierFour = false,
-                    Cost_TierOne = CostTierOne,
-                    Cost_TierTwo = CostTierTwo,
-                    Cost_TierThree = Cost_TierThree,
-                    Cost_TierFour = Cost_TierFour,
+                    Cost_TierOne = Offer.CostTierOne,
+                    Cost_TierTwo = Offer.CostTierTwo,
+                    Cost_TierThree = Offer.Cost_TierThree,
+                    Cost_TierFour = Offer.Cost_TierFour,
 
                 }
             };
@@ -63,12 +59,40 @@ namespace Backend.Services.Services.Services
             throw new NotImplementedException();
         }
 
+        public async Task<Offer> GetOfferByIdAsync(int id)
+        {
+            return await _dbContext.Offers
+                .Include(p => p.Transaction)
+                .Include(p => p.Description)
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public Task<IReadOnlyList<Description>> GetOfferDescriptionsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task GetOffers()
         {
             throw new NotImplementedException();
         }
 
+        public Task<IReadOnlyList<Offer>> GetOffersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task GetOffersDescriptionbyid(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task GetOffersTransactionbyid(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyList<Transaction>> GetOfferTransactionsAsync()
         {
             throw new NotImplementedException();
         }

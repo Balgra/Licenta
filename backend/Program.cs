@@ -8,6 +8,7 @@ using System.Text;
 using Backend.Services;
 using Backend.Services.Services.Abstractions;
 using Backend.Services.Services.Services;
+using Core.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +55,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 
 //how to add a clas into dependency injection
 builder.Services.AddScoped<IOfferService, OfferService>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddAuthentication(x =>
 {

@@ -10,3 +10,6 @@ C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Se
 C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\refint\Backend.Services.dll
 C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.pdb
 C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\ref\Backend.Services.dll
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\bin\Debug\net6.0\Core.dll
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\bin\Debug\net6.0\Core.pdb
+C:\Balgra\Licenta\mylicenta\Licenta\Backend.Services\obj\Debug\net6.0\Backend.Services.csproj.CopyComplete

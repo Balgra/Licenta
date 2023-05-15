@@ -9,7 +9,8 @@ using System.Xml;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using backend.Requests;
+using Core.Requests;
+using Core.Data;
 
 namespace backend.Controllers
 {
