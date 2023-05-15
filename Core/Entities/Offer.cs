@@ -6,6 +6,7 @@ namespace Core.Entities
 {
     public class Offer : BaseEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string? AuthorName { get; set; }
         public Description Description { get; set; }
 

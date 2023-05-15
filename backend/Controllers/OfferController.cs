@@ -15,17 +15,9 @@ namespace backend.Controllers
     {
 
         private readonly IOfferService _offerService;
-        private readonly IGenericRepository<Offer> _offerRepo;
-        private readonly IGenericRepository<Description> _descriptionRepo;
-        private readonly IGenericRepository<Transaction> _transactionRepo;
-        public OfferController(IOfferService offerService, IGenericRepository<Offer> offerRepo,
-            IGenericRepository<Description> descriptionRepo, 
-            IGenericRepository<Transaction> transactionRepo)
+        public OfferController(IOfferService offerService)
         {
            _offerService= offerService;
-            _offerRepo = offerRepo;
-            _descriptionRepo = descriptionRepo;
-            _transactionRepo = transactionRepo;
         }
 
         [HttpPost]
@@ -40,7 +32,7 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Offer>>> GetOffers()
         {
-            var offers = await _offerRepo.ListAllAsync();
+            var offers = await _offerService.GetOffers();
 
             return Ok(offers);
         }
@@ -48,7 +40,7 @@ namespace backend.Controllers
         [HttpGet("description")]
         public async Task<ActionResult<IReadOnlyList<Description>>> GetOfferDescription()
         {
-            var offerDescription = await _descriptionRepo.ListAllAsync();
+            var offerDescription = await _offerService.GetOfferDescriptionsAsync();
 
             return Ok(offerDescription);
         }
@@ -56,90 +48,62 @@ namespace backend.Controllers
         [HttpGet("transaction")]
         public async Task<ActionResult<IReadOnlyList<Transaction>>> GetOfferTransaction()
         {
-            var offerTransactions = await _transactionRepo.ListAllAsync();
+            var offerTransactions = await _offerService.GetOfferTransactionsAsync();
 
             return Ok(offerTransactions);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Offer>> GetProduct(int id)
+
+         [HttpGet("{id}")]
+         public async Task<ActionResult<Offer>> GetProductbyId(int id)
+         {
+             var product = await _offerService.GetOfferbyIdAsync(id);
+
+             if (product == null) return NotFound();
+
+             return product;
+         }
+
+        [HttpGet("transaction/{id}")]
+        public async Task<ActionResult<Transaction>> GetTransactionbyId(int id)
         {
-            var product = await _offerRepo.GetByIdAsync(id);
+            var product = await _offerService.GetOffersTransactionbyid(id);
 
             if (product == null) return NotFound();
 
             return product;
         }
 
-        /*[HttpGet("{id}")]
-         public async Task<IActionResult> GetOffersbyid(int id)
-         {
-             var offers = await _dbContext.Offers.FirstOrDefaultAsync(d => d.Id == id);
-
-             if (offers == null) return NotFound();
-             return Ok(offers);
-         }*/
-
-        /*  [HttpGet("{id}")]
-          public async Task<IActionResult> GetOffersTransactionbyid(int id)
-          {
-              var offers = await _dbContext.Offers.Include(o => o.Transaction).SingleOrDefaultAsync(o => o.Id == id);
-
-              if (offers == null) return NotFound();
-              return Ok(offers);
-          }
-
-
-
-          [HttpPut("/api/offers/{offerId:int}/transaction")]
-          public async Task<IActionResult> UpdateTier(int offerId, bool TierOne, bool TierTwo, bool TierThree, bool TierFour)
-          {
-              var offer = await _dbContext.Offers.Include(o => o.Transaction).SingleOrDefaultAsync(o => o.Id == offerId);
-              if (offer == null)
-              {
-                  return NotFound();
-              }
-              if (offer.Transaction.TierOne == false && TierOne == true)
-                  offer.Transaction.TierOne = true;
-              if (offer.Transaction.TierTwo == false && TierTwo == true)
-                  offer.Transaction.TierTwo = true;
-              if (offer.Transaction.TierThree == false && TierThree == true)
-                  offer.Transaction.TierThree = true;
-              if (offer.Transaction.TierFour == false && TierFour == true)
-                  offer.Transaction.TierFour = true;
-
-              await _dbContext.SaveChangesAsync();
-
-              return Ok(offer);
-          }*/
-
-        /*MarketSize="",
-                    BusinessModel = "",
-                    Competitiveness = "",
-                    FinancialStatus = "",
-                    RiskFactors = ""*/
-        /*
-        [HttpPut("/api/offers/{offerId:int}/description")]
-        public async Task<IActionResult> UpdateDescription(int offerId, string MarketSize, 
-            string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors)
+        [HttpGet("description/{id}")]
+        public async Task<ActionResult<Description>> GetDescriptionbyId(int id)
         {
-            var offer = await _dbContext.Offers.Include(o => o.Description).SingleOrDefaultAsync(o => o.Id == offerId);
-            if (offer == null)
-            {
-                return NotFound();
-            }
-            offer.Description.MarketSize =  MarketSize;
-            offer.Description.BusinessModel = BusinessModel;
-            offer.Description.Competitiveness = Competitiveness;
-            offer.Description.FinancialStatus = FinancialStatus;
-            offer.Description.RiskFactors = RiskFactors;
+            var product = await _offerService.GetOffersDescriptionbyid(id);
 
-            await _dbContext.SaveChangesAsync();
+            if (product == null) return NotFound();
 
-            return Ok(offer);
+            return product;
         }
 
-        //de pus cu Id la descriptuion
+        [HttpPut("transaction/{id}")]
+        public async Task<Transaction> UpdateTier(int id, bool TierOne, bool TierTwo, bool TierThree, bool TierFour)
+          {
+            var transaction = await _offerService.UpdateTiersAsync(id, TierOne, TierTwo, TierThree, TierFour);
+              
+
+              return transaction;
+          }
+
+        [HttpPut("description/{id}")]
+        public async Task<Description> UpdateDescription(int id, string MarketSize, string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors)
+        {
+            var description = await _offerService.UpdateDescriptionAsync( id,  MarketSize,  BusinessModel,  Competitiveness,  FinancialStatus,  RiskFactors);
+
+
+            return description;
+        }
+
+  
+        /*//de pus cu Id la descriptuion
         [HttpPut]
         public async Task<IActionResult> EditOffer(int id, Entities.Description Description, string Company_Email, DateTime Deadline)
         {

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230515133704_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230515200044_Identity")]
+    partial class Identity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,7 @@ namespace Core.Data.Migrations
 
                     b.Property<string>("MarketSize")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RiskFactors")
@@ -68,6 +69,7 @@ namespace Core.Data.Migrations
 
                     b.Property<string>("AuthorName")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -125,6 +127,7 @@ namespace Core.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool?>("TierOne")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("bit");
 
                     b.Property<bool?>("TierThree")

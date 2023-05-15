@@ -11,10 +11,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Core.Requests;
 using Core.Data;
+using Core.Entities;
 
 namespace backend.Controllers
 {
-   /* [Route("api/auth")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -91,5 +92,5 @@ namespace backend.Controllers
    
 
 
-    }*/
+    }
 }
