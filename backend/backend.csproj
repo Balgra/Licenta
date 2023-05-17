@@ -23,4 +23,8 @@
 		<ProjectReference Include="..\Backend.Services\Backend.Services.csproj" />	
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DTOs\" />
+    </ItemGroup>
+
 </Project>
