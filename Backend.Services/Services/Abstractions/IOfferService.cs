@@ -30,6 +30,8 @@ namespace Backend.Services.Services.Abstractions;
         Task<Description> UpdateDescriptionAsync(int id, string MarketSize, string BusinessModel, string Competitiveness,
        string FinancialStatus, string RiskFactors);
 
+         Task<Offer> DeleteOffer(int id);
+
 /*Task UpdateTier(int offerId, bool TierOne, bool TierTwo, bool TierThree, bool TierFour);
 
     Task UpdateDescription(int offerId, string MarketSize,

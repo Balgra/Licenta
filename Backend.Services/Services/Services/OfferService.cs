@@ -105,7 +105,7 @@ namespace Backend.Services.Services.Services
             transaction.TierThree = TierThree;
             transaction.TierFour = TierFour;
 
-            await _dbContext.SaveChangesAsync();
+            await _offerRepo.SaveChangesAsync();
 
             return transaction;
         }
@@ -124,9 +124,25 @@ namespace Backend.Services.Services.Services
             description.FinancialStatus = FinancialStatus;
             description.RiskFactors = RiskFactors;
 
-            await _dbContext.SaveChangesAsync();
+            await _offerRepo.SaveChangesAsync();
 
             return description;
+        }
+
+        public async Task<Offer> DeleteOffer(int id)
+        {
+            var to_delete = await _offerRepo.GetOfferbyIdAsync(id);
+
+            if (to_delete == null)
+            {
+                return null; 
+            }
+
+            _dbContext.Offers.Remove(to_delete);
+
+            await _offerRepo.SaveChangesAsync();
+
+            return to_delete;
         }
     }
 }

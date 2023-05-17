@@ -16,5 +16,8 @@ namespace Core.Entities
         public int? Cost_TierThree { get; set; }
         public int? Cost_TierFour { get; set; }
 
+        //One Tier Entity with Name and public in Cost. 
+        // public List<Tiers> TierList {get; set;}
+
     }
 }

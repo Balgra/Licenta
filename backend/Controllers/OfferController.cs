@@ -85,18 +85,19 @@ namespace backend.Controllers
         }
 
         [HttpPut("transaction/{id}")]
-        public async Task<Transaction> UpdateTier(int id, bool TierOne, bool TierTwo, bool TierThree, bool TierFour)
+        public async Task<Transaction> UpdateTier(TransactionRequest transactions)
           {
-            var transaction = await _offerService.UpdateTiersAsync(id, TierOne, TierTwo, TierThree, TierFour);
+            var transaction = await _offerService.UpdateTiersAsync(transactions.Id,
+                transactions.TierOne, transactions.TierTwo, transactions.TierThree, transactions.TierFour);
               
 
               return transaction;
           }
 
         [HttpPut("description/{id}")]
-        public async Task<Description> UpdateDescription(int id, string MarketSize, string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors)
+        public async Task<Description> UpdateDescription(DescriptionRequest descr)
         {
-            var description = await _offerService.UpdateDescriptionAsync( id,  MarketSize,  BusinessModel,  Competitiveness,  FinancialStatus,  RiskFactors);
+            var description = await _offerService.UpdateDescriptionAsync(descr.Id, descr.MarketSize, descr.BusinessModel, descr.Competitiveness, descr.FinancialStatus, descr.RiskFactors);
 
 
             return description;
@@ -120,26 +121,29 @@ namespace backend.Controllers
 
             return Ok(offer);
 
-        }
+        }*/
         
         [HttpDelete]
-
-        public async Task<IActionResult> DeleteOffer(int id)
+        public async Task<Offer> DeleteOffer(int id)
         {
-            var dog = await _dbContext.Offers.FirstOrDefaultAsync(d => d.Id == id);
+            var to_delete = await _offerService.DeleteOffer(id);
 
-            if (dog == null) { return NotFound(); }
+            if(to_delete == null)
+            {
+                return null;
+            }
 
-            _dbContext.Offers.Remove(dog);
-
-            await _dbContext.SaveChangesAsync();
-
-            return Ok();
+            return to_delete;
         }
         // to add modifications to all controllers
         // And fool proof the controller.
         //teamplate for description, value on market:, 
-        */
+        
 
     }
 }
+
+//Plan of Investing // invest Plan by Ofers
+//Database figure
+// Transaction replanning
+//Reverse property

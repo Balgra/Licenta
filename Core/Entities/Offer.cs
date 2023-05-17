@@ -9,7 +9,7 @@ namespace Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string? AuthorName { get; set; }
         public Description Description { get; set; }
-
+        //adaug user si pun Inverse Property (user si user ID)
         public int DescriptionId { get; set; }
         public DateTime Created { get; set; }
 

@@ -22,6 +22,7 @@ namespace Backend.Services.Services.Abstractions
 
         Task<Transaction> GetOfferTransactionbyIdAsync(int id);
 
+
         Task SaveChangesAsync();
     }
 }
