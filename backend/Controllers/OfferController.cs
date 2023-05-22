@@ -55,7 +55,7 @@ namespace backend.Controllers
 
 
          [HttpGet("{id}")]
-         public async Task<ActionResult<Offer>> GetProductbyId(int id)
+         public async Task<ActionResult<Offer>> GetOfferbyId(int id)
          {
              var product = await _offerService.GetOfferbyIdAsync(id);
 
@@ -84,7 +84,7 @@ namespace backend.Controllers
             return product;
         }
 
-        [HttpPut("transaction/{id}")]
+        [HttpPut("transaction")]
         public async Task<Transaction> UpdateTier(TransactionRequest transactions)
           {
             var transaction = await _offerService.UpdateTiersAsync(transactions.Id,
@@ -94,7 +94,7 @@ namespace backend.Controllers
               return transaction;
           }
 
-        [HttpPut("description/{id}")]
+        [HttpPut("description")]
         public async Task<Description> UpdateDescription(DescriptionRequest descr)
         {
             var description = await _offerService.UpdateDescriptionAsync(descr.Id, descr.MarketSize, descr.BusinessModel, descr.Competitiveness, descr.FinancialStatus, descr.RiskFactors);

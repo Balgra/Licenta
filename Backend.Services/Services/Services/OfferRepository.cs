@@ -58,8 +58,6 @@ namespace Backend.Services.Services.Services
             return await _dbContext.Transactions.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-
-
         public async Task SaveChangesAsync()
              => await _dbContext.SaveChangesAsync();
 
