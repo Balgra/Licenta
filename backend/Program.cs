@@ -56,6 +56,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 //how to add a clas into dependency injection
 builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IOfferRepository, OfferRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddAuthentication(x =>
 {

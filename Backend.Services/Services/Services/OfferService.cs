@@ -132,6 +132,8 @@ namespace Backend.Services.Services.Services
         public async Task<Offer> DeleteOffer(int id)
         {
             var to_delete = await _offerRepo.GetOfferbyIdAsync(id);
+            var to_deleteTransaction = await _offerRepo.GetOfferTransactionbyIdAsync(id);
+            var to_deleteDescription = await _offerRepo.GetOfferDescriptionbyIdAsync(id);
 
             if (to_delete == null)
             {
@@ -139,6 +141,8 @@ namespace Backend.Services.Services.Services
             }
 
             _dbContext.Offers.Remove(to_delete);
+            _dbContext.Descriptions.Remove(to_deleteDescription);
+            _dbContext.Transactions.Remove(to_deleteTransaction);
 
             await _offerRepo.SaveChangesAsync();
 
