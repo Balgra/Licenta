@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import "./Offers.css";
+import OfferDetails from "./OfferDetails";
 
 const Offers = () => {
 	const [offers, setOffers] = useState([]);
+	const [selectedOffer, setSelectedOffer] = useState(null);
 	
 	const fetchOffers = async () => {
 		try {
@@ -37,10 +40,14 @@ const Offers = () => {
 		});
 	};
 	
+	const handleOfferClick = (offer) => {
+		setSelectedOffer(offer);
+	};
+	
 	return (
-		<div>
+		<div className="offers-container">
 			{offers.map((offer) => (
-				<div key={offer.id}>
+				<div className="offer-item" key={offer.id} onClick={() => handleOfferClick(offer)}>
 					<p>AuthorName: {offer.authorName}</p>
 					<p>CompanyEmail: {offer.company_Email}</p>
 					<p>CompanyName: {offer.company_Name}</p>
@@ -57,6 +64,13 @@ const Offers = () => {
 					<hr />
 				</div>
 			))}
+			{selectedOffer && (
+				<div className="offer-popup">
+				<OfferDetails
+					offer={selectedOffer}
+					handleModifyTiers={() => setSelectedOffer(null)}
+				/>
+				</div>)}
 		</div>
 	);
 };
