@@ -44,6 +44,10 @@ const Offers = () => {
 		setSelectedOffer(offer);
 	};
 	
+	const OfferStatus = ({ status, tier }) => {
+		return <p>Status Tier{tier}: {status ? "Taken" : "Empty"}</p>;
+	};
+	
 	return (
 		<div className="offers-container">
 			{offers.map((offer) => (
@@ -61,6 +65,10 @@ const Offers = () => {
 					<p>CostTierTwo: {offer.transaction.cost_TierTwo}</p>
 					<p>CostTierThree: {offer.transaction.cost_TierThree}</p>
 					<p>CostTierFour: {offer.transaction.cost_TierFour}</p>
+					<OfferStatus status={offer.transaction.tierOne} tier="One" />
+					<OfferStatus status={offer.transaction.tierTwo} tier="Two" />
+					<OfferStatus status={offer.transaction.tierThree} tier="Three" />
+					<OfferStatus status={offer.transaction.tierFour} tier="Four" />
 					<hr />
 				</div>
 			))}

@@ -4,10 +4,10 @@ import React, { useState } from "react";
 
 const OfferDetails = ({ offer, handleModifyTiers }) => {
 	const { transaction } = offer;
-	const [tierOne, setTierOne] = useState(transaction.cost_TierOne);
-	const [tierTwo, setTierTwo] = useState(transaction.cost_TierTwo);
-	const [tierThree, setTierThree] = useState(transaction.cost_TierThree);
-	const [tierFour, setTierFour] = useState(transaction.cost_TierFour);
+	const [tierOne, setTierOne] = useState(transaction.tierOne);
+	const [tierTwo, setTierTwo] = useState(transaction.tierTwo);
+	const [tierThree, setTierThree] = useState(transaction.tierThree);
+	const [tierFour, setTierFour] = useState(transaction.tierFour);
 	
 	const handleSaveTiers = () => {
 		// Save the modified tiers or perform any necessary actions
@@ -25,7 +25,7 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 			<h2>Offer Details</h2>
 			<p>Author Name: {offer.authorName}</p>
 			<p>
-				CostTierOne:{" "}
+				StatusTierOne:{" "}
 				<input
 					type="text"
 					value={tierOne}
@@ -33,7 +33,7 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 				/>
 			</p>
 			<p>
-				CostTierTwo:{" "}
+				StatusTierTwo:{" "}
 				<input
 					type="text"
 					value={tierTwo}
@@ -41,7 +41,7 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 				/>
 			</p>
 			<p>
-				CostTierThree:{" "}
+				StatusTierThree:{" "}
 				<input
 					type="text"
 					value={tierThree}
@@ -49,7 +49,7 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 				/>
 			</p>
 			<p>
-				CostTierFour:{" "}
+				StatusTierFour:{" "}
 				<input
 					type="text"
 					value={tierFour}
@@ -63,10 +63,3 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 };
 
 export default OfferDetails;
-
-/*<div className="offer-details">
-			<h2>Offer Details</h2>
-			<OfferTiers tierOne={offer.transaction.cost_TierOne} tierTwo={offer.transaction.cost_TierTwo}
-			tierThree={offer.transaction.cost_TierThree} tierFour={offer.transaction.cost_TierFour}/>
-			<button onClick={handleModifyTiers}>Modify Tiers</button>
-		</div>*/
