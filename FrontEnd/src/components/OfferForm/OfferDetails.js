@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 
 const OfferDetails = ({ offer, handleModifyTiers }) => {
@@ -8,16 +6,25 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 	const [tierTwo, setTierTwo] = useState(transaction.tierTwo);
 	const [tierThree, setTierThree] = useState(transaction.tierThree);
 	const [tierFour, setTierFour] = useState(transaction.tierFour);
+	const [isSaving, setIsSaving] = useState(false);
 	
 	const handleSaveTiers = () => {
-		// Save the modified tiers or perform any necessary actions
-		// For simplicity, this example just logs the modified tiers to the console
-		console.log("Modified Tiers:", {
-			tierOne,
-			tierTwo,
-			tierThree,
-			tierFour
-		});
+		// Perform saving logic here
+		
+		// Simulating a delay for demonstration purposes
+		setIsSaving(true);
+		setTimeout(() => {
+			// Save the modified tiers or perform any necessary actions
+			console.log("Modified Tiers:", {
+				tierOne,
+				tierTwo,
+				tierThree,
+				tierFour,
+			});
+			
+			setIsSaving(false);
+			handleModifyTiers(); // Close the popup after saving
+		}, 2000); // 2 seconds delay
 	};
 	
 	return (
@@ -56,7 +63,9 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 					onChange={(e) => setTierFour(e.target.value)}
 				/>
 			</p>
-			<button onClick={handleSaveTiers}>Save Tiers</button>
+			<button onClick={handleSaveTiers} disabled={isSaving}>
+				{isSaving ? "Saving..." : "Save Tiers"}
+			</button>
 			<button onClick={handleModifyTiers}>Go Back</button>
 		</div>
 	);
