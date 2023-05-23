@@ -5,18 +5,18 @@ import './Display.css';
 const Display = ({ data }) => {
 	return (
 		<div className="box">
-			<p>AuthorName: {data.AuthorName}</p>
-			<p>CompanyEmail: {data.CompanyEmail}</p>
-			<p>CompanyName: {data.CompanyName}</p>
-			<p>MarketSize: {data.MarketSize}</p>
-			<p>BusinessModel: {data.BusinessModel}</p>
-			<p>Competitiveness: {data.Competitiveness}</p>
-			<p>FinancialStatus: {data.FinancialStatus}</p>
-			<p>RiskFactors: {data.RiskFactors}</p>
-			<p>CostTierOne: {data.CostTierOne}</p>
-			<p>CostTierTwo: {data.CostTierTwo}</p>
-			<p>CostTierThree: {data.CostTierThree}</p>
-			<p>CostTierFour: {data.CostTierFour}</p>
+			<p>AuthorName: {data.authorName}</p>
+			<p>CompanyEmail: {data.company_Email}</p>
+			<p>CompanyName: {data.company_Name}</p>
+			<p>MarketSize: {data.marketSize}</p>
+			<p>BusinessModel: {data.businessModel}</p>
+			<p>Competitiveness: {data.competitiveness}</p>
+			<p>FinancialStatus: {data.financialStatus}</p>
+			<p>RiskFactors: {data.riskFactors}</p>
+			<p>CostTierOne: {data.costTierOne}</p>
+			<p>CostTierTwo: {data.costTierTwo}</p>
+			<p>CostTierThree: {data.cost_TierThree}</p>
+			<p>CostTierFour: {data.cost_TierFour}</p>
 		</div>
 	);
 };

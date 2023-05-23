@@ -5,6 +5,7 @@ import LoginPage from "./pages/loginPage";
 import CompanyPage from "./pages/CompanyPage"
 import ProfilePage from "./pages/ProfilePage"
 import LearnPage from "./pages/LearnPage"
+import OffersPage from "./pages/OffersPage"
 import Navbar from "./components/Navbar/nav-bar"
 import {BrowserRouter, Routes, Route,} from "react-router-dom";
 
@@ -25,6 +26,7 @@ const  App = () => {
                   <Route path="login" element={<LoginPage/>}/>
                   <Route path="company" element={<CompanyPage onSubmit={handleFormSubmit} submissions={submissions}/>}/>
                    <Route path="profile" element={<ProfilePage/>}/>
+                   <Route path="offers" element={<OffersPage  />}/>
                    <Route path="learning" element={<LearnPage/>}/>
             }
           </Routes>

@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "NF0soMl71g7bSu+/QsX6WE287PN2drbQ4+O2ujbSyV4Wd+na/RmHIiDQUe+IhClLoBriB9QzfnrEYMFAcazFBw==",
+  "dgSpecHash": "l6zHlklqQbtzvD5s6WicyhSKZ4bhvjV2YjQEE/22lXvnnc7Yot9uV4+IGc3WKmGrbYgudZa/hBWYf6oUayAiwg==",
   "success": true,
   "projectFilePath": "C:\\Balgra\\Licenta\\mylicenta\\Licenta\\Backend.Services\\Backend.Services.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Balgra\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Balgra\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\Balgra\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
