@@ -59,6 +59,19 @@ const Form = ({ onSubmit }) => {
 				// Handle error response
 				console.error('Error:', response.statusText);
 			}
+			setauthorName('');
+			setcompany_Name('');
+			setcompany_Email('');
+			setdeadline('');
+			setcostTierOne('');
+			setcostTierTwo('');
+			setcost_TierThree('');
+			setcost_TierFour('');
+			setmarketSize('');
+			setbusinessModel('');
+			setcompetitiveness('');
+			setfinancialStatus('');
+			setriskFactors('');
 		} catch (error) {
 			// Handle network error
 			console.error('Error:', error.message);
@@ -75,7 +88,7 @@ const Form = ({ onSubmit }) => {
 		{ label: 'CostTierTwo', type: 'integer', value: costTierTwo, onChange: setcostTierTwo },
 		{ label: 'CostTierThree', type: 'integer', value: cost_TierThree, onChange: setcost_TierThree },
 		{ label: 'CostTierFour', type: 'integer', value: cost_TierFour, onChange: setcost_TierFour },
-		{ label: 'MarketSize ', type: 'string', value: marketSize, onChange: setmarketSize },
+		{ label: 'MarketSize', type: 'string', value: marketSize, onChange: setmarketSize },
 		{ label: 'BusinessModel', type: 'string', value: businessModel, onChange: setbusinessModel },
 		{ label: 'Competitiveness', type: 'string', value: competitiveness, onChange: setcompetitiveness },
 		{ label: 'FinancialStatus', type: 'string', value: financialStatus, onChange: setfinancialStatus },
