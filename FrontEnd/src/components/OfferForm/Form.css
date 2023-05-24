@@ -4,6 +4,12 @@
     align-items: center;
     width: 300px;
     margin: 0 auto;
+    background-color: #0C0C0C;
+    color: white;
+}
+
+.app__header{
+    background-color:  #0C0C0C;
 }
 
 .form-label {

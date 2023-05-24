@@ -96,6 +96,7 @@ const Form = ({ onSubmit }) => {
 	];
 	
 	return (
+		
 		<form onSubmit={handleSubmit} className="form">
 			{formFields.map((field) => (
 				<label key={field.label} className="form-label">

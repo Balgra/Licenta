@@ -9,19 +9,31 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 	const [tierFour, setTierFour] = useState(transaction.tierFour);
 	const [isSaving, setIsSaving] = useState(false);
 	
-	const handleSaveTiers = () => {
-		// Perform saving logic here
+	const payload = {
+		id: offer.id,
+		tierOne: tierOne,
+		tierTwo: tierTwo,
+		tierThree: tierThree,
+		tierFour: tierFour
+	};
+	
+	const handleSaveTiers = async () => {
 		
+		// Perform saving logic here
+		 await fetch('https://localhost:7239/api/offers/transaction', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(payload)
+		});
+
+		 window.location.reload();
+		 
 		// Simulating a delay for demonstration purposes
 		setIsSaving(true);
 		setTimeout(() => {
 			// Save the modified tiers or perform any necessary actions
-			console.log("Modified Tiers:", {
-				tierOne,
-				tierTwo,
-				tierThree,
-				tierFour,
-			});
 			
 			setIsSaving(false);
 			handleModifyTiers(); // Close the popup after saving
@@ -41,8 +53,8 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 					style={{ minWidth: "120px" }}
 					className="tier-select"
 				>
-					<MenuItem value={true}>Taken</MenuItem>
-					<MenuItem value={false}>Empty</MenuItem>
+					<MenuItem value={true}  >Taken</MenuItem>
+					<MenuItem value={false} disabled={tierOne === true}>Empty</MenuItem>
 				</Select>
 			</FormControl>
 			</div>
@@ -55,8 +67,8 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 					style={{ minWidth: "120px" }}
 					className="tier-select"
 				>
-					<MenuItem value={true}>Taken</MenuItem>
-					<MenuItem value={false}>Empty</MenuItem>
+					<MenuItem value={true}  >Taken</MenuItem>
+					<MenuItem value={false} disabled={tierTwo === true}>Empty</MenuItem>
 				</Select>
 			</FormControl>
 			</div>
@@ -69,8 +81,8 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 					style={{ minWidth: "120px" }}
 					className="tier-select"
 				>
-					<MenuItem value={true}>Taken</MenuItem>
-					<MenuItem value={false}>Empty</MenuItem>
+					<MenuItem value={true}  >Taken</MenuItem>
+					<MenuItem value={false} disabled={tierThree === true}>Empty</MenuItem>
 				</Select>
 			</FormControl>
 			</div>
@@ -83,8 +95,8 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 					style={{ minWidth: "120px" }}
 					className="tier-select"
 				>
-					<MenuItem value={true}>Taken</MenuItem>
-					<MenuItem value={false}>Empty</MenuItem>
+					<MenuItem value={true}  >Taken</MenuItem>
+					<MenuItem value={false} disabled={tierFour === true}>Empty</MenuItem>
 				</Select>
 			</FormControl>
 			</div>
