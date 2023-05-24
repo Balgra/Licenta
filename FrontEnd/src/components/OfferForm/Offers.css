@@ -9,6 +9,7 @@
 .offer-item {
     width: calc(33.33% - 20px); /* Adjust the width as needed */
     margin: 10px;
+    color: white;
     padding: 10px;
     border: 1px solid #ccc;
     cursor: pointer;

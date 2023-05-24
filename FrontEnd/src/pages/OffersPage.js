@@ -4,7 +4,7 @@ import Offer from "../components/OfferForm/Offers"
 const OffersPage = () => {
 
 	return (
-		<div>
+		<div className="app__header">
 			<h1>Offers</h1>
 			<Offer/>
 		</div>

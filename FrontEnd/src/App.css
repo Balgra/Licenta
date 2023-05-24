@@ -87,6 +87,10 @@
   line-height: 28px;
   font-size: 16px;
 }
+.app__header{
+  background-color: #0C0C0C;
+  min-height: 100vh;
+}
 
 .headtext__cormorant {
   font-family: var(--font-base);
