@@ -21,11 +21,23 @@
     transform: translate(-50%, -50%);
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 50px; /* Increase the padding to create more space */
+    width: 750px; /* Set a desired width */
+    max-width: 90%; /* Specify a maximum width if needed */
+    height: 650px; /* Set a desired height */
+    max-height: 90%; /* Specify a maximum height if needed */
+    overflow: auto; /* Enable scrolling if the content exceeds the height */
 }
 
 .offer-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+}
+
+.offer-details .tier-select {
+    width: calc(25% - 5px); /* Adjust the width and gap as needed */
 }
 
 .offer-details input {
@@ -34,4 +46,14 @@
 
 .offer-details button {
     margin-top: 10px;
+}
+
+.offer-details-row {
+    margin-bottom: 5px; /* Adjust the margin as needed */
+    margin-top: 25px;
+}
+
+.tier-select {
+    margin-top: 10px;
+    margin-bottom: 10px; /* Adjust the margin as needed */
 }
