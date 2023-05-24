@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Select, MenuItem, FormControl, InputLabel } from "@material-ui/core";
 
 const OfferDetails = ({ offer, handleModifyTiers }) => {
 	const { transaction } = offer;
@@ -31,42 +32,68 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 		<div className="offer-details">
 			<h2>Offer Details</h2>
 			<p>Author Name: {offer.authorName}</p>
-			<p>
-				StatusTierOne:{" "}
-				<input
-					type="text"
+			<div className="offer-details-row">
+			<FormControl>
+				<InputLabel>Status Tier One</InputLabel>
+				<Select
 					value={tierOne}
 					onChange={(e) => setTierOne(e.target.value)}
-				/>
-			</p>
-			<p>
-				StatusTierTwo:{" "}
-				<input
-					type="text"
+					style={{ minWidth: "120px" }}
+					className="tier-select"
+				>
+					<MenuItem value={true}>Taken</MenuItem>
+					<MenuItem value={false}>Empty</MenuItem>
+				</Select>
+			</FormControl>
+			</div>
+			<div className="offer-details-row">
+			<FormControl>
+				<InputLabel>Status Tier Two</InputLabel>
+				<Select
 					value={tierTwo}
 					onChange={(e) => setTierTwo(e.target.value)}
-				/>
-			</p>
-			<p>
-				StatusTierThree:{" "}
-				<input
-					type="text"
+					style={{ minWidth: "120px" }}
+					className="tier-select"
+				>
+					<MenuItem value={true}>Taken</MenuItem>
+					<MenuItem value={false}>Empty</MenuItem>
+				</Select>
+			</FormControl>
+			</div>
+			<div className="offer-details-row">
+			<FormControl>
+				<InputLabel>Status Tier Three</InputLabel>
+				<Select
 					value={tierThree}
 					onChange={(e) => setTierThree(e.target.value)}
-				/>
-			</p>
-			<p>
-				StatusTierFour:{" "}
-				<input
-					type="text"
+					style={{ minWidth: "120px" }}
+					className="tier-select"
+				>
+					<MenuItem value={true}>Taken</MenuItem>
+					<MenuItem value={false}>Empty</MenuItem>
+				</Select>
+			</FormControl>
+			</div>
+			<div className="offer-details-row">
+			<FormControl>
+				<InputLabel>Status Tier Four</InputLabel>
+				<Select
 					value={tierFour}
 					onChange={(e) => setTierFour(e.target.value)}
-				/>
-			</p>
-			<button onClick={handleSaveTiers} disabled={isSaving}>
+					style={{ minWidth: "120px" }}
+					className="tier-select"
+				>
+					<MenuItem value={true}>Taken</MenuItem>
+					<MenuItem value={false}>Empty</MenuItem>
+				</Select>
+			</FormControl>
+			</div>
+			<Button variant="contained" color="primary" onClick={handleSaveTiers} disabled={isSaving}>
 				{isSaving ? "Saving..." : "Save Tiers"}
-			</button>
-			<button onClick={handleModifyTiers}>Go Back</button>
+			</Button>
+			<Button variant="contained" onClick={handleModifyTiers}>
+				Go Back
+			</Button>
 		</div>
 	);
 };
