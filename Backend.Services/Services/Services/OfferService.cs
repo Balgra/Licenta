@@ -148,5 +148,19 @@ namespace Backend.Services.Services.Services
 
             return to_delete;
         }
+
+
+        public async Task<Offer> GetPlanOfInvesting()
+        {
+            var Offers = await _offerRepo.GetOffersAsync();
+
+            Random rnd = new Random();
+
+            int randIndex = rnd.Next(Offers.Count);
+
+            var random = Offers[randIndex];
+
+            return random;
+        }
     }
 }
