@@ -13,6 +13,8 @@ namespace Backend.Services.Services.Abstractions;
 
         Task<IReadOnlyList<Offer>> GetOffers();
 
+        Task<Offer> GetPlanOfInvesting();
+
 
        Task<IReadOnlyList<Description>> GetOfferDescriptionsAsync();
 

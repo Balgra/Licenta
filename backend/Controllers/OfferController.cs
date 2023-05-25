@@ -37,6 +37,14 @@ namespace backend.Controllers
             return Ok(offers);
         }
 
+        [HttpGet("plan")]
+        public async Task<ActionResult<IReadOnlyList<Offer>>> GetPlan()
+        {
+            var offers = await _offerService.GetPlanOfInvesting();
+
+            return Ok(offers);
+        }
+
         [HttpGet("description")]
         public async Task<ActionResult<IReadOnlyList<Description>>> GetOfferDescription()
         {
