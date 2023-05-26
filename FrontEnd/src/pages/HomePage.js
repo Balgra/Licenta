@@ -11,7 +11,7 @@ const Homepage = () => {
 	};
 	
 	const handleNavigateOfferMaker = () => {
-		navigate('/company');
+		navigate('/offermaker');
 	};
 	
 	const handleNavigateOffers = () => {

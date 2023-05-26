@@ -38,7 +38,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("plan")]
-        public async Task<ActionResult<IReadOnlyList<Offer>>> GetPlan()
+        public async Task<ActionResult<Offer>> GetPlan()
         {
             var offers = await _offerService.GetPlanOfInvesting();
 
