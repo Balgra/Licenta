@@ -5,11 +5,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Core.Requests;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+//to look for both autorize
 namespace backend.Controllers
 {
     [ApiController ]
-    //[Authorize]
+    [Authorize(Roles ="Investor", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("/api/offers")]
     public class OfferController : ControllerBase
     {

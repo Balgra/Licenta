@@ -11,6 +11,11 @@ namespace Core.Entities
         public Description Description { get; set; }
         //adaug user si pun Inverse Property (user si user ID)
         public int DescriptionId { get; set; }
+
+        public ApplicationUser User { get; set; } 
+
+        public string UserId { get; set; }
+
         public DateTime Created { get; set; }
 
         public string? Company_Name { get; set; }

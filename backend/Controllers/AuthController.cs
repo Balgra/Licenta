@@ -1,17 +1,17 @@
 ﻿
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Xml;
-using System.Security.Cryptography;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using Core.Requests;
 using Core.Data;
 using Core.Entities;
+using Core.Models;
+using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
+using Core.Requests;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 
 namespace backend.Controllers
 {
@@ -20,64 +20,93 @@ namespace backend.Controllers
     public class AuthController : ControllerBase
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly SHA256 _sha256;
         private readonly IConfiguration _configuration;
-        public AuthController(ApplicationDbContext dbContext, IConfiguration configuration)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public AuthController(ApplicationDbContext dbContext,
+            IConfiguration configuration, UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _dbContext = dbContext;
-            _sha256 = SHA256.Create();
             _configuration = configuration;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        private string GeneratePassword(int length)
         {
-            var users = await _dbContext.Users.ToListAsync();
-
-            return Ok(users);
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&?%$@";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[(new Random()).Next(s.Length)]).ToArray());
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> AddUser(AddUserRequest User)
+        public async Task<IActionResult> AddUser(AddOrUpdateUser cmd)
         {
-            var userEmail = await _dbContext.Users.Where(u => u.Email == User.Email).FirstOrDefaultAsync();
-            var userUsername = await _dbContext.Users.Where(u => u.Username == User.Username).FirstOrDefaultAsync();
+            var existingUser = await _userManager.FindByEmailAsync(cmd.Email);
 
-            if (userEmail != null)
+            if (existingUser is null)
             {
-                return BadRequest(new { errorMessage = "Email already in use" });
+
+                var newUser = new ApplicationUser()
+                {
+                    FirstName = cmd.FirstName,
+                    LastName = cmd.LastName,
+                    Email = cmd.Email,
+                    UserName = cmd.Email,
+                    EmailConfirmed = true
+                };
+
+                var generatedPassword = GeneratePassword(32);
+                var result = await _userManager.CreateAsync(newUser, generatedPassword);
+
+                if (!result.Succeeded)
+                {
+                    throw new ValidationException(string.Join(", ", result.Errors.Select(p => p.Description)));
+                }
+
+                if (!await _roleManager.RoleExistsAsync(cmd.Role))
+                {
+                    var newRole = new IdentityRole { Name = cmd.Role };
+                    await _roleManager.CreateAsync(newRole);
+                }
+
+                var rolesResult = await _userManager.AddToRoleAsync(newUser, cmd.Role);
+
+                return Ok(generatedPassword);
             }
 
-            if (userUsername != null)
-            {
-                return BadRequest(new { errorMessage = "Username is already taken" });
-            }
 
-            var result = new User() { Username = User.Username, Email = User.Email, Password = Convert.ToHexString(_sha256.ComputeHash(Encoding.UTF8.GetBytes(User.Password))) };
-            await _dbContext.Users.AddAsync(result);
-            await _dbContext.SaveChangesAsync();
-
-            return Ok(result);
+            return BadRequest();
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginRequest User)
+        public async Task<IActionResult> Login(string Email, string password)
         {
-            var user = await _dbContext.Users.Where(u => u.Username == User.Username && u.Password == Convert.ToHexString(_sha256.ComputeHash(Encoding.UTF8.GetBytes(User.Password)))).FirstOrDefaultAsync();
 
-            if (user == null)
-                return BadRequest(new { error = "User does not exist or wrong password!" });
+            var user = await _userManager.FindByEmailAsync(Email);
+            if (user is null)
+                throw new ValidationException("AAAAUser does not exist or wrong password!");
 
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+            var isValidPassword = await _userManager.CheckPasswordAsync(user, password);
+            if (!isValidPassword)
+                throw new ValidationException("AAAUser does not exist or wrong password!");
+
+            var roles = await _userManager.GetRolesAsync(user);
 
             var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
             var claims = new List<Claim>
                 {
+                    new Claim("UserId", user.Id),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                    new Claim(ClaimTypes.Name, user.Username),
-                    new Claim("userId", user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName)
                 };
+            foreach (var role in roles)
+                claims.Add(new Claim(ClaimTypes.Role, role));
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
@@ -86,11 +115,9 @@ namespace backend.Controllers
                    SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
-            return Ok(new { Token = token });
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return Ok(tokenHandler.WriteToken(token));
         }
-   
-
-
     }
 }
