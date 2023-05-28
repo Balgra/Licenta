@@ -9,6 +9,8 @@ using Backend.Services;
 using Backend.Services.Services.Abstractions;
 using Backend.Services.Services.Services;
 using Core.Data;
+using Microsoft.AspNetCore.Identity;
+using Core.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +31,7 @@ builder.Services.AddSwaggerGen(c => {
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
-
+    
     c.AddSecurityRequirement(new OpenApiSecurityRequirement()
         {
             {
@@ -51,7 +53,7 @@ builder.Services.AddSwaggerGen(c => {
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(
-        options => options.UseSqlServer("data source=DESKTOP-2JKCO5S;initial catalog=BizBoost;trusted_connection=true;TrustServerCertificate=True"));
+        options => options.UseSqlServer("data source=DESKTOP-2JKCO5S;initial catalog=ASD;trusted_connection=true;TrustServerCertificate=True"));
 
 //how to add a clas into dependency injection
 builder.Services.AddScoped<IOfferService, OfferService>();
@@ -72,10 +74,16 @@ builder.Services.AddAuthentication(x =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"])),
         ValidateIssuer = false,
         ValidateAudience = false,
-        RequireExpirationTime = false,
+        RequireExpirationTime = true,
         ValidateLifetime = true
     };
 });
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddCors(options =>
 {
@@ -88,7 +96,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.EnablePersistAuthorization();
+    });
 }
 
 app.UseHttpsRedirection();

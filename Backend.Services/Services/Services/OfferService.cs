@@ -5,6 +5,9 @@ using Core.Data;
 using Core.Requests;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Backend.Services.Services.Services
 {
@@ -12,20 +15,27 @@ namespace Backend.Services.Services.Services
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IOfferRepository _offerRepo;
+        private readonly IHttpContextAccessor _httpContext;
 
-        public OfferService(ApplicationDbContext dbContext, IOfferRepository offerRepo)
+        public OfferService(ApplicationDbContext dbContext, IOfferRepository offerRepo, 
+            IHttpContextAccessor httpContext)
         {
             _dbContext = dbContext;
             _offerRepo = offerRepo;
+            _httpContext = httpContext;
         }
-
+        //Verif daca User exista etc...
         public async Task<Offer> CreateOffer(OfferRequest Offer)
         {
+            var UserId = _httpContext.HttpContext.User.FindFirstValue("UserId");
+
+            Console.WriteLine(UserId.ToString());
 
             var offer = new Offer()
             {
                 AuthorName = Offer.AuthorName,
                 Deadline =  Offer.Deadline,
+                UserId= UserId,
                 Description = new Description
                 {
                     MarketSize = Offer.MarketSize,
