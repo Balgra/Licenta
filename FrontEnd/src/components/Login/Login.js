@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 
 import './Login.css';
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 	
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const navigate = useNavigate();
+	
+	const handleNavigateHome = () => {
+		navigate('/');
+	};
 	
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -29,11 +35,13 @@ const Login = () => {
 		} catch (error) {
 			console.error("Login failed:", error);
 		}
+		
+		
 	};
 	
 	return (
 		<div>
-			<form onSubmit={handleLogin}>
+			<form  onSubmit={handleLogin}>
 				<div>
 					<label>Email:</label>
 					<input
@@ -50,7 +58,7 @@ const Login = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</div>
-				<button type="submit">Login</button>
+				<button onClick={handleNavigateHome} type="submit">Login</button>
 			</form>
 		</div>
 	);
