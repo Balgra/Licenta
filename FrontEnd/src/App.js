@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/loginPage";
 import CompanyPage from "./pages/CompanyPage"
-import ProfilePage from "./pages/ProfilePage"
+//import ProfilePage from "./pages/ProfilePage"
 import LearnPage from "./pages/LearnPage"
 import OffersPage from "./pages/OffersPage"
+import RegisterPage from "./pages/RegisterPage"
 import InvestingHelper from "./pages/InvestingHelper";
 import Navbar from "./components/Navbar/nav-bar"
 import {BrowserRouter, Routes, Route,} from "react-router-dom";
@@ -16,17 +17,17 @@ const  App = () => {
     const handleFormSubmit = (data) => {
         setSubmissions([...submissions, data]);
     };
-    
+   // <Route path="profile" element={<ProfilePage/>}/>
   return (
       <>
         
         <BrowserRouter>
-            <Navbar></Navbar>
+            <Navbar/>
           <Routes>
                   <Route path="/" element={<HomePage />}/>
                   <Route path="login" element={<LoginPage/>}/>
                   <Route path="offermaker" element={<CompanyPage onSubmit={handleFormSubmit} submissions={submissions}/>}/>
-                   <Route path="profile" element={<ProfilePage/>}/>
+              <Route path="register" element={<RegisterPage/>}/>
                      <Route path="plan" element={<InvestingHelper/>}/>
                    <Route path="offers" element={<OffersPage  />}/>
                    <Route path="learning" element={<LearnPage/>}/>

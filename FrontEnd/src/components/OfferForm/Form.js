@@ -43,10 +43,12 @@ const Form = ({ onSubmit }) => {
 		};
 		
 		try {
+			const token = localStorage.getItem('token');
 			const response = await fetch('https://localhost:7239/api/offers', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
+					"Authorization": `Bearer ${token}`
 				},
 				body: JSON.stringify(offerData),
 			});

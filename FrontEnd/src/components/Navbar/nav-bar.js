@@ -8,7 +8,7 @@ const Navbar = () => {
 				<li className="p__opensans"><a href="/">Home</a></li>
 				{/*p_opensans e din App.css*/}
 				<li className="p__opensans"><a href="/offermaker">OfferMaker</a></li>
-				<li className="p__opensans"><a href="/profile">Profile</a></li>
+			
 				<li className="p__opensans"><a href="/learning">Learning</a></li>
 				<li className="p__opensans"><a href="/offers">Offers</a></li>
 				<li className="p__opensans"><a href="/plan">Investing-Plan</a></li>
@@ -19,5 +19,5 @@ const Navbar = () => {
 		</nav>
 	);
 };
-
+///<li className="p__opensans"><a href="/profile">Profile</a></li>
 export default Navbar;
