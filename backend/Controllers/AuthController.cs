@@ -82,14 +82,14 @@ namespace backend.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(string Email, string password)
+        public async Task<IActionResult> Login(LoginUser User)
         {
 
-            var user = await _userManager.FindByEmailAsync(Email);
+            var user = await _userManager.FindByEmailAsync(User.Email);
             if (user is null)
                 throw new ValidationException("AAAAUser does not exist or wrong password!");
 
-            var isValidPassword = await _userManager.CheckPasswordAsync(user, password);
+            var isValidPassword = await _userManager.CheckPasswordAsync(user, User.password);
             if (!isValidPassword)
                 throw new ValidationException("AAAUser does not exist or wrong password!");
 
