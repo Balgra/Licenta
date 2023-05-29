@@ -85,10 +85,12 @@ const InvestingHelper = () => {
 	
 	const fetchOffer = async () => {
 		try {
+			const token = localStorage.getItem('token');
 			const response = await fetch("https://localhost:7239/api/offers/plan", {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
+					"Authorization": `Bearer ${token}`
 				},
 			});
 			
