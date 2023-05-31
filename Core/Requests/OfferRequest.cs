@@ -39,13 +39,36 @@ namespace Core.Requests
         [Required]
         public string BusinessModel { get; set; }
 
-        [Required]
-        public string Competitiveness { get; set; }
+        public string Descriptions { get; set; }
+
+        public string TargetAudience { get; set; }
+
+        public string MarketingStrategies { get; set; }
 
         [Required]
-        public string FinancialStatus { get; set; }
+        public int RiskFactors { get; set; }
 
-        [Required]
-        public string RiskFactors { get; set; }
+        public string CompanyValue { get; set; }
+        public string MonthlySpendings { get; set; }
+        public string MonthlyIncome { get; set; }
+
+        public string ValueOfDebt { get; set; }
+
+        public string ValueOfLoans { get; set; }
+
+        public float YearsOnMarket { get; set; }
+
+        public string MethodOfValuation { get; set; }
+
+        public bool EmbraceDigitalTransformation { get; set; }
+        public bool EnhanceCustomerExperience { get; set; }
+        public bool LeverageBigDataAndAnalytics { get; set; }
+        public bool AdoptAgileMethodologies { get; set; }
+        public bool EmbraceEmergingTechnologies { get; set; }
+        public bool FosterCollaborationAndOpenInnovation { get; set; }
+        public bool FocusOnSustainabilityAndSocialResponsibility { get; set; }
+        public bool InvestInEmployeeDevelopment { get; set; }
+
+
     }
 }

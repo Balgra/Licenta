@@ -25,6 +25,8 @@ namespace Backend.Services.Services.Services
             return await _dbContext.Offers
                 .Include(p => p.Transaction)
                 .Include(p => p.Description)
+                .Include(p => p.Financial)
+                .Include(p => p.Competitiveness)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
@@ -33,7 +35,10 @@ namespace Backend.Services.Services.Services
         public async Task<List<Offer>> GetOffersAsync()
         {
             return await _dbContext.Offers.Include(p => p.Transaction)
-                .Include(p => p.Description).ToListAsync();
+                .Include(p => p.Description)
+                 .Include(p => p.Financial)
+                .Include(p => p.Competitiveness)
+                .ToListAsync();
         }
 
 

@@ -20,10 +20,12 @@ const OfferDetails = ({ offer, handleModifyTiers }) => {
 	const handleSaveTiers = async () => {
 		
 		// Perform saving logic here
+		const token = localStorage.getItem('token');
 		 await fetch('https://localhost:7239/api/offers/transaction', {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
+				"Authorization": `Bearer ${token}`
 			},
 			body: JSON.stringify(payload)
 		});

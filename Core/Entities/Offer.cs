@@ -8,6 +8,8 @@ namespace Core.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string? AuthorName { get; set; }
+
+        public DateTime? Deadline { get; set; }
         public Description Description { get; set; }
         //adaug user si pun Inverse Property (user si user ID)
         public int DescriptionId { get; set; }
@@ -25,8 +27,13 @@ namespace Core.Entities
 
         public int TransactionId { get; set; }
 
-        public DateTime? Deadline { get; set; }
+        public Financial Financial { get; set; }
 
+        public int FinancialId { get; set; }
+
+        public Competitiveness Competitiveness { get; set; }
+
+        public int CompetitivenessId { get;set; }
 
 
     }
