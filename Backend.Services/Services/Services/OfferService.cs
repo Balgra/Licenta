@@ -34,19 +34,20 @@ namespace Backend.Services.Services.Services
             var offer = new Offer()
             {
                 AuthorName = Offer.AuthorName,
-                Deadline =  Offer.Deadline,
-                UserId= UserId,
+                Deadline = Offer.Deadline,
+                UserId = UserId,
+                Created = DateTime.Now,
+                Company_Name = Offer.Company_Name,
+                Company_Email = Offer.Company_Email,
                 Description = new Description
                 {
                     MarketSize = Offer.MarketSize,
                     BusinessModel = Offer.BusinessModel,
-                    Competitiveness = Offer.Competitiveness,
-                    FinancialStatus = Offer.FinancialStatus,
+                    Descriptions = Offer.Descriptions,
+                    TargetAudience = Offer.TargetAudience,
+                    MarketingStrategies = Offer.MarketingStrategies,
                     RiskFactors = Offer.RiskFactors
                 },
-                Created = DateTime.Now,
-                Company_Name = Offer.Company_Name,
-                Company_Email = Offer.Company_Email,
                 Transaction = new Transaction
                 {
                     TierOne = false,
@@ -58,7 +59,27 @@ namespace Backend.Services.Services.Services
                     Cost_TierThree = Offer.Cost_TierThree,
                     Cost_TierFour = Offer.Cost_TierFour,
 
-                }
+                },
+                Financial = new Financial { 
+
+                    CompanyValue = Offer.CompanyValue,
+                    MonthlyIncome = Offer.MonthlyIncome,
+                    MonthlySpendings = Offer.MonthlySpendings,
+                    ValueOfDebt = Offer.ValueOfDebt,
+                    ValueOfLoans = Offer.ValueOfLoans,
+                    YearsOnMarket = Offer.YearsOnMarket,
+                    MethodOfValuation = Offer.MethodOfValuation
+                },
+
+               Competitiveness = new Competitiveness
+               {
+                   EmbraceDigitalTransformation = Offer.EmbraceDigitalTransformation,
+                   EnhanceCustomerExperience = Offer.EnhanceCustomerExperience,
+                   EmbraceEmergingTechnologies = Offer.EnhanceCustomerExperience,
+                   InvestInEmployeeDevelopment = Offer.InvestInEmployeeDevelopment,
+                   AdoptAgileMethodologies = Offer.AdoptAgileMethodologies,
+                   LeverageBigDataAndAnalytics = Offer.LeverageBigDataAndAnalytics
+               }
             };
             await _dbContext.Offers.AddAsync(offer);
 
@@ -129,10 +150,10 @@ namespace Backend.Services.Services.Services
                 return null;
             }
             description.MarketSize = MarketSize;
-            description.BusinessModel = BusinessModel;
-            description.Competitiveness = Competitiveness;
-            description.FinancialStatus = FinancialStatus;
-            description.RiskFactors = RiskFactors;
+           // description.BusinessModel = BusinessModel;
+           /// description.Competitiveness = Competitiveness;
+           /// description.FinancialStatus = FinancialStatus;
+          //  description.RiskFactors = RiskFactors;
 
             await _offerRepo.SaveChangesAsync();
 

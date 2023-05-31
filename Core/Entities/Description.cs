@@ -5,15 +5,18 @@ namespace Core.Entities
     public class Description : BaseEntity
     {
 
-        //public Offer? Offer { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string MarketSize { get; set; }
+        public string MarketSize { get; set; } // Top Down Market Sizing   ... . Bottom-Up, Total Addressable Market , Analogy Method
+
+        public string Descriptions { get; set; }
+
+        public string TargetAudience { get; set; }
+
+        public string MarketingStrategies { get; set; }
 
         public string BusinessModel { get; set; } // Subscription , E-commerce, Advertising, Freemium, Affiliate, Pay-As-You-Go
-        public string Competitiveness { get; set; } //poate sa fie low high medium
 
-        public string FinancialStatus { get; set; } //poate sa fie low high medium
-        public string RiskFactors { get; set; } //poate sa fie low high medium
+        public int RiskFactors { get; set; } //poate sa fie low high medium //de pus int
 
 
     }
