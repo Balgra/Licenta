@@ -38,6 +38,16 @@ namespace backend.Controllers
             return Ok(offers);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Offer>> GetOfferbyId(int id)
+        {
+            var product = await _offerService.GetOfferbyIdAsync(id);
+
+            if (product == null) return NotFound();
+
+            return product;
+        }
+
         [HttpGet("plan")]
         public async Task<ActionResult<Offer>> GetPlan()
         {
@@ -63,15 +73,7 @@ namespace backend.Controllers
         }
 
 
-         [HttpGet("{id}")]
-         public async Task<ActionResult<Offer>> GetOfferbyId(int id)
-         {
-             var product = await _offerService.GetOfferbyIdAsync(id);
 
-             if (product == null) return NotFound();
-
-             return product;
-         }
 
         [HttpGet("transaction/{id}")]
         public async Task<ActionResult<Transaction>> GetTransactionbyId(int id)
@@ -87,6 +89,42 @@ namespace backend.Controllers
         public async Task<ActionResult<Description>> GetDescriptionbyId(int id)
         {
             var product = await _offerService.GetOffersDescriptionbyid(id);
+
+            if (product == null) return NotFound();
+
+            return product;
+        }
+
+        [HttpGet("competitiveness")]
+        public async Task<ActionResult<IReadOnlyList<Competitiveness>>> GetOfferCompetitiveness()
+        {
+            var offerDescription = await _offerService.GetOfferCompetitivenessAsync();
+
+            return Ok(offerDescription);
+        }
+
+        [HttpGet("financial")]
+        public async Task<ActionResult<IReadOnlyList<Financial>>> GetOfferFinancial()
+        {
+            var offerTransactions = await _offerService.GetOfferFinancialsAsync();
+
+            return Ok(offerTransactions);
+        }
+
+        [HttpGet("competitiveness/{id}")]
+        public async Task<ActionResult<Competitiveness>> GetCompetitivenessbyId(int id)
+        {
+            var product = await _offerService.GetOffersCompetitivenessbyid(id);
+
+            if (product == null) return NotFound();
+
+            return product;
+        }
+
+        [HttpGet("financial/{id}")]
+        public async Task<ActionResult<Financial>> GetFinancialbyId(int id)
+        {
+            var product = await _offerService.GetOffersFinancialbyid(id);
 
             if (product == null) return NotFound();
 

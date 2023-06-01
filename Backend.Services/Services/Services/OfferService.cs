@@ -97,6 +97,11 @@ namespace Backend.Services.Services.Services
             return Offers;
         }
 
+        public async Task<Offer> GetOfferbyIdAsync(int id)
+        {
+            return await _offerRepo.GetOfferbyIdAsync(id);
+        }
+
         public async Task<IReadOnlyList<Transaction>> GetOfferTransactionsAsync()
         {
             return await _offerRepo.GetOfferTransactionAsync();
@@ -107,10 +112,7 @@ namespace Backend.Services.Services.Services
             return await _offerRepo.GetOfferDescriptionAsync();
         }
 
-        public async Task<Offer> GetOfferbyIdAsync(int id)
-        {
-            return await _offerRepo.GetOfferbyIdAsync(id);
-        }
+
 
         public async Task<Transaction> GetOffersTransactionbyid(int id)
         {
@@ -158,6 +160,26 @@ namespace Backend.Services.Services.Services
             await _offerRepo.SaveChangesAsync();
 
             return description;
+        }
+
+        public async Task<IReadOnlyList<Competitiveness>> GetOfferCompetitivenessAsync()
+        {
+            return await _offerRepo.GetOfferCompetitivenessAsync();
+        }
+
+        public async Task<IReadOnlyList<Financial>> GetOfferFinancialsAsync()
+        {
+            return await _offerRepo.GetOfferFinancialAsync();
+        }
+
+        public async Task<Financial> GetOffersFinancialbyid(int id)
+        {
+            return await _offerRepo.GetOfferFinancialbyIdAsync(id);
+        }
+
+        public async Task<Competitiveness> GetOffersCompetitivenessbyid(int id)
+        {
+            return await _offerRepo.GetOfferCompetitivenessbyIdAsync(id);
         }
 
         public async Task<Offer> DeleteOffer(int id)
