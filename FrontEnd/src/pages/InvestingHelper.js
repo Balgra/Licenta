@@ -132,8 +132,6 @@ const InvestingHelper = () => {
 					<p>Deadline: {formatDeadline(offer.deadline)}</p>
 					<p>MarketSize: {offer.description.marketSize}</p>
 					<p>BusinessModel: {offer.description.businessModel}</p>
-					<p>Competitiveness: {offer.description.competitiveness}</p>
-					<p>FinancialStatus: {offer.description.financialStatus}</p>
 					<p>RiskFactors: {offer.description.riskFactors}</p>
 					<p>CostTierOne: {offer.transaction.cost_TierOne}</p>
 					<p>CostTierTwo: {offer.transaction.cost_TierTwo}</p>

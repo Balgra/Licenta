@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Offers.css";
-import OfferDetails from "./OfferDetails";
+import {useNavigate} from "react-router-dom";
+//import OfferDetails from "./OfferDetails";
 
 const Offers = () => {
 	const [offers, setOffers] = useState([]);
-	const [selectedOffer, setSelectedOffer] = useState(null);
-	const [showOfferDetails, setShowOfferDetails] = useState(false); // Track whether to show offer details or not
+
+	
+	const navigate = useNavigate();
 	
 	const fetchOffers = async () => {
 		try {
@@ -20,7 +22,6 @@ const Offers = () => {
 			const data = await response.text();
 			
 			const offersList = JSON.parse(data);
-			
 			setOffers(offersList);
 		} catch (error) {
 			console.error("Error fetching offers:", error);
@@ -47,14 +48,9 @@ const Offers = () => {
 		return <p>Status Tier{tier}: {status ? "Taken" : "Empty"}</p>;
 	};
 	
-	const handleModifyTiers = () => {
-		setSelectedOffer(null); // Reset the selected offer
-		setShowOfferDetails(false); // Hide the offer details
-	};
 	
 	const handleOfferClick = (offer) => {
-		setSelectedOffer(offer);
-		setShowOfferDetails(true); // Show the offer details
+		navigate(`/offer/${offer.id}`);
 	};
 	
 	return (
@@ -71,9 +67,9 @@ const Offers = () => {
 					<p>Deadline: {formatDeadline(offer.deadline)}</p>
 					<p>MarketSize: {offer.description.marketSize}</p>
 					<p>BusinessModel: {offer.description.businessModel}</p>
-					<p>Competitiveness: {offer.description.competitiveness}</p>
-					<p>FinancialStatus: {offer.description.financialStatus}</p>
-					<p>RiskFactors: {offer.description.riskFactors}</p>
+					<p>TargetAudience: {offer.description.targetAudience}</p>
+					<p>MarketingStrategies: {offer.description.marketingStrategies}</p>
+					<p>Description: {offer.description.descriptions}</p>
 					<p>CostTierOne: {offer.transaction.cost_TierOne}</p>
 					<p>CostTierTwo: {offer.transaction.cost_TierTwo}</p>
 					<p>CostTierThree: {offer.transaction.cost_TierThree}</p>
@@ -85,13 +81,10 @@ const Offers = () => {
 					<hr />
 				</div>
 			))}
-			{showOfferDetails && (
-				<div className="offer-popup">
-					<OfferDetails offer={selectedOffer} handleModifyTiers={handleModifyTiers} />
-				</div>
-			)}
+			
 		</div>
 	);
 };
 
 export default Offers;
+
