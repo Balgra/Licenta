@@ -34,10 +34,20 @@ namespace Backend.Services.Services.Abstractions;
 
          Task<Offer> DeleteOffer(int id);
 
-/*Task UpdateTier(int offerId, bool TierOne, bool TierTwo, bool TierThree, bool TierFour);
+         Task<IReadOnlyList<Competitiveness>> GetOfferCompetitivenessAsync();
 
-    Task UpdateDescription(int offerId, string MarketSize,
-       string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors);
 
-    Task DeleteOffer(int id);*/
+         Task<IReadOnlyList<Financial>> GetOfferFinancialsAsync();
+
+         Task<Financial> GetOffersFinancialbyid(int id);
+
+        Task<Competitiveness> GetOffersCompetitivenessbyid(int id);
+
+
+    /*Task UpdateTier(int offerId, bool TierOne, bool TierTwo, bool TierThree, bool TierFour);
+
+        Task UpdateDescription(int offerId, string MarketSize,
+           string BusinessModel, string Competitiveness, string FinancialStatus, string RiskFactors);
+
+        Task DeleteOffer(int id);*/
 }

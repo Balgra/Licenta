@@ -30,7 +30,7 @@ namespace Backend.Services.Services.Services
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-       
+
 
         public async Task<List<Offer>> GetOffersAsync()
         {
@@ -61,6 +61,28 @@ namespace Backend.Services.Services.Services
         public async Task<Transaction> GetOfferTransactionbyIdAsync(int id)
         {
             return await _dbContext.Transactions.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+
+        public async Task<List<Competitiveness>> GetOfferCompetitivenessAsync()
+        {
+            return await _dbContext.Competitivenesses.ToListAsync();
+        }
+
+        public async Task<List<Financial>> GetOfferFinancialAsync()
+        {
+            return await _dbContext.Financials.ToListAsync();
+        }
+
+        public async  Task<Competitiveness> GetOfferCompetitivenessbyIdAsync(int id)
+        {
+            return await _dbContext.Competitivenesses.FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+
+        public async Task<Financial> GetOfferFinancialbyIdAsync(int id)
+        {
+            return await _dbContext.Financials.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task SaveChangesAsync()

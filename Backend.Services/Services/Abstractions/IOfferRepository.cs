@@ -22,6 +22,14 @@ namespace Backend.Services.Services.Abstractions
 
         Task<Transaction> GetOfferTransactionbyIdAsync(int id);
 
+        Task<List<Competitiveness>> GetOfferCompetitivenessAsync();
+
+        Task<List<Financial>> GetOfferFinancialAsync();
+
+        Task<Competitiveness> GetOfferCompetitivenessbyIdAsync(int id);
+
+        Task<Financial> GetOfferFinancialbyIdAsync(int id);
+
 
         Task SaveChangesAsync();
     }
