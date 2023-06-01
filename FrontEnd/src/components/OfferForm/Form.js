@@ -5,25 +5,44 @@ const Form = ({ onSubmit }) => {
 	const [authorName, setauthorName] = useState('');
 	const [company_Email, setcompany_Email] = useState('');
 	const [company_Name, setcompany_Name] = useState('');
+	const [deadline, setdeadline] = useState('');
+	const [costTierOne, setcostTierOne] = useState(0);
+	const [costTierTwo, setcostTierTwo] = useState(0);
+	const [cost_TierThree, setcost_TierThree] = useState(0);
+	const [cost_TierFour, setcost_TierFour] = useState(0);
 	const [marketSize, setmarketSize] = useState('');
 	const [businessModel, setbusinessModel] = useState('');
-	const [competitiveness, setcompetitiveness] = useState('');
-	const [financialStatus, setfinancialStatus] = useState('');
-	const [riskFactors, setriskFactors] = useState('');
-	const [costTierOne, setcostTierOne] = useState('');
-	const [costTierTwo, setcostTierTwo] = useState('');
-	const [cost_TierThree, setcost_TierThree] = useState('');
-	const [cost_TierFour, setcost_TierFour] = useState('');
-	const [deadline, setdeadline] = useState('');
+	const [descriptions, setdescriptions] = useState('');
+	const [targetAudience, settargetAudience] = useState('');
+	const [marketingStrategies, setmarketingStrategies] = useState('');
+	const [companyValue, setcompanyValue] = useState(0);
+	const [monthlySpendings, setmonthlySpendings] = useState(0);
+	const [monthlyIncome, setmonthlyIncome] = useState(0);
+	const [valueOfDebt, setvalueOfDebt] = useState(0);
+	const [valueOfLoans, setValueOfLoans] = useState(0);
+	const [yearsOnMarket, setyeardOnMarket] = useState(0);
+	const [methodOfValuation, setmethodOfValuation] = useState('');
+	const [embraceDigitalTransformation, setembraceDigitalTransformation] = useState(true);
+	const [enhanceCustomerExperience, setenhanceCustomerExperience] = useState(true);
+	const [leverageBigDataAndAnalytics, setleverageBigDataAndAnalytics] = useState(true);
+	const [adoptAgileMethodologies, setadoptAgileMethodologies] = useState(true);
+	const [embraceEmergingTechnologies, setembraceEmergingTechnologies] = useState(true);
+	const [investInEmployeeDevelopment, setinvestInEmployeeDevelopment] = useState(true);
 	
-	/*const handleSubmit = (e) => {
-		e.preventDefault();
-		onSubmit({ AuthorName, CompanyEmail, CompanyName, MarketSize, BusinessModel, Competitiveness,
-			FinancialStatus, RiskFactors, CostTierOne, CostTierThree, CostTierTwo, CostTierFour});
-	};*/
+	
 	
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		
+		const embraceDigitalTransformationValue = embraceDigitalTransformation === true;
+		const enhanceCustomerExperienceValue = enhanceCustomerExperience === true;
+		const leverageBigDataAndAnalyticsValue = leverageBigDataAndAnalytics === true;
+		const adoptAgileMethodologiesValue = adoptAgileMethodologies === true;
+		const embraceEmergingTechnologiesValue = embraceEmergingTechnologies === true;
+		const investInEmployeeDevelopmentValue = investInEmployeeDevelopment === true;
+		
+		
+		
 		const offerData = {
 			authorName,
 			company_Name,
@@ -35,10 +54,22 @@ const Form = ({ onSubmit }) => {
 			cost_TierFour,
 			marketSize,
 			businessModel,
-			competitiveness,
-			financialStatus,
-			riskFactors,
-			
+			descriptions,
+			targetAudience,
+			marketingStrategies,
+			companyValue,
+			monthlySpendings,
+			monthlyIncome,
+			valueOfDebt,
+			valueOfLoans,
+			yearsOnMarket,
+			methodOfValuation,
+			embraceDigitalTransformation: embraceDigitalTransformationValue,
+			enhanceCustomerExperience: enhanceCustomerExperienceValue,
+			leverageBigDataAndAnalytics: leverageBigDataAndAnalyticsValue,
+			adoptAgileMethodologies: adoptAgileMethodologiesValue,
+			embraceEmergingTechnologies: embraceEmergingTechnologiesValue,
+			investInEmployeeDevelopment: investInEmployeeDevelopmentValue,
 			
 		};
 		
@@ -65,15 +96,29 @@ const Form = ({ onSubmit }) => {
 			setcompany_Name('');
 			setcompany_Email('');
 			setdeadline('');
-			setcostTierOne('');
-			setcostTierTwo('');
-			setcost_TierThree('');
-			setcost_TierFour('');
+			setcostTierOne(0);
+			setcostTierTwo(0);
+			setcost_TierThree(0);
+			setcost_TierFour(0);
 			setmarketSize('');
 			setbusinessModel('');
-			setcompetitiveness('');
-			setfinancialStatus('');
-			setriskFactors('');
+			setdescriptions('')
+			settargetAudience('');
+			setmarketingStrategies('');
+			setcompanyValue(0);
+			setmonthlySpendings(0);
+			setmonthlyIncome(0);
+			setvalueOfDebt(0);
+			setValueOfLoans(0);
+			setyeardOnMarket(0);
+			setmethodOfValuation('');
+			setembraceDigitalTransformation(true);
+			setenhanceCustomerExperience(true);
+			setleverageBigDataAndAnalytics(true);
+			setadoptAgileMethodologies(true);
+			setembraceEmergingTechnologies(true);
+			setinvestInEmployeeDevelopment(true);
+			
 		} catch (error) {
 			// Handle network error
 			console.error('Error:', error.message);
@@ -92,9 +137,23 @@ const Form = ({ onSubmit }) => {
 		{ label: 'CostTierFour', type: 'integer', value: cost_TierFour, onChange: setcost_TierFour },
 		{ label: 'MarketSize', type: 'string', value: marketSize, onChange: setmarketSize },
 		{ label: 'BusinessModel', type: 'string', value: businessModel, onChange: setbusinessModel },
-		{ label: 'Competitiveness', type: 'string', value: competitiveness, onChange: setcompetitiveness },
-		{ label: 'FinancialStatus', type: 'string', value: financialStatus, onChange: setfinancialStatus },
-		{ label: 'RiskFactors', type: 'string', value: riskFactors, onChange: setriskFactors },
+		{ label: 'Description', type: 'string', value: descriptions, onChange: setdescriptions },
+		{ label: 'Target Audience', type: 'string', value: targetAudience, onChange: settargetAudience },
+		{ label: 'Marketing Strategies', type: 'string', value: marketingStrategies, onChange: setmarketingStrategies },
+		{ label: 'Company Value', type: 'integer', value: companyValue, onChange: setcompanyValue },
+		{ label: 'Monthly Spendings', type: 'integer', value: monthlySpendings, onChange: setmonthlySpendings },
+		{ label: 'Monthly Income', type: 'integer', value: monthlyIncome, onChange: setmonthlyIncome },
+		{ label: 'Value of Debt', type: 'integer', value: valueOfDebt, onChange: setvalueOfDebt },
+		{ label: 'Value of Loans', type: 'integer', value: valueOfLoans, onChange: setValueOfLoans },
+		{ label: 'Years On Market', type: 'integer', value: yearsOnMarket, onChange: setyeardOnMarket },
+		{ label: 'Method of Valuation', type: 'string', value: methodOfValuation, onChange: setmethodOfValuation },
+		{ label: 'Embrace Digital Transformation', type: 'bool', value: embraceDigitalTransformation, onChange: setembraceDigitalTransformation },
+		{ label: 'Enhance Customer Experience', type: 'bool', value: enhanceCustomerExperience, onChange: setenhanceCustomerExperience },
+		{ label: 'Leverage Big Data and Analytics', type: 'bool', value: leverageBigDataAndAnalytics, onChange: setleverageBigDataAndAnalytics },
+		{ label: 'Adopting Agile Methodologies', type: 'bool', value: adoptAgileMethodologies, onChange: setadoptAgileMethodologies },
+		{ label: 'Embrace Emerging Technologies', type: 'bool', value: embraceEmergingTechnologies, onChange: setembraceEmergingTechnologies },
+		{ label: 'Invest In Employee Development', type: 'bool', value: investInEmployeeDevelopment, onChange: setinvestInEmployeeDevelopment },
+		
 	];
 	
 	return (

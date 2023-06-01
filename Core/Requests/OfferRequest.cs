@@ -46,15 +46,14 @@ namespace Core.Requests
         public string MarketingStrategies { get; set; }
 
         [Required]
-        public int RiskFactors { get; set; }
 
-        public string CompanyValue { get; set; }
-        public string MonthlySpendings { get; set; }
-        public string MonthlyIncome { get; set; }
+        public int CompanyValue { get; set; }
+        public int MonthlySpendings { get; set; }
+        public int MonthlyIncome { get; set; }
 
-        public string ValueOfDebt { get; set; }
+        public int ValueOfDebt { get; set; }
 
-        public string ValueOfLoans { get; set; }
+        public int ValueOfLoans { get; set; }
 
         public float YearsOnMarket { get; set; }
 
@@ -65,8 +64,6 @@ namespace Core.Requests
         public bool LeverageBigDataAndAnalytics { get; set; }
         public bool AdoptAgileMethodologies { get; set; }
         public bool EmbraceEmergingTechnologies { get; set; }
-        public bool FosterCollaborationAndOpenInnovation { get; set; }
-        public bool FocusOnSustainabilityAndSocialResponsibility { get; set; }
         public bool InvestInEmployeeDevelopment { get; set; }
 
 
