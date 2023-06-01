@@ -41,8 +41,6 @@ const Form = ({ onSubmit }) => {
 		const embraceEmergingTechnologiesValue = embraceEmergingTechnologies === true;
 		const investInEmployeeDevelopmentValue = investInEmployeeDevelopment === true;
 		
-		
-		
 		const offerData = {
 			authorName,
 			company_Name,

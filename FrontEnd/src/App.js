@@ -9,6 +9,7 @@ import OffersPage from "./pages/OffersPage"
 import RegisterPage from "./pages/RegisterPage"
 import InvestingHelper from "./pages/InvestingHelper";
 import Navbar from "./components/Navbar/nav-bar"
+import OfferPage from "./pages/OfferPage"
 import {BrowserRouter, Routes, Route,} from "react-router-dom";
 
 const  App = () => {
@@ -29,6 +30,7 @@ const  App = () => {
                   <Route path="offermaker" element={<CompanyPage onSubmit={handleFormSubmit} submissions={submissions}/>}/>
               <Route path="register" element={<RegisterPage/>}/>
                      <Route path="plan" element={<InvestingHelper/>}/>
+              <Route path="/offer/:id" element={<OfferPage/>}/>
                    <Route path="offers" element={<OffersPage  />}/>
                    <Route path="learning" element={<LearnPage/>}/>
             }
