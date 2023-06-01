@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 
 import './Login.css';
-import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 	
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const navigate = useNavigate();
-	
-	const handleNavigateHome = () => {
-		navigate('/');
-	};
 	
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -29,6 +23,7 @@ const Login = () => {
 				const token = await response.text();
 				localStorage.setItem('token', token);
 				console.log(token);
+				console.log(email, password);
 			} else {
 				console.error("Login failed:", response.statusText);
 			}
@@ -58,7 +53,7 @@ const Login = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</div>
-				<button onClick={handleNavigateHome} type="submit">Login</button>
+				<button type="submit">Login</button>
 			</form>
 		</div>
 	);

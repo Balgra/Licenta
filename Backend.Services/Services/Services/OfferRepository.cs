@@ -34,9 +34,10 @@ namespace Backend.Services.Services.Services
 
         public async Task<List<Offer>> GetOffersAsync()
         {
-            return await _dbContext.Offers.Include(p => p.Transaction)
+            return await _dbContext.Offers
+                .Include(p => p.Transaction)
                 .Include(p => p.Description)
-                 .Include(p => p.Financial)
+                .Include(p => p.Financial)
                 .Include(p => p.Competitiveness)
                 .ToListAsync();
         }

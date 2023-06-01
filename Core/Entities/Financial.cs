@@ -8,13 +8,13 @@ namespace Core.Entities
 {
     public class Financial : BaseEntity
     {
-        public string CompanyValue { get; set; }
-        public string MonthlySpendings { get; set; }
-        public string MonthlyIncome { get; set; }
+        public int CompanyValue { get; set; }
+        public int MonthlySpendings { get; set; }
+        public int MonthlyIncome { get; set; }
 
-        public string ValueOfDebt { get; set; }
+        public int ValueOfDebt { get; set; }
 
-        public string ValueOfLoans { get; set; }
+        public int ValueOfLoans { get; set; }
 
         public float YearsOnMarket { get; set; }
 

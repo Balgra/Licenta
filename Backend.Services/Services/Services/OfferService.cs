@@ -46,7 +46,7 @@ namespace Backend.Services.Services.Services
                     Descriptions = Offer.Descriptions,
                     TargetAudience = Offer.TargetAudience,
                     MarketingStrategies = Offer.MarketingStrategies,
-                    RiskFactors = Offer.RiskFactors
+                    RiskFactors = 0
                 },
                 Transaction = new Transaction
                 {
@@ -79,6 +79,7 @@ namespace Backend.Services.Services.Services
                    InvestInEmployeeDevelopment = Offer.InvestInEmployeeDevelopment,
                    AdoptAgileMethodologies = Offer.AdoptAgileMethodologies,
                    LeverageBigDataAndAnalytics = Offer.LeverageBigDataAndAnalytics
+
                }
             };
             await _dbContext.Offers.AddAsync(offer);
@@ -187,6 +188,9 @@ namespace Backend.Services.Services.Services
             var to_delete = await _offerRepo.GetOfferbyIdAsync(id);
             var to_deleteTransaction = await _offerRepo.GetOfferTransactionbyIdAsync(id);
             var to_deleteDescription = await _offerRepo.GetOfferDescriptionbyIdAsync(id);
+            var to_deleteFinancial = await _offerRepo.GetOfferFinancialbyIdAsync(id);
+            var to_deleteCompetitiveness = await _offerRepo.GetOfferCompetitivenessbyIdAsync(id);
+
 
             if (to_delete == null)
             {
@@ -196,6 +200,8 @@ namespace Backend.Services.Services.Services
             _dbContext.Offers.Remove(to_delete);
             _dbContext.Descriptions.Remove(to_deleteDescription);
             _dbContext.Transactions.Remove(to_deleteTransaction);
+            _dbContext.Competitivenesses.Remove(to_deleteCompetitiveness);
+            _dbContext.Financials.Remove(to_deleteFinancial);
 
             await _offerRepo.SaveChangesAsync();
 
