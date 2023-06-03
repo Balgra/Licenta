@@ -38,6 +38,14 @@ namespace backend.Controllers
             return Ok(offers);
         }
 
+        [HttpGet("requierments")]
+        public async Task<ActionResult<IReadOnlyList<Offer>>> GetOffersFiltered([FromQuery]  RequiermentRequest req)
+        {
+            var offers = await _offerService.GettOfferbyReq( req);
+
+            return Ok(offers);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Offer>> GetOfferbyId(int id)
         {
