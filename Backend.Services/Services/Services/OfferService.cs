@@ -82,6 +82,36 @@ namespace Backend.Services.Services.Services
 
                }
             };
+
+            if (offer.Financial.CompanyValue <= 10000 && offer.Financial.YearsOnMarket >=  3)
+            {
+                offer.Description.RiskFactors = 80;
+            }
+           else if(offer.Financial.CompanyValue >= 50000 && offer.Financial.YearsOnMarket <= 3 
+                && offer.Financial.ValueOfLoans <= 3000 &&  offer.Financial.ValueOfDebt <= 3000)
+            {
+                offer.Description.RiskFactors = 25;
+            }
+            else if(offer.Financial.CompanyValue >= 50000 && offer.Financial.YearsOnMarket >= 3
+                && offer.Financial.ValueOfLoans >= 5000 && offer.Financial.ValueOfDebt >= 5000)
+            {
+                offer.Description.RiskFactors = 50;
+            }
+            else  if (offer.Financial.CompanyValue <= 30000 && offer.Financial.YearsOnMarket <= 3
+                && offer.Financial.ValueOfLoans <= 4000 && offer.Financial.ValueOfDebt <= 4000)
+            {
+                offer.Description.RiskFactors = 35;
+            }
+            else if(offer.Financial.CompanyValue <= 20000 && offer.Financial.YearsOnMarket >= 3
+                && offer.Financial.ValueOfLoans >= 3000 && offer.Financial.ValueOfDebt >= 3000)
+            {
+                offer.Description.RiskFactors = 60;
+            }
+            else
+            {
+                offer.Description.RiskFactors = 70;
+            }
+
             await _dbContext.Offers.AddAsync(offer);
 
             await _dbContext.SaveChangesAsync();
@@ -101,6 +131,23 @@ namespace Backend.Services.Services.Services
         public async Task<Offer> GetOfferbyIdAsync(int id)
         {
             return await _offerRepo.GetOfferbyIdAsync(id);
+        }
+
+        public async Task<IReadOnlyList<Offer>> GettOfferbyReq(RequiermentRequest req)
+        {
+
+            var offers = await _offerRepo.GetOffersAsync();
+
+            var filteredOffers = offers.Where(offer =>
+                offer.Description.RiskFactors <= req.RiskFactor &&
+                offer.Description.TargetAudience == req.targetAudience &&
+                offer.Financial.MonthlyIncome >= req.MonthlyIncome &&
+                offer.Financial.MonthlySpendings <= req.MonthlySpendings &&
+                offer.Financial.CompanyValue >= req.CompanyValue && 
+                offer.Description.MarketingStrategies == req.MarketingStrategies &&
+                offer.Description.BusinessModel == req.businessModel).ToList();
+
+            return filteredOffers;
         }
 
         public async Task<IReadOnlyList<Transaction>> GetOfferTransactionsAsync()
