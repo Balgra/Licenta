@@ -11,7 +11,6 @@ namespace Core.Entities
 
         public DateTime? Deadline { get; set; }
         public Description Description { get; set; }
-        //adaug user si pun Inverse Property (user si user ID)
         public int DescriptionId { get; set; }
 
         public ApplicationUser User { get; set; } 

@@ -1,0 +1,179 @@
+.homepage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+.homepage-section {
+    height: 33.33vh;
+    background-color: black;
+    color: white;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.display-5 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1;
+    color : #007bff;
+}
+
+.display-3 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color : #FFD700;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.text-bg-primary {
+    color: #007bff;
+}
+
+.text-bg-dark {
+    color: #343a40;
+}
+
+.bg-dark {
+    background-color: #343a40;
+}
+
+.bg-body {
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    font-weight: 300;
+}
+
+.icon-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.icon-link:hover {
+    color: #0056b3;
+}
+
+.bi {
+    vertical-align: -.125em;
+    pointer-events: none;
+    fill: currentColor;
+    display: inline-block;
+    stroke: currentColor;
+    stroke-width: 0;
+    overflow: visible;
+}
+
+.bi-chevron-right {
+    width: 1em;
+    height: 1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2px;
+}
+
+.m-md-3 {
+    margin: 1rem;
+}
+
+.m-md-5 {
+    margin: 3rem;
+}
+
+.my-md-3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.my-md-5 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pt-3 {
+    padding-top: .75rem;
+}
+
+.pt-5 {
+    padding-top: 3rem;
+}
+
+.p-md-3 {
+    padding: 1rem;
+}
+
+.p-md-5 {
+    padding: 3rem;
+}
+
+.px-md-5 {
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
+
+.py-3 {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+
+.py-5 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.text-bg-dark {
+    color: #343a40;
+}
+
+.text-bg-primary {
+    color: #007bff;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.container {
+    height: 200px;
+    position: relative;
+}
+
+.btnlearn{
+    margin-left: 35px;
+}
+
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    margin-left: 25px;
+    margin-right: 25px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    height:695.5px;
+    border: 3px solid black;
+}

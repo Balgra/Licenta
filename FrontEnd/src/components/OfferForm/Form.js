@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './Form.css';
+import Carusel from "./Carusel";
+
 
 const Form = ({ onSubmit }) => {
 	const [authorName, setauthorName] = useState('');
@@ -153,14 +155,15 @@ const Form = ({ onSubmit }) => {
 		{ label: 'Invest In Employee Development', type: 'bool', value: investInEmployeeDevelopment, onChange: setinvestInEmployeeDevelopment },
 		
 	];
-	
 	return (
-		
+		<>
+			<Carusel/>
+			
 		<form onSubmit={handleSubmit} className="form">
 			{formFields.map((field) => (
 				<label key={field.label} className="form-label">
 					{field.label}:
-					<input type={field.type} value={field.value} onChange={(e) => field.onChange(e.target.value)} className="form-input" />
+					<input className="form-control" type={field.type} value={field.value} onChange={(e) => field.onChange(e.target.value)} />
 				</label>
 			))}
 			<br />
@@ -168,6 +171,8 @@ const Form = ({ onSubmit }) => {
 				Submit
 			</button>
 		</form>
+		
+		</>
 	);
 };
 
