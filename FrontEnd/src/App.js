@@ -11,6 +11,7 @@ import InvestingHelper from "./pages/InvestingHelper";
 import Navbar from "./components/Navbar/nav-bar"
 import OfferPage from "./pages/OfferPage"
 import {BrowserRouter, Routes, Route,} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const  App = () => {
     const [submissions, setSubmissions] = useState([]);

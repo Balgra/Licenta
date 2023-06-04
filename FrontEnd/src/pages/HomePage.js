@@ -1,9 +1,8 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import './Stiling.css';
 
 const Homepage = () => {
-	
 	const navigate = useNavigate();
 	
 	const handleNavigateLearning = () => {
@@ -19,58 +18,89 @@ const Homepage = () => {
 	};
 	
 	return (
-		<div>
-			<Box
-				bgcolor="#303030"
-				height="30vh"
-				display="flex"
-				justifyContent="space-between"
-				alignItems="center"
-			>
-				<Typography marginRight="500px" marginLeft="500px" bgcolor="#FFA500" variant="h4">
-					Welcome to BizBoost!
-					<br/>
-					Your partners in business are ready for you!
-				</Typography>
-				<Typography marginRight="500px" marginLeft="500px" bgcolor="#FFA500" variant="body1">
-					If you are new to what it means to be an Entrepreneur, visit our learning page
-					<br/>
-					<button onClick={handleNavigateLearning}>Go to Learning</button>
-				</Typography>
-			</Box>
+		<>
+		<div className="center bg-dark ">
+			<div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+				<div className="col-md-6 p-lg-5 mx-auto my-5">
+					<h2 className="display-3 fw-bold">Welcome to BizBoost!</h2>
+					<h4 className="fw-normal text-muted mb-3 ">Invest in Start-ups in a smarter way</h4>
+				</div>
+				<div className="product-device shadow-sm d-none d-md-block" />
+				<div className="product-device product-device-2 shadow-sm d-none d-md-block" />
+			</div>
 			
-			<Box
-				bgcolor="#404040"
-				height="34vh"
-				display="flex"
-				justifyContent="space-between"
-				alignItems="center"
-			>
-				<Typography marginRight="500px" marginLeft="500px" bgcolor="#FFA500" variant="body1">
-					<button onClick={handleNavigateOfferMaker}>Go to OfferMaker</button>
-				</Typography>
-				<Typography marginRight="500px" marginLeft="500px" bgcolor="#FFA500" variant="h4">
-					Ready for Boosting your Company to the next level?
-					Head to our OfferMaker and complete our Form.
-				</Typography>
-			</Box>
-			
-			<Box
-				bgcolor="#505050"
-				height="30vh"
-				display="flex"
-				justifyContent="space-between"
-				alignItems="center"
-			>
-				<Typography marginRight="500px" marginLeft="500px" bgcolor="#FFA500" variant="h4">
-					Done making your application see all the offers from your competitors.
-				</Typography>
-				<Typography marginRight="500px" marginLeft="500px" bgcolor="#FFA500" variant="body1">
-					<button onClick={handleNavigateOffers}>Go to Offers</button>
-				</Typography>
-			</Box>
+			<div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+				<div className="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+					<div className="my-3 p-3">
+						<h2 className="display-5">If you are new to what it means to be an Entrepreneur or Investor, visit our learning page</h2>
+					</div>
+					<div
+						className="bg-body shadow-sm mx-auto d-flex align-items-center justify-content-center container"
+						style={{  width: '30%', height: '150px', borderRadius: '21px 21px 0 0', backgroundColor: 'yellow'  }}
+					>
+						<div className="vertical-center">
+							<button  className="btnlearn btn-warning " onClick={handleNavigateLearning}>Learning</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+	
+	<div className="center bg-dark ">
+		<div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+			<div className="col-md-6 p-lg-5 mx-auto my-5">
+				<h2 className="display-4 fw-bold">Ready for Boosting your Company to the next level?</h2>
+				<h4 className="fw-normal text-muted mb-3">Your partners in business are ready for you!</h4>
+			</div>
+			<div className="product-device shadow-sm d-none d-md-block" />
+			<div className="product-device product-device-2 shadow-sm d-none d-md-block" />
+		</div>
+		
+		<div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+			<div className="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+				<div className="my-3 p-3">
+					<h2 className="display-5">Done making your application see all the offers from your competitors.</h2>
+				</div>
+				<div
+					className="bg-body shadow-sm mx-auto d-flex align-items-center justify-content-center container"
+					style={{  width: '30%', height: '150px', borderRadius: '21px 21px 0 0', backgroundColor: 'yellow'  }}
+				>
+					<div className="vertical-center">
+						<button className="btn btn-warning" onClick={handleNavigateOffers}>Offers</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+			<div className="center bg-dark ">
+				<div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+					<div className="col-md-6 p-lg-5 mx-auto my-5">
+						<h2 className="display-4 fw-bold">How about reviewing what others have in store for their Offers</h2>
+					</div>
+					<div className="product-device shadow-sm d-none d-md-block" />
+					<div className="product-device product-device-2 shadow-sm d-none d-md-block" />
+				</div>
+				
+				<div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+					<div className="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+						<div className="my-3 p-3">
+							<h2 className="display-5">Head to our OfferMaker and complete our Form</h2>
+							<br/>
+						</div>
+						<div
+							className="bg-body shadow-sm mx-auto d-flex align-items-center justify-content-center container"
+							style={{  width: '50%', height: '150px', borderRadius: '21px 21px 0 0', backgroundColor: 'yellow'  }}
+						>
+							<div className="vertical-center">
+								<button className="btn btn-warning" onClick={handleNavigateOfferMaker}>OfferMaker</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</>
 	);
+	
 };
-
 export default Homepage;
