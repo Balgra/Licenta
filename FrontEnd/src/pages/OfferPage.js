@@ -64,10 +64,11 @@ const OfferPage = () => {
 		return <p>Status Tier{tier}: {status ? "Taken" : "Empty"}</p>;
 	};
 	
+	
 	return (
-		<div className="offers-container">
-				<h1>Offer Page</h1>
-				<div className="offer-details"
+		<div className="app__header">
+		<div className="offers-container ">
+				<div className="offer-item"
 					 onClick={() => handleOfferClick(offer)}
 				>
 					<p>AuthorName: {offer.authorName}</p>
@@ -78,6 +79,7 @@ const OfferPage = () => {
 					<p>BusinessModel: {offer.description.businessModel}</p>
 					<p>TargetAudience: {offer.description.targetAudience}</p>
 					<p>MarketingStrategies: {offer.description.marketingStrategies}</p>
+					<p>RiskFactor: {offer.description.riskFactors}</p>
 					<p>Description: {offer.description.descriptions}</p>
 					<p>CostTierOne: {offer.transaction.cost_TierOne}</p>
 					<p>CostTierTwo: {offer.transaction.cost_TierTwo}</p>
@@ -87,12 +89,26 @@ const OfferPage = () => {
 					<OfferStatus status={offer.transaction.tierTwo} tier="Two" />
 					<OfferStatus status={offer.transaction.tierThree} tier="Three" />
 					<OfferStatus status={offer.transaction.tierFour} tier="Four" />
+					<p>Company Value: {offer.financial.companyValue}</p>
+					<p>Monthly Spendings: {offer.financial.monthlySpendings}</p>
+					<p>Monthly Income: {offer.financial.monthlyIncome}</p>
+					<p>Value of Debt: {offer.financial.valueOfDebt}</p>
+					<p>Value of Loans: {offer.financial.valueOfLoans}</p>
+					<p>Year on Market: {offer.financial.yearsOnMarket}</p>
+					<p>Method of Valuation: {offer.financial.methodOfValuation}</p>
+					<p>embraceDigitalTransformation: {offer.competitiveness.embraceDigitalTransformation ? "True" : "False"}</p>
+					<p>enhanceCustomerExperience: {offer.competitiveness.enhanceCustomerExperience ? "True" : "False"}</p>
+					<p>leverageBigDataAndAnalytics: {offer.competitiveness.leverageBigDataAndAnalytics ? "True" : "False"}</p>
+					<p>adoptAgileMethodologies: {offer.competitiveness.adoptAgileMethodologies ? "True" : "False"}</p>
+					<p>embraceEmergingTechnologies: {offer.competitiveness.embraceEmergingTechnologies ? "True" : "False"}</p>
+					<p>investInEmployeeDevelopment: {offer.competitiveness.investInEmployeeDevelopment ? "True" : "False"}</p>
 				</div>
 			{showOfferDetails && (
 				<div className="offer-popup">
 					<OfferDetails offer={selectedOffer} handleModifyTiers={handleModifyTiers} />
 				</div>
 			)}
+		</div>
 		</div>
 	);
 };
