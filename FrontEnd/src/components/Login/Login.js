@@ -30,31 +30,42 @@ const Login = () => {
 		} catch (error) {
 			console.error("Login failed:", error);
 		}
-		
-		
 	};
 	
 	return (
-		<div>
-			<form  onSubmit={handleLogin}>
-				<div>
-					<label>Email:</label>
-					<input
-						type="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-				</div>
-				<div>
-					<label>Password:</label>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</div>
-				<button type="submit">Login</button>
-			</form>
+		<div className="bg-dark d-flex justify-content-center align-items-center vh-100">
+			<div className="p-4 shadow rounded">
+				<h2 className="text-white">Login</h2>
+				<form onSubmit={handleLogin}>
+					<div className="mb-3">
+						<label htmlFor="email" className="form-label text-white"   >
+							Email:
+						</label>
+						<input
+							type="email"
+							className="form-control"
+							id="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							style={{ backgroundColor: 'white' }}
+						/>
+					</div>
+					<div className="mb-3">
+						<label htmlFor="password" className="form-label text-white" >
+							Password:
+						</label>
+						<input
+							type="password"
+							className="form-control"
+							id="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							style={{ backgroundColor: 'white' }}
+						/>
+					</div>
+					<button type="submit" className="btn btn-primary">Login</button>
+				</form>
+			</div>
 		</div>
 	);
 };

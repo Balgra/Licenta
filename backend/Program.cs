@@ -51,7 +51,7 @@ builder.Services.AddSwaggerGen(c => {
             }
     });
 });
-
+//ca aici e dependency injection si ca aici se creaza clasa cand o cer.
 builder.Services.AddDbContext<ApplicationDbContext>(
         options => options.UseSqlServer("data source=DESKTOP-2JKCO5S;initial catalog=ASD;trusted_connection=true;TrustServerCertificate=True"));
 

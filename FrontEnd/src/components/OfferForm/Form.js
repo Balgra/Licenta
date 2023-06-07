@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import './Form.css';
-import Carusel from "./Carusel";
 
 
 const Form = ({ onSubmit }) => {
@@ -157,13 +156,26 @@ const Form = ({ onSubmit }) => {
 	];
 	return (
 		<>
-			<Carusel/>
+
 			
 		<form onSubmit={handleSubmit} className="form">
 			{formFields.map((field) => (
 				<label key={field.label} className="form-label">
 					{field.label}:
-					<input className="form-control" type={field.type} value={field.value} onChange={(e) => field.onChange(e.target.value)} />
+					{field.type === 'bool' ? (
+						<select
+							className="form-control"
+							type={field.type} value={field.value} onChange={(e) => field.onChange(e.target.value)}
+						>
+							<option value={true}>True</option>
+							<option value={false}>False</option>
+						</select>
+					) : (
+						<input
+							className="form-control"
+							type={field.type} value={field.value} onChange={(e) => field.onChange(e.target.value)}
+						/>
+					)}
 				</label>
 			))}
 			<br />

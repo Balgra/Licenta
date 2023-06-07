@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from '../components/OfferForm/Form';
+import Carusel from "../components/OfferForm/Carusel";
 
 const CompanyPage = ({ onSubmit, submissions }) => {
 	
@@ -8,10 +9,11 @@ const CompanyPage = ({ onSubmit, submissions }) => {
 	};
 	
 	return (
-		<div className="app__header" >
-			<br/>
-			<br/>
-			<div className="form-container">
+		<div className="app__header" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+			<br />
+			<Carusel />
+			<br />
+			<div className="form-container" style={{ display: "flex", justifyContent: "center" }}>
 				<Form onSubmit={handleSubmit} />
 			</div>
 		</div>
