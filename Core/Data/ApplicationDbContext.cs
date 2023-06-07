@@ -22,8 +22,8 @@ namespace Core.Data
         public DbSet<Financial> Financials { get; set; }
 
         public DbSet<Competitiveness> Competitivenesses { get; set; }
- 
-       // public DbSet<User> Users { get; set; }
+
+    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

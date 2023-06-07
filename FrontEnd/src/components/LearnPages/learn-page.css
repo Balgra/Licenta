@@ -1,88 +1,47 @@
-:root {
-    --font-base: 'Cormorant', serif;
-    --font-alt: 'Open Sans', sans-serif;
-    --color-black: #000000;
-    --color-white: #FFFFFF;
-    --color-crimson: #DC143C;
-    --color-golden: #FFD700;
-}
-
-.section__padding {
-    padding: 4rem 6rem;
+.learn-container {
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: black;
+    color: white;
 }
 
 .app__background {
-    background-color: #AAAAAA;
-}
-
-.headteacher__cormorant {
-    font-family: var(--font-base);
-    color: var(--color-black);
-    font-size: 64px;
-    line-height: 83.2px;
-    letter-spacing: 0.04em;
-    text-transform: capitalize;
-}
-
-.flex__center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100%;
+    padding-bottom: 20px;
 }
 
 .app__wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    min-height: 100vh;
+    margin: auto;
+    max-width: 1200px;
+    padding: 20px;
 }
 
 .app__wrapper_info {
-    flex: 1;
+    background-color: black;
+}
+
+.app__wrapper_videos {
+    background-color: black;
+}
+
+.responsive-iframe {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+    height: 315px;
 }
 
-.app__wrapper_img {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin-left: 2rem;
+.section__padding {
+    padding: 20px 0;
 }
 
-.app__wrapper_img-reverse {
-    justify-content: flex-start;
-    margin-right: 2rem;
-}
-
-.app__wrapper_img img {
-    width: 80%;
+.headteacher__cormorant {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .app_color {
-   color: black;
-    font-family: var(--font-alt);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-transform: capitalize;
-    line-height: 28px;
+    color: white;
     font-size: 16px;
-}
-
-.custom__button {
-    background-color: var(--color-crimson);
-    color: var(--color-black);
-    font-family: var(--font-base);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 28px;
-    font-size: 16px;
-    padding: 0.5rem 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
