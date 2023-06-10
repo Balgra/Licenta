@@ -5,7 +5,7 @@ const OffersPage = () => {
 
 	return (
 		<div className="app__header">
-			<h1>Offers</h1>
+			<h1 className="text-white">Offers</h1>
 			<Offer/>
 		</div>
 	);

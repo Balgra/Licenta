@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+/*import React, { useState} from 'react';
 import './Form.css';
 
 
@@ -185,6 +185,500 @@ const Form = ({ onSubmit }) => {
 		</form>
 		
 		</>
+	);
+};
+
+export default Form;*/
+
+import React, { useState } from 'react';
+import './Form.css';
+
+const FormStep1 = ({
+					   onNext,
+					   onChange,
+					   authorName,
+					   company_Name,
+					   company_Email,
+					   deadline,
+					   costTierOne,
+					   costTierTwo,
+					   cost_TierThree,
+					   cost_TierFour,
+				   }) => (
+	<>
+		<h3>Step 1: Basic Information</h3>
+		<label className="form-label">
+			Author Name:
+			<input
+				className="form-control"
+				type="text"
+				value={authorName}
+				onChange={(e) => onChange('authorName', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Company Name:
+			<input
+				className="form-control"
+				type="text"
+				value={company_Name}
+				onChange={(e) => onChange('company_Name', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Company Email:
+			<input
+				className="form-control"
+				type="email"
+				value={company_Email}
+				onChange={(e) => onChange('company_Email', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Deadline:
+			<input
+				className="form-control"
+				type="date"
+				value={deadline}
+				onChange={(e) => onChange('deadline', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Cost Tier One:
+			<input
+				className="form-control"
+				type="number"
+				value={costTierOne}
+				onChange={(e) => onChange('costTierOne', parseInt(e.target.value))}
+			/>
+		</label>
+		<label className="form-label">
+			Cost Tier Two:
+			<input
+				className="form-control"
+				type="number"
+				value={costTierTwo}
+				onChange={(e) => onChange('costTierTwo', parseInt(e.target.value))}
+			/>
+		</label>
+		<label className="form-label">
+			Cost Tier Three:
+			<input
+				className="form-control"
+				type="number"
+				value={cost_TierThree}
+				onChange={(e) => onChange('cost_TierThree', parseInt(e.target.value))}
+			/>
+		</label>
+		<label className="form-label">
+			Cost Tier Four:
+			<input
+				className="form-control"
+				type="number"
+				value={cost_TierFour}
+				onChange={(e) => onChange('cost_TierFour', parseInt(e.target.value))}
+			/>
+		</label>
+		<br/>
+		<button type="button" className="form-button" onClick={onNext}>
+			Next
+		</button>
+		<br/>
+	</>
+);
+
+const FormStep2 = ({
+					   onNext,
+					   onPrevious,
+					   onChange,
+					   marketSize,
+					   businessModel,
+					   descriptions,
+					   targetAudience,
+					   marketingStrategies,
+				   }) => (
+	<>
+		<h3>Step 2: Business Information</h3>
+		<label className="form-label">
+			Market Size:
+			<input
+				className="form-control"
+				type="text"
+				value={marketSize}
+				onChange={(e) => onChange('marketSize', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Business Model:
+			<input
+				className="form-control"
+				type="text"
+				value={businessModel}
+				onChange={(e) => onChange('businessModel', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Descriptions:
+			<textarea
+				className="form-control"
+				value={descriptions}
+				onChange={(e) => onChange('descriptions', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Target Audience:
+			<input
+				className="form-control"
+				type="text"
+				value={targetAudience}
+				onChange={(e) => onChange('targetAudience', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Marketing Strategies:
+			<textarea
+				className="form-control"
+				value={marketingStrategies}
+				onChange={(e) => onChange('marketingStrategies', e.target.value)}
+			/>
+		</label>
+		<br/>
+		<button type="button" className="form-button" onClick={onPrevious}>
+			Previous
+		</button>
+		<br/>
+		<button type="button" className="form-button" onClick={onNext}>
+			Next
+		</button>
+		<br/>
+	</>
+);
+
+const FormStep3 = ({
+					   onSubmit,
+					   onNext,
+					   onPrevious,
+					   onChange,
+					   companyValue,
+					   monthlySpendings,
+					   monthlyIncome,
+					   valueOfDebt,
+					   valueOfLoans,
+					   yearsOnMarket,
+					   methodOfValuation,
+				   }) => (
+	<>
+		<h3>Step 3: Financial Information</h3>
+		<label className="form-label">
+			Company Value:
+			<input
+				className="form-control"
+				type="text"
+				value={companyValue}
+				onChange={(e) => onChange('companyValue', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Monthly Spendings:
+			<input
+				className="form-control"
+				type="text"
+				value={monthlySpendings}
+				onChange={(e) => onChange('monthlySpendings', e.target.value)}
+			/>
+		</label>
+		<label className="form-label">
+			Monthly Income:
+			<input
+				className="form-control"
+				type="number"
+				value={monthlyIncome}
+				onChange={(e) => onChange('monthlyIncome', parseInt(e.target.value))}
+			/>
+		</label>
+		<label className="form-label">
+			Value of Debt:
+			<input
+				className="form-control"
+				type="number"
+				value={valueOfDebt}
+				onChange={(e) => onChange('valueOfDebt', parseInt(e.target.value))}
+			/>
+		</label>
+		<label className="form-label">
+			Value of Loans:
+			<input
+				className="form-control"
+				type="number"
+				value={valueOfLoans}
+				onChange={(e) => onChange('valueOfLoans', parseInt(e.target.value))}
+			/>
+		</label>
+		<label className="form-label">
+			Years on Market:
+			<input
+				className="form-control"
+				type="number"
+				value={yearsOnMarket}
+				onChange={(e) => onChange('yearsOnMarket', parseInt(e.target.value))}
+			/>
+		</label>
+		<label className="form-label">
+			Method of Valuation:
+			<input
+				className="form-control"
+				type="text"
+				value={methodOfValuation}
+				onChange={(e) => onChange('methodOfValuation', e.target.value)}
+			/>
+		</label>
+		<br/>
+		<button type="button" className="form-button" onClick={onPrevious}>
+			Previous
+		</button>
+		<br/>
+		<button type="button" className="form-button" onClick={onNext}>
+			Next
+		</button>
+		<br/>
+	</>
+);
+
+
+const FormStep4 = ({
+					   onSubmit,
+					   onPrevious,
+					   onChange,
+					   embraceDigitalTransformation,
+					   enhanceCustomerExperience,
+					   leverageBigDataAndAnalytics,
+					   adoptAgileMethodologies,
+					   embraceEmergingTechnologies,
+					   investInEmployeeDevelopment,
+				   }) => (
+	<>
+		<h3>Step 4: Technology Information</h3>
+		<label className="form-label">
+			Embrace Digital Transformation:
+			<select
+				className="form-control"
+				value={embraceDigitalTransformation.toString()}
+				onChange={(e) =>
+					onChange('embraceDigitalTransformation', e.target.value === 'true')
+				}
+			>
+				<option value="true">True</option>
+				<option value="false">False</option>
+			</select>
+		</label>
+		<label className="form-label">
+			Enhance Customer Experience:
+			<select
+				className="form-control"
+				value={enhanceCustomerExperience.toString()}
+				onChange={(e) =>
+					onChange('enhanceCustomerExperience', e.target.value === 'true')
+				}
+			>
+				<option value="true">True</option>
+				<option value="false">False</option>
+			</select>
+		</label>
+		<label className="form-label">
+			Leverage Big Data and Analytics:
+			<select
+				className="form-control"
+				value={leverageBigDataAndAnalytics.toString()}
+				onChange={(e) =>
+					onChange('leverageBigDataAndAnalytics', e.target.value === 'true')
+				}
+			>
+				<option value="true">True</option>
+				<option value="false">False</option>
+			</select>
+		</label>
+		<label className="form-label">
+			Adopt Agile Methodologies:
+			<select
+				className="form-control"
+				value={adoptAgileMethodologies.toString()}
+				onChange={(e) =>
+					onChange('adoptAgileMethodologies', e.target.value === 'true')
+				}
+			>
+				<option value="true">True</option>
+				<option value="false">False</option>
+			</select>
+		</label>
+		<label className="form-label">
+			Embrace Emerging Technologies:
+			<select
+				className="form-control"
+				value={embraceEmergingTechnologies.toString()}
+				onChange={(e) =>
+					onChange('embraceEmergingTechnologies', e.target.value === 'true')
+				}
+			>
+				<option value="true">True</option>
+				<option value="false">False</option>
+			</select>
+		</label>
+		<label className="form-label">
+			Invest in Employee Development:
+			<select
+				className="form-control"
+				value={investInEmployeeDevelopment.toString()}
+				onChange={(e) =>
+					onChange('investInEmployeeDevelopment', e.target.value === 'true')
+				}
+			>
+				<option value="true">True</option>
+				<option value="false">False</option>
+			</select>
+		</label>
+		<br/>
+		<button type="button" className="form-button" onClick={onPrevious}>
+			Previous
+		</button>
+		<br/>
+		<button type="submit" className="form-button">
+			Submit
+		</button>
+		<br/>
+	</>
+);
+
+const Form = () => {
+	const [step, setStep] = useState(1);
+	
+	
+	const [formData, setFormData] = useState({
+		authorName: '',
+		company_Name: '',
+		company_Email: '',
+		deadline: '',
+		costTierOne: 0,
+		costTierTwo: 0,
+		cost_TierThree: 0,
+		cost_TierFour: 0,
+		marketSize: '',
+		businessModel: '',
+		descriptions: '',
+		targetAudience : '',
+		marketingStrategies : '',
+		companyValue : 0,
+		monthlySpendings: 0,
+		monthlyIncome: 0,
+		valueOfDebt: 0,
+		valueOfLoans: 0,
+		yearsOnMarket: 0,
+		methodOfValuation: '',
+		embraceDigitalTransformation: true,
+		enhanceCustomerExperience: true,
+		leverageBigDataAndAnalytics: true,
+		adoptAgileMethodologies: true,
+		embraceEmergingTechnologies: true,
+		investInEmployeeDevelopment: true,
+	});
+	
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		
+		
+		try {
+			const token = localStorage.getItem('token');
+			const response = await fetch('https://localhost:7239/api/offers', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					"Authorization": `Bearer ${token}`
+				},
+				body: JSON.stringify(formData),
+			});
+			
+			if (response.ok) {
+				// Handle successful response
+				const offer = await response.json();
+				console.log(offer);
+			} else {
+				// Handle error response
+				console.error('Error:', response.statusText);
+			}
+		} catch (error) {
+			// Handle network error
+			console.error('Error:', error.message);
+		}
+	};
+	
+	const handleInputChange = (field, value) => {
+		setFormData((prevData) => ({ ...prevData, [field]: value }));
+	};
+	
+	const handleNext = () => {
+		setStep((prevStep) => prevStep + 1);
+	};
+	
+	const handlePrevious = () => {
+		setStep((prevStep) => prevStep - 1);
+	};
+	
+	
+	return (
+		<form className="form" onSubmit={handleSubmit}>
+			{step === 1 && (
+				<FormStep1
+					onNext={handleNext}
+					onChange={handleInputChange}
+					authorName={formData.authorName}
+					company_Name={formData.company_Name}
+					company_Email={formData.company_Email}
+					deadline={formData.deadline}
+					costTierOne={formData.costTierOne}
+					costTierTwo={formData.costTierTwo}
+					cost_TierThree={formData.cost_TierThree}
+					cost_TierFour={formData.cost_TierFour}
+				/>
+			)}
+			{step === 2 && (
+				<FormStep2
+					onNext={handleNext}
+					onPrevious={handlePrevious}
+					onChange={handleInputChange}
+					marketSize={formData.marketSize}
+					businessModel={formData.businessModel}
+					descriptions={formData.descriptions}
+					targetAudience={formData.targetAudience}
+					marketingStrategies = {formData.marketingStrategies}
+				/>
+			)}
+			{step === 3 && (
+				<FormStep3
+					onNext={handleNext}
+					onPrevious={handlePrevious}
+					onChange={handleInputChange}
+					companyValue = {formData.companyValue}
+					monthlySpendings = {formData.monthlySpendings}
+					monthlyIncome = {formData.monthlyIncome}
+					valueOfDebt = {formData.valueOfDebt}
+					valueOfLoans = {formData.valueOfLoans}
+					yearsOnMarket = {formData.yearsOnMarket}
+					methodOfValuation = {formData.methodOfValuation}
+				/>
+			)}
+			{step === 4 && (
+				<FormStep4
+					onSubmit={handleSubmit}
+					onPrevious={handlePrevious}
+					onChange={handleInputChange}
+					embraceDigitalTransformation = {formData.embraceDigitalTransformation}
+					enhanceCustomerExperience = {formData.enhanceCustomerExperience}
+					leverageBigDataAndAnalytics = {formData.leverageBigDataAndAnalytics}
+					adoptAgileMethodologies = {formData.adoptAgileMethodologies}
+					embraceEmergingTechnologies = {formData.embraceEmergingTechnologies}
+					investInEmployeeDevelopment = {formData.investInEmployeeDevelopment}
+				/>
+			)}
+		</form>
 	);
 };
 

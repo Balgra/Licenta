@@ -29,8 +29,6 @@ namespace Backend.Services.Services.Services
         {
             var UserId = _httpContext.HttpContext.User.FindFirstValue("UserId");
 
-            Console.WriteLine(UserId.ToString());
-
             var offer = new Offer()
             {
                 AuthorName = Offer.AuthorName,
