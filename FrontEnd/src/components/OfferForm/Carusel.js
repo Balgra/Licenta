@@ -14,6 +14,7 @@ const Carusel = () =>{
 						alt="First slide"
 					/>
 				</div>
+				
 				<div className="carousel-item">
 					<img
 						src="https://via.placeholder.com/800x400?text=Placeholder+Image+2"
@@ -26,6 +27,13 @@ const Carusel = () =>{
 						src="https://via.placeholder.com/800x400?text=Placeholder+Image+3"
 						className="d-block w-100"
 						alt="Third slide"
+					/>
+				</div>
+				<div className="carousel-item ">
+					<img
+						src="https://via.placeholder.com/800x400?text=Placeholder+Image+4"
+						className="d-block w-100"
+						alt="ForthSlide slide"
 					/>
 				</div>
 			</div>
