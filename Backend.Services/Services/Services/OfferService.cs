@@ -3,8 +3,6 @@ using Core.Entities;
 using Backend.Services.Services.Abstractions;
 using Core.Data;
 using Core.Requests;
-using Microsoft.EntityFrameworkCore;
-using System;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
@@ -137,12 +135,12 @@ namespace Backend.Services.Services.Services
             var offers = await _offerRepo.GetOffersAsync();
 
             var filteredOffers = offers.Where(offer =>
-                offer.Description.RiskFactors <= req.RiskFactor &&
-                offer.Description.TargetAudience == req.targetAudience &&
+                offer.Description.RiskFactors <= req.RiskFactor ||
+                offer.Description.TargetAudience == req.targetAudience ||
                 offer.Financial.MonthlyIncome >= req.MonthlyIncome &&
-                offer.Financial.MonthlySpendings <= req.MonthlySpendings &&
-                offer.Financial.CompanyValue >= req.CompanyValue && 
-                offer.Description.MarketingStrategies == req.MarketingStrategies &&
+                offer.Financial.MonthlySpendings <= req.MonthlySpendings ||
+                offer.Financial.CompanyValue >= req.CompanyValue ||
+                offer.Description.MarketingStrategies == req.MarketingStrategies ||
                 offer.Description.BusinessModel == req.businessModel).ToList();
 
             return filteredOffers;

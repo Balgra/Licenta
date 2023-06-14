@@ -15,7 +15,6 @@ const Pricing = ({offer}) => {
 	
 	const handleSaveTiers = useCallback(async (payloads) => {
 		
-		// Perform saving logic here
 		const token = localStorage.getItem('token');
 		await fetch('https://localhost:7239/api/offers/transaction', {
 			method: 'PUT',
@@ -38,30 +37,40 @@ const Pricing = ({offer}) => {
 		};
 		
 		handleSaveTiers(payload);
+		
 	}, [offer.id, tierOne, tierTwo, tierThree, tierFour, handleSaveTiers]);
 	
  const	TransactionOne = () =>
 	{
 		setTierOne(true);
+		alert("tier One accuiered")
 	}
 const	TransactionTwo = () =>
 	{
 		setTierTwo(true);
+		alert("tier Two accuiered")
 	}
 const	TransactionThree = () =>
 	{
 		setTierThree(true)
+		alert("tier Three accuiered")
 	}
 const	TransactionFour = () =>
 	{
 		setTierFour(true);
+		alert("tier Four accuiered")
 	}
 	
 	
 	return (
 		<div className="component app__header">
+			
 			<div className="container">
+				
 				<div className="row">
+					<div className="col-md-12 text-center mb-4">
+						<h3 className="text-white">Risk Factor: {offer.description.riskFactors} %</h3>
+					</div>
 					<div className="col-lg-3 col-sm-6">
 						<div className="card mb-5 mb-lg-0">
 							<div className="card-body">
@@ -82,7 +91,7 @@ const	TransactionFour = () =>
 								<button
 									onClick={TransactionOne}
 									className="btn btn-block btn-primary"
-									disabled={tierOne} // Disable the button if tierOne is true
+									disabled={tierOne}
 								> Acquire TierOne
 								</button>
 							</div>

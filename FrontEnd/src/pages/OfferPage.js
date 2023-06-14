@@ -1,13 +1,18 @@
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import "../components/OfferForm/Offers.css";
 //import OfferDetails from "../components/OfferForm/OfferDetails";
 import Pricing from "./Pricing";
 import Graphs from "../components/OfferGraph/Graph";
 
-const OfferPage = () => {
+const OfferPage = ({loggedIn}) => {
+	
 	const { id } = useParams();
+	
 	const [offer, setOffer] = useState(null);
+	
+	const navigate = useNavigate();
+	
 	
 	//const [selectedOffer, setSelectedOffer] = useState(null);
 	//const [showOfferDetails, setShowOfferDetails] = useState(false); // Track whether to show offer details or not
@@ -38,23 +43,12 @@ const OfferPage = () => {
 	if (!offer) {
 		return <div>Loading...</div>;
 	}
-
-	/*const handleModifyTiers = () => {
-		setSelectedOffer(null); // Reset the selected offer
-		setShowOfferDetails(false); // Hide the offer details
-	};
-	{showOfferDetails && (
-		<div className="offer-popup">
-			<OfferDetails offer={selectedOffer} handleModifyTiers={handleModifyTiers} />
-		</div>
-	)}*/
 	
-	/*const handleOfferClick = (offer) => {
-		
-		setSelectedOffer(offer);
-		setShowOfferDetails(true); // Show the offer details
-		 onClick={() => handleOfferClick(offer)}
-	};*/
+	if (!loggedIn) {
+		navigate('/login');
+		return null; // Return null or any placeholder while redirecting
+	}
+	
 	
 	const formatDeadline = (deadline) => {
 		const date = new Date(deadline);
@@ -119,9 +113,6 @@ const OfferPage = () => {
 										</li>
 										<li className="list-group-item">
 											<strong>MarketingStrategies:</strong> {offer.description.marketingStrategies}
-										</li>
-										<li className="list-group-item">
-											<strong>RiskFactor:</strong> {offer.description.riskFactors}
 										</li>
 										<li className="list-group-item">
 											<strong>Description:</strong> {offer.description.descriptions}
@@ -190,6 +181,9 @@ const OfferPage = () => {
 					</div>
 				</div>
 				</div>
+			<br/>
+			<br/>
+			<br/>
 			<Graphs offer={offer}/>
 			<br/>
 			<br/>

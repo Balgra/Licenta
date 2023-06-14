@@ -1,11 +1,11 @@
 import Login from "../components/Login/Login.js";
 
-const LoginPage = () => {
+const LoginPage = ({setLoggedIn}) => {
 	
 	
 	return (
 		<div>
-			<Login/>
+			<Login setLoggedIn={setLoggedIn}/>
 		</div>
 	);
 };

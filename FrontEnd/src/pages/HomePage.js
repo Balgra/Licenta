@@ -2,19 +2,20 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Stiling.css';
 
-const Homepage = () => {
+const Homepage = ({loggedIn}) => {
 	const navigate = useNavigate();
 	
 	const handleNavigateLearning = () => {
-		navigate('/learning');
+		loggedIn ?  navigate('/learning') : navigate('/login')
+		
 	};
 	
 	const handleNavigateOfferMaker = () => {
-		navigate('/offermaker');
+		loggedIn ?  navigate('/offermaker') : navigate('/login')
 	};
 	
 	const handleNavigateOffers = () => {
-		navigate('/offers');
+		loggedIn ? navigate('/offers') : navigate('/login')
 	};
 	
 	return (

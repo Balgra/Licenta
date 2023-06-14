@@ -12,7 +12,6 @@ const Graphs = ({ offer }) => {
 			type: 'line',
 			data: {
 				labels: [
-					'Risk Factor',
 					'Company Value',
 					'Monthly Income',
 					'Monthly Spendings',
@@ -23,7 +22,6 @@ const Graphs = ({ offer }) => {
 				datasets: [
 					{
 						data: [
-							offer.description.riskFactors,
 							offer.financial.companyValue,
 							offer.financial.monthlyIncome,
 							offer.financial.monthlySpendings,
@@ -49,18 +47,17 @@ const Graphs = ({ offer }) => {
 				}
 			}
 		});
-		// Cleanup chart instance on component unmount
 		return () => {
 			myChart.destroy();
 		};
 		
-	}, [offer.description.riskFactors, offer.financial.companyValue, offer.financial.monthlyIncome, offer.financial.monthlySpendings, offer.financial.valueOfDebt, offer.financial.valueOfLoans,]);
+	}, [ offer.financial.companyValue, offer.financial.monthlyIncome, offer.financial.monthlySpendings, offer.financial.valueOfDebt, offer.financial.valueOfLoans,]);
 	
 	return (
 		<div className="d-flex justify-content-center align-items-center h-100">
 			<div className="col-md-6 ms-sm-auto col-lg-10 px-md-4 mx-auto">
 				<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 className="h2">Dashboard</h1>
+					<h1 className="h2">Offer Financials</h1>
 				</div>
 				
 				<canvas className="my-4 w-100" id="myChart" width="1000" height="400" />

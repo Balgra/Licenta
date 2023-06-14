@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
 import './Login.css';
+import {useNavigate} from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setLoggedIn}) => {
 	
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const navigate = useNavigate();
 	
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -22,6 +24,7 @@ const Login = () => {
 			if (response.ok) {
 				const token = await response.text();
 				localStorage.setItem('token', token);
+				setLoggedIn(true);
 				console.log(token);
 				console.log(email, password);
 			} else {
@@ -30,6 +33,10 @@ const Login = () => {
 		} catch (error) {
 			console.error("Login failed:", error);
 		}
+		setTimeout(() => {
+			navigate('/');
+		}, 2000);
+		
 	};
 	
 	return (
@@ -63,8 +70,14 @@ const Login = () => {
 							style={{ backgroundColor: 'white' }}
 						/>
 					</div>
-					<button type="submit" className="btn btn-primary">Login</button>
+					<div className="d-flex justify-content-center align-items-center">
+						<button type="submit" className="btn btn-primary">Login</button>
+					</div>
 				</form>
+				<br/>
+				<div className="d-flex justify-content-center align-items-center">
+					<button onClick={() => navigate('/register')} className="btn btn-primary">Head to Registration</button>
+				</div>
 			</div>
 		</div>
 	);

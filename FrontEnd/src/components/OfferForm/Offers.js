@@ -44,9 +44,6 @@ const Offers = () => {
 		});
 	};
 	
-	const OfferStatus = ({ status, tier }) => {
-		return <p>Status Tier{tier}: {status ? "Taken" : "Empty"}</p>;
-	};
 	
 	
 	const handleOfferClick = (offer) => {
@@ -57,10 +54,11 @@ const Offers = () => {
 		<div className="offers-container">
 			{offers.map((offer) => (
 				<div
-					className="offer-item"
+					className="offer-item card mb-4 bg-dark-subtle"
 					key={offer.id}
 					onClick={() => handleOfferClick(offer)}
 				>
+					<div className="card-body">
 					<p>AuthorName: {offer.authorName}</p>
 					<p>CompanyEmail: {offer.company_Email}</p>
 					<p>CompanyName: {offer.company_Name}</p>
@@ -74,11 +72,8 @@ const Offers = () => {
 					<p>CostTierTwo: {offer.transaction.cost_TierTwo}</p>
 					<p>CostTierThree: {offer.transaction.cost_TierThree}</p>
 					<p>CostTierFour: {offer.transaction.cost_TierFour}</p>
-					<OfferStatus status={offer.transaction.tierOne} tier="One" />
-					<OfferStatus status={offer.transaction.tierTwo} tier="Two" />
-					<OfferStatus status={offer.transaction.tierThree} tier="Three" />
-					<OfferStatus status={offer.transaction.tierFour} tier="Four" />
 					<hr />
+					</div>
 				</div>
 			))}
 			

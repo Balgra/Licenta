@@ -597,15 +597,12 @@ const Form = () => {
 			});
 			
 			if (response.ok) {
-				// Handle successful response
 				const offer = await response.json();
 				console.log(offer);
 			} else {
-				// Handle error response
 				console.error('Error:', response.statusText);
 			}
 		} catch (error) {
-			// Handle network error
 			console.error('Error:', error.message);
 		}
 	};
