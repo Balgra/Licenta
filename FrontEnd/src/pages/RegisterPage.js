@@ -83,13 +83,16 @@ const RegisterPage = () => {
 					<div className="form-group">
 						<label className="text-white">
 							Role:
-							<input
-								type="text"
+							<select
 								className="form-control"
 								value={role}
 								onChange={(e) => setRole(e.target.value)}
 								style={{ backgroundColor: 'white' }}
-							/>
+							>
+								<option value="">Select Role</option>
+								<option value="Investor">Investor</option>
+								<option value="Entrepreneur">Entrepreneur</option>
+							</select>
 						</label>
 					</div>
 					<br />

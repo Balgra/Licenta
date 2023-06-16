@@ -18,7 +18,7 @@ const CompanyPage = ({ onSubmit, submissions, loggedIn }) => {
 	}
 	
 	return (
-		 <div className="app__header" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+		 <div className="app__header bg-light-subtle" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
 				<br />
 				<Carusel />
 				<br />

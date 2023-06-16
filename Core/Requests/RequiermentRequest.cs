@@ -20,6 +20,5 @@ namespace Core.Requests
 
         public int CompanyValue { get; set; }
 
-        public string MarketingStrategies { get; set; }
     }
 }
