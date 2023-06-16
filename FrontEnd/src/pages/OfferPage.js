@@ -17,6 +17,7 @@ const OfferPage = ({loggedIn}) => {
 	//const [selectedOffer, setSelectedOffer] = useState(null);
 	//const [showOfferDetails, setShowOfferDetails] = useState(false); // Track whether to show offer details or not
 	
+	
 	useEffect(() => {
 		const fetchOffer = async () => {
 			try {
@@ -39,6 +40,27 @@ const OfferPage = ({loggedIn}) => {
 		
 		fetchOffer();
 	}, [id]);
+	
+	useEffect(() => {
+		const buttons = document.querySelectorAll(".list-group-item");
+		
+		// Add event listener to each button
+		buttons.forEach((button) => {
+			button.addEventListener("click", handleButtonClick);
+		});
+		
+		// Clean up the event listener
+		return () => {
+			buttons.forEach((button) => {
+				button.removeEventListener("click", handleButtonClick);
+			});
+		};
+	}, []);
+	
+	const handleButtonClick = (event) => {
+		const list = event.target.closest(".list-group");
+		list.classList.toggle("hide-list");
+	};
 	
 	if (!offer) {
 		return <div>Loading...</div>;
@@ -65,31 +87,61 @@ const OfferPage = ({loggedIn}) => {
 	/*const OfferStatus = ({ status, tier }) => {
 		return <p>Status Tier{tier}: {status ? "Taken" : "Empty"}</p>;
 	};*/
+
 	
 	
 	return (
-		<div className="app__header">
+		<div className="app__header bg-light-subtle">
 			<br/>
 			<div className="offers-container">
 				<div className="row">
 					<div className="col-md-4">
 						<div className="list-group fixed-height md" id="list-tab" role="tablist">
-							<a className="list-group-item list-group-item-action active" id="list-group-1-heading" data-bs-toggle="list" href="#list-group-1" role="tab" aria-controls="list-group-1">
+							<button
+								className="list-group-item list-group-item-action active"
+								id="list-group-1-heading"
+								data-bs-toggle="list"
+								href="#list-group-1"
+								role="tab"
+								aria-controls="list-group-1"
+							>
 								Company Description
-							</a>
-							<a className="list-group-item list-group-item-action" id="list-group-2-heading" data-bs-toggle="list" href="#list-group-2" role="tab" aria-controls="list-group-2">
+							</button>
+						</div>
+					</div>
+					<div className="col-md-4">
+						<div className="list-group fixed-height md" id="list-tab" role="tablist">
+							<button
+								className="list-group-item list-group-item-action"
+								id="list-group-2-heading"
+								data-bs-toggle="list"
+								href="#list-group-2"
+								role="tab"
+								aria-controls="list-group-2"
+							>
 								Company Financial
-							</a>
-							<a className="list-group-item list-group-item-action" id="list-group-3-heading" data-bs-toggle="list" href="#list-group-3" role="tab" aria-controls="list-group-3">
+							</button>
+						</div>
+					</div>
+					<div className="col-md-4">
+						<div className="list-group fixed-height md" id="list-tab" role="tablist">
+							<button
+								className="list-group-item list-group-item-action"
+								id="list-group-3-heading"
+								data-bs-toggle="list"
+								href="#list-group-3"
+								role="tab"
+								aria-controls="list-group-3"
+							>
 								Company Technical Information
-							</a>
+							</button>
 						</div>
 					</div>
 					<div className="col-md-8">
 						<div className="tab-content fixed-height" id="nav-tabContent">
 							<div className="tab-pane fade show active" id="list-group-1" role="tabpanel" aria-labelledby="list-group-1-heading">
 								<div className="mx-3 my-4">
-									<ul className="list-group">
+									<ul className="list-group"  id="list-group-1">
 										<li className="list-group-item">
 											<strong>AuthorName:</strong> {offer.authorName}
 										</li>
@@ -122,7 +174,7 @@ const OfferPage = ({loggedIn}) => {
 							</div>
 							<div className="tab-pane fade" id="list-group-2" role="tabpanel" aria-labelledby="list-group-2-heading">
 								<div className="mx-3 my-4">
-									<ul className="list-group">
+									<ul className="list-group"  id="list-group-2">
 										<li className="list-group-item">
 											<strong>Company Value:</strong> {offer.financial.companyValue}
 										</li>
@@ -149,7 +201,7 @@ const OfferPage = ({loggedIn}) => {
 							</div>
 							<div className="tab-pane fade" id="list-group-3" role="tabpanel" aria-labelledby="list-group-3-heading">
 								<div className="mx-3 my-4">
-									<ul className="list-group">
+									<ul className="list-group"  id="list-group-3">
 										<li className="list-group-item">
 											<strong>Embrace Digital Transformation:</strong>{" "}
 											{offer.competitiveness.embraceDigitalTransformation ? "True" : "False"}
@@ -180,7 +232,7 @@ const OfferPage = ({loggedIn}) => {
 						</div>
 					</div>
 				</div>
-				</div>
+			</div>
 			<br/>
 			<br/>
 			<br/>

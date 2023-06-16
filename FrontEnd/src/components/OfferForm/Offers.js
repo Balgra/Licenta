@@ -53,27 +53,41 @@ const Offers = () => {
 	return (
 		<div className="offers-container">
 			{offers.map((offer) => (
-				<div
-					className="offer-item card mb-4 bg-dark-subtle"
-					key={offer.id}
-					onClick={() => handleOfferClick(offer)}
-				>
-					<div className="card-body">
-					<p>AuthorName: {offer.authorName}</p>
-					<p>CompanyEmail: {offer.company_Email}</p>
-					<p>CompanyName: {offer.company_Name}</p>
-					<p>Deadline: {formatDeadline(offer.deadline)}</p>
-					<p>MarketSize: {offer.description.marketSize}</p>
-					<p>BusinessModel: {offer.description.businessModel}</p>
-					<p>TargetAudience: {offer.description.targetAudience}</p>
-					<p>MarketingStrategies: {offer.description.marketingStrategies}</p>
-					<p>Description: {offer.description.descriptions}</p>
-					<p>CostTierOne: {offer.transaction.cost_TierOne}</p>
-					<p>CostTierTwo: {offer.transaction.cost_TierTwo}</p>
-					<p>CostTierThree: {offer.transaction.cost_TierThree}</p>
-					<p>CostTierFour: {offer.transaction.cost_TierFour}</p>
-					<hr />
+				<div className="col-lg-3 col-sm-6">
+					<div className="card mb-5 mb-lg-4 m-lg-3" >
+							<div
+								className="card bg-dark-subtle"
+								
+							>
+								<div className="card-body " >
+									<h5 className="card-title text-muted text-uppercase text-center">{offer.company_Name}</h5>
+									<h6 className="card-price text-center"><span className="period"><strong>Business Model : </strong>{offer.description.businessModel}</span></h6>
+									<ul className="fa-ul">
+										<li><span className="fa-li"><i className="fas fa-user"></i></span><strong>AuthorName:</strong> {offer.authorName}</li>
+										<li><span className="fa-li"><i className="fas fa-envelope"></i></span><strong>CompanyEmail:</strong> {offer.company_Email}</li>
+										<li><span className="fa-li"><i className="fas fa-building"></i></span><strong>CompanyName:</strong> {offer.company_Name}</li>
+										<li><span className="fa-li"><i className="fas fa-calendar-alt"></i></span><strong>Deadline:</strong> {formatDeadline(offer.deadline)}</li>
+										<li><span className="fa-li"><i className="fas fa-chart-pie"></i></span><strong>MarketSize:</strong> {offer.description.marketSize}</li>
+										<li><span className="fa-li"><i className="fas fa-cogs"></i></span><strong>BusinessModel:</strong> {offer.description.businessModel}</li>
+										<li><span className="fa-li"><i className="fas fa-bullseye"></i></span><strong>TargetAudience:</strong> {offer.description.targetAudience}</li>
+										<li><span className="fa-li"><i className="fas fa-bullhorn"></i></span><strong>MarketingStrategies:</strong> {offer.description.marketingStrategies}</li>
+										<li><span className="fa-li"><i className="fas fa-file-alt"></i></span><strong>Description:</strong> {offer.description.descriptions}</li>
+									</ul>
+									<hr />
+									<div className="d-flex justify-content-center">
+										<button
+											className="btn btn-primary"
+											onClick={() => handleOfferClick(offer)}
+										>
+											Head to Offer
+										</button>
+									</div>
+								</div>
+								
+							</div>
+					
 					</div>
+				
 				</div>
 			))}
 			

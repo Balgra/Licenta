@@ -206,75 +206,75 @@ const FormStep1 = ({
 					   cost_TierFour,
 				   }) => (
 	<>
-		<h3>Step 1: Basic Information</h3>
-		<label className="form-label">
+		<h3  className="text-dark">Step 1: Basic Information</h3>
+		<label className="form-label text-dark">
 			Author Name:
 			<input
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				type="text"
 				value={authorName}
 				onChange={(e) => onChange('authorName', e.target.value)}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Company Name:
 			<input
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				type="text"
 				value={company_Name}
 				onChange={(e) => onChange('company_Name', e.target.value)}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Company Email:
 			<input
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				type="email"
 				value={company_Email}
 				onChange={(e) => onChange('company_Email', e.target.value)}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Deadline:
 			<input
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				type="date"
 				value={deadline}
 				onChange={(e) => onChange('deadline', e.target.value)}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Cost Tier One:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={costTierOne}
 				onChange={(e) => onChange('costTierOne', parseInt(e.target.value))}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Cost Tier Two:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={costTierTwo}
 				onChange={(e) => onChange('costTierTwo', parseInt(e.target.value))}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Cost Tier Three:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={cost_TierThree}
 				onChange={(e) => onChange('cost_TierThree', parseInt(e.target.value))}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Cost Tier Four:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={cost_TierFour}
 				onChange={(e) => onChange('cost_TierFour', parseInt(e.target.value))}
 			/>
@@ -298,46 +298,61 @@ const FormStep2 = ({
 					   marketingStrategies,
 				   }) => (
 	<>
-		<h3>Step 2: Business Information</h3>
-		<label className="form-label">
+		<h3  className="text-dark">Step 2: Business Information</h3>
+		<label className="form-label text-dark">
 			Market Size:
-			<input
-				className="form-control"
-				type="text"
+			<select
+				className="form-control border border-3 border-dark"
 				value={marketSize}
 				onChange={(e) => onChange('marketSize', e.target.value)}
-			/>
+			>
+				<option value="">Select Market Size</option>
+				<option value="Top Down">Top Down</option>
+				<option value="Bottom-Up">Bottom-Up</option>
+			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Business Model:
-			<input
-				className="form-control"
-				type="text"
+			<select
+				className="form-control border border-3 border-dark"
 				value={businessModel}
 				onChange={(e) => onChange('businessModel', e.target.value)}
-			/>
+			>
+				<option value="">Select Business Model</option>
+				<option value="Subscription">Subscription</option>
+				<option value="Affiliate">Affiliate</option>
+				<option value="E-commerce">E-commerce</option>
+				<option value="Freemium">Freemium</option>
+			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Descriptions:
 			<textarea
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={descriptions}
 				onChange={(e) => onChange('descriptions', e.target.value)}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Target Audience:
-			<input
-				className="form-control"
-				type="text"
+			<select
+				className="form-control border border-3 border-dark"
 				value={targetAudience}
 				onChange={(e) => onChange('targetAudience', e.target.value)}
-			/>
+			>
+				<option value="">Select Target Audience</option>
+				<option value="Readers">Readers</option>
+				<option value="Businesses">Businesses</option>
+				<option value="Influencers">Influencers</option>
+				<option value="Adults">Adults</option>
+				<option value="Children">Children</option>
+				<option value="Elderly">Elderly</option>
+			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Marketing Strategies:
 			<textarea
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={marketingStrategies}
 				onChange={(e) => onChange('marketingStrategies', e.target.value)}
 			/>
@@ -368,69 +383,73 @@ const FormStep3 = ({
 					   methodOfValuation,
 				   }) => (
 	<>
-		<h3>Step 3: Financial Information</h3>
-		<label className="form-label">
+		<h3  className="text-dark">Step 3: Financial Information</h3>
+		<label className="form-label text-dark">
 			Company Value:
 			<input
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				type="text"
 				value={companyValue}
 				onChange={(e) => onChange('companyValue', e.target.value)}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Monthly Spendings:
 			<input
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				type="text"
 				value={monthlySpendings}
 				onChange={(e) => onChange('monthlySpendings', e.target.value)}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Monthly Income:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={monthlyIncome}
 				onChange={(e) => onChange('monthlyIncome', parseInt(e.target.value))}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Value of Debt:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={valueOfDebt}
 				onChange={(e) => onChange('valueOfDebt', parseInt(e.target.value))}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Value of Loans:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={valueOfLoans}
 				onChange={(e) => onChange('valueOfLoans', parseInt(e.target.value))}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Years on Market:
 			<input
-				className="form-control"
-				type="number"
+				className="form-control border border-3 border-dark"
+				type="text"
 				value={yearsOnMarket}
 				onChange={(e) => onChange('yearsOnMarket', parseInt(e.target.value))}
 			/>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Method of Valuation:
-			<input
-				className="form-control"
-				type="text"
+			<select
+				className="form-control border border-3 border-dark"
 				value={methodOfValuation}
 				onChange={(e) => onChange('methodOfValuation', e.target.value)}
-			/>
+			>
+				<option value="">Select Method of Valuation</option>
+				<option value="Asset-Based">Asset-Based</option>
+				<option value="Market-Based">Market-Based</option>
+				<option value="Income-Based">Income-Based</option>
+			</select>
 		</label>
 		<br/>
 		<button type="button" className="form-button" onClick={onPrevious}>
@@ -457,11 +476,11 @@ const FormStep4 = ({
 					   investInEmployeeDevelopment,
 				   }) => (
 	<>
-		<h3>Step 4: Technology Information</h3>
-		<label className="form-label">
+		<h3 className="text-dark">Step 4: Technology Information</h3>
+		<label className="form-label text-dark">
 			Embrace Digital Transformation:
 			<select
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={embraceDigitalTransformation.toString()}
 				onChange={(e) =>
 					onChange('embraceDigitalTransformation', e.target.value === 'true')
@@ -471,10 +490,10 @@ const FormStep4 = ({
 				<option value="false">False</option>
 			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Enhance Customer Experience:
 			<select
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={enhanceCustomerExperience.toString()}
 				onChange={(e) =>
 					onChange('enhanceCustomerExperience', e.target.value === 'true')
@@ -484,10 +503,10 @@ const FormStep4 = ({
 				<option value="false">False</option>
 			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Leverage Big Data and Analytics:
 			<select
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={leverageBigDataAndAnalytics.toString()}
 				onChange={(e) =>
 					onChange('leverageBigDataAndAnalytics', e.target.value === 'true')
@@ -497,10 +516,10 @@ const FormStep4 = ({
 				<option value="false">False</option>
 			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Adopt Agile Methodologies:
 			<select
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={adoptAgileMethodologies.toString()}
 				onChange={(e) =>
 					onChange('adoptAgileMethodologies', e.target.value === 'true')
@@ -510,10 +529,10 @@ const FormStep4 = ({
 				<option value="false">False</option>
 			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Embrace Emerging Technologies:
 			<select
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={embraceEmergingTechnologies.toString()}
 				onChange={(e) =>
 					onChange('embraceEmergingTechnologies', e.target.value === 'true')
@@ -523,10 +542,10 @@ const FormStep4 = ({
 				<option value="false">False</option>
 			</select>
 		</label>
-		<label className="form-label">
+		<label className="form-label text-dark">
 			Invest in Employee Development:
 			<select
-				className="form-control"
+				className="form-control border border-3 border-dark"
 				value={investInEmployeeDevelopment.toString()}
 				onChange={(e) =>
 					onChange('investInEmployeeDevelopment', e.target.value === 'true')
@@ -621,7 +640,7 @@ const Form = () => {
 	
 	
 	return (
-		<form className="form" onSubmit={handleSubmit}>
+		<form className="form bg-light-subtle"  onSubmit={handleSubmit}>
 			{step === 1 && (
 				<FormStep1
 					onNext={handleNext}

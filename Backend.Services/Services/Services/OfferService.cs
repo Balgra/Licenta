@@ -133,14 +133,14 @@ namespace Backend.Services.Services.Services
         {
 
             var offers = await _offerRepo.GetOffersAsync();
+            
 
             var filteredOffers = offers.Where(offer =>
                 offer.Description.RiskFactors <= req.RiskFactor ||
                 offer.Description.TargetAudience == req.targetAudience ||
                 offer.Financial.MonthlyIncome >= req.MonthlyIncome &&
                 offer.Financial.MonthlySpendings <= req.MonthlySpendings ||
-                offer.Financial.CompanyValue >= req.CompanyValue ||
-                offer.Description.MarketingStrategies == req.MarketingStrategies ||
+                offer.Financial.CompanyValue >= req.CompanyValue  ||
                 offer.Description.BusinessModel == req.businessModel).ToList();
 
             return filteredOffers;

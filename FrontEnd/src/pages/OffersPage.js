@@ -12,8 +12,8 @@ const OffersPage = ({loggedIn}) => {
 	}
 	
 	return (
-		<div className="app__header">
-			<h1 className="text-white">Offers</h1>
+		<div className="app__header bg-light-subtle">
+			<h1 className="text-dark">Offers</h1>
 			<Offer/>
 		</div>
 	);

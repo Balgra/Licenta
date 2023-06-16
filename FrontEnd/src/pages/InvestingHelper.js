@@ -112,38 +112,49 @@ const InvestingHelper = ({loggedIn}) => {
 	};
 	
 	return (
-		<div className="bg-dark">
+		<div className="bg-light-subtle">
 			<br/>
-			<button onClick={fetchOffer}>Get Offer</button>
+			<div className="d-flex mr-5 justify-content-start">
+				<button onClick={fetchOffer}>Get Offer</button>
+			</div>
 		<div>
 			{offer ? (
-				<div className="row justify-content-center"
-					 onClick={() => handleOfferClick(offer)}>
-					<div className="col-md-6">
-						<div className="border p-4 text-white">
-							<h4>Offer Details</h4>
-							<p><strong>Author Name:</strong> {offer.authorName}</p>
-							<p><strong>Company Email:</strong> {offer.company_Email}</p>
-							<p><strong>Company Name:</strong> {offer.company_Name}</p>
-							<p><strong>Deadline:</strong> {formatDeadline(offer.deadline)}</p>
-							<p><strong>Market Size:</strong> {offer.description.marketSize}</p>
-							<p><strong>Business Model:</strong> {offer.description.businessModel}</p>
-							<p><strong>Risk Factors:</strong> {offer.description.riskFactors}</p>
-							<p><strong>Cost Tier One:</strong> {offer.transaction.cost_TierOne}</p>
-							<p><strong>Cost Tier Two:</strong> {offer.transaction.cost_TierTwo}</p>
-							<p><strong>Cost Tier Three:</strong> {offer.transaction.cost_TierThree}</p>
-							<p><strong>Cost Tier Four:</strong> {offer.transaction.cost_TierFour}</p>
-							<OfferStatus status={offer.transaction.tierOne} tier="One" />
-							<OfferStatus status={offer.transaction.tierTwo} tier="Two" />
-							<OfferStatus status={offer.transaction.tierThree} tier="Three" />
-							<OfferStatus status={offer.transaction.tierFour} tier="Four" />
+					<div className="d-flex justify-content-center">
+				<div className="col-lg-3 col-sm-6">
+					<div className="card mb-5 mb-lg-4 m-lg-3">
+						<div className="card bg-dark-subtle">
+							<div className="card-body">
+								<h5 className="card-title text-muted text-uppercase text-center">{offer.company_Name}</h5>
+								<h6 className="card-price text-center"><strong>Business Model:</strong> {offer.description.businessModel}</h6>
+								<h6 className="card-price text-center">{offer.transaction.cost_TierOne} $<span className="period">/month</span></h6>
+								<ul className="fa-ul">
+									<li><span className="fa-li"><i className="fas fa-user"></i></span><strong>AuthorName:</strong> {offer.authorName}</li>
+									<li><span className="fa-li"><i className="fas fa-envelope"></i></span><strong>CompanyEmail:</strong> {offer.company_Email}</li>
+									<li><span className="fa-li"><i className="fas fa-building"></i></span><strong>CompanyName:</strong> {offer.company_Name}</li>
+									<li><span className="fa-li"><i className="fas fa-calendar-alt"></i></span><strong>Deadline:</strong> {formatDeadline(offer.deadline)}</li>
+									<li><span className="fa-li"><i className="fas fa-chart-pie"></i></span><strong>MarketSize:</strong> {offer.description.marketSize}</li>
+									<li><span className="fa-li"><i className="fas fa-cogs"></i></span><strong>BusinessModel:</strong> {offer.description.businessModel}</li>
+									<li><span className="fa-li"><i className="fas fa-bullseye"></i></span><strong>TargetAudience:</strong> {offer.description.targetAudience}</li>
+									<li><span className="fa-li"><i className="fas fa-bullhorn"></i></span><strong>MarketingStrategies:</strong> {offer.description.marketingStrategies}</li>
+									<li><span className="fa-li"><i className="fas fa-file-alt"></i></span><strong>Description:</strong> {offer.description.descriptions}</li>
+								</ul>
+								<hr />
+								<div className="d-flex justify-content-center">
+									<button
+										className="btn btn-primary"
+										onClick={() => handleOfferClick(offer)}
+									>
+										Head to Offer
+									</button>
+								</div>
+							</div>
 						</div>
-						<hr />
 					</div>
 				</div>
+					</div>
 			) : (
-				<div className="bg-dark">
-					<p className="text-white">No offers available</p>
+				<div className="bg-light-subtle">
+					<p className="text-dark">No offers available</p>
 					<br/>
 				</div>
 			)}
@@ -152,39 +163,48 @@ const InvestingHelper = ({loggedIn}) => {
 			<div>
 				<br/>
 				<br/>
-				
 				<div className="container">
 					<div className="row justify-content-center">
-						<div className="col-md-6">
-							<h2 className="text-white">Investing Requirements</h2>
-							<form>
+							<div className="text-center">
+								<h2 className="text-dark">Investing Requirements</h2>
+							</div>
+							<form className="form bg-light-subtle">
 								<div className="mb-3">
-									<label htmlFor="businessModel" className="form-label text-white">Business Model:</label>
-									<input
-										type="text"
-										className="form-control"
-										id="businessModel"
-										name="businessModel"
-										value={requiermentRequest.businessModel}
-										onChange={handleInputChange}
-									/>
+									<label htmlFor="businessModel" className="form-label text-dark">Business Model:
+										<select
+											className="form-control border border-3 border-dark"
+											id="businessModel"
+											name="businessModel"
+											value={requiermentRequest.businessModel}
+											onChange={handleInputChange}
+										><option value="">Select Business Model</option>
+											<option value="Subscription">Subscription</option>
+											<option value="Affiliate">Affiliate</option>
+											<option value="E-commerce">E-commerce</option>
+											<option value="Freemium">Freemium</option></select>
+									</label>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="targetAudience" className="form-label text-white">Target Audience:</label>
-									<input
-										type="text"
-										className="form-control"
+									<label htmlFor="targetAudience" className="form-label text-dark">Target Audience:</label>
+									<select
+										className="form-control border border-3 border-dark"
 										id="targetAudience"
 										name="targetAudience"
 										value={requiermentRequest.targetAudience}
 										onChange={handleInputChange}
-									/>
+									><option value="">Select Target Audience</option>
+										<option value="Readers">Readers</option>
+										<option value="Businesses">Businesses</option>
+										<option value="Influencers">Influencers</option>
+										<option value="Adults">Adults</option>
+										<option value="Children">Children</option>
+										<option value="Elderly">Elderly</option></select>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="riskFactor" className="form-label text-white">Risk Factor:</label>
+									<label htmlFor="riskFactor" className="form-label text-dark">Risk Factor:</label>
 									<input
 										type="number"
-										className="form-control"
+										className="form-control border border-3 border-dark"
 										id="riskFactor"
 										name="riskFactor"
 										value={requiermentRequest.riskFactor}
@@ -192,10 +212,10 @@ const InvestingHelper = ({loggedIn}) => {
 									/>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="monthlyIncome" className="form-label text-white">Monthly Income:</label>
+									<label htmlFor="monthlyIncome" className="form-label text-dark">Monthly Income:</label>
 									<input
 										type="number"
-										className="form-control"
+										className="form-control border border-3 border-dark"
 										id="monthlyIncome"
 										name="monthlyIncome"
 										value={requiermentRequest.monthlyIncome}
@@ -203,10 +223,10 @@ const InvestingHelper = ({loggedIn}) => {
 									/>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="monthlySpendings" className="form-label text-white">Monthly Spendings:</label>
+									<label htmlFor="monthlySpendings" className="form-label text-dark">Monthly Spendings:</label>
 									<input
 										type="number"
-										className="form-control"
+										className="form-control border border-3 border-dark"
 										id="monthlySpendings"
 										name="monthlySpendings"
 										value={requiermentRequest.monthlySpendings}
@@ -214,10 +234,10 @@ const InvestingHelper = ({loggedIn}) => {
 									/>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="companyValue" className="form-label text-white">Company Value:</label>
+									<label htmlFor="companyValue" className="form-label text-dark">Company Value:</label>
 									<input
 										type="number"
-										className="form-control"
+										className="form-control border border-3 border-dark"
 										id="companyValue"
 										name="companyValue"
 										value={requiermentRequest.companyValue}
@@ -229,7 +249,7 @@ const InvestingHelper = ({loggedIn}) => {
 								</div>
 							   <br/>
 							</form>
-						</div>
+						
 					</div>
 				</div>
 				{offerreq && offerreq.length > 0 ? (
@@ -254,8 +274,8 @@ const InvestingHelper = ({loggedIn}) => {
 						</div>
 					))
 				) : (
-					<div className="bg-dark">
-					<p className="text-white">No offers fit the searching criteria</p>
+					<div className="bg-light-subtle">
+					<p className="text-dark">No offers fit the searching criteria</p>
 					<br/>
 					</div>
 				)}

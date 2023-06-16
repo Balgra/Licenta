@@ -63,13 +63,13 @@ const	TransactionFour = () =>
 	
 	
 	return (
-		<div className="component app__header">
+		<div className="component app__header bg-light-subtle" >
 			
 			<div className="container">
 				
 				<div className="row">
 					<div className="col-md-12 text-center mb-4">
-						<h3 className="text-white">Risk Factor: {offer.description.riskFactors} %</h3>
+						<h3 className="text-dark">Risk Factor: {offer.description.riskFactors} %</h3>
 					</div>
 					<div className="col-lg-3 col-sm-6">
 						<div className="card mb-5 mb-lg-0">
