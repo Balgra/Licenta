@@ -12,9 +12,12 @@ const OffersPage = ({loggedIn}) => {
 	}
 	
 	return (
-		<div className="app__header bg-light-subtle">
+		
+		<div className="app__header bg-light-subtle d-flex flex-column align-items-center">
+			<br/>
 			<h1 className="text-dark">Offers</h1>
-			<Offer/>
+			<Offer />
+			<br/>
 		</div>
 	);
 };

@@ -40,17 +40,18 @@ const Login = ({ setLoggedIn}) => {
 	};
 	
 	return (
-		<div className="bg-dark d-flex justify-content-center align-items-center vh-100">
-			<div className="p-4 shadow rounded">
-				<h2 className="text-white">Login</h2>
+		<div className="bg-white d-flex justify-content-center align-items-center vh-100">
+			<div className="p-4 shadow rounded border border-dark">
+				<div className="d-flex justify-content-center align-items-center">
+					<h2 className="text-dark">Login</h2></div>
 				<form onSubmit={handleLogin}>
 					<div className="mb-3">
-						<label htmlFor="email" className="form-label text-white"   >
+						<label htmlFor="email" className="form-label text-black"   >
 							Email:
 						</label>
 						<input
 							type="email"
-							className="form-control"
+							className="form-control border border-dark"
 							id="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -58,12 +59,12 @@ const Login = ({ setLoggedIn}) => {
 						/>
 					</div>
 					<div className="mb-3">
-						<label htmlFor="password" className="form-label text-white" >
+						<label htmlFor="password" className="form-label text-black" >
 							Password:
 						</label>
 						<input
 							type="password"
-							className="form-control"
+							className="form-control border border-dark"
 							id="password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
@@ -76,7 +77,7 @@ const Login = ({ setLoggedIn}) => {
 				</form>
 				<br/>
 				<div className="d-flex justify-content-center align-items-center">
-					<button onClick={() => navigate('/register')} className="btn btn-primary">Head to Registration</button>
+					<button onClick={() => navigate('/register')} className="btn btn-primary" style={{ width: '200px', height: '50px' }}>Head to Registration</button>
 				</div>
 			</div>
 		</div>

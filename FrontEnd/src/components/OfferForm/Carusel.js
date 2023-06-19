@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 const Carusel = () => {
 	
 	return (
-		<div id="carouselExampleFade" className="carousel slide carousel-fade caru">
+		<div id="carouselExampleFade" className="carousel slide carousel-fade caru" data-bs-interval="false">
 			<div className="carousel-inner">
 				<div className="carousel-item active">
 					<img
@@ -13,9 +13,9 @@ const Carusel = () => {
 						alt="First slide"
 					/>
 					<div className="carousel-caption">
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Let's Boost your business!</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>This is a helping guide for making your business</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>In this step you have to set up your basic information</p>
 						<br/>
 						
 						<br/>
@@ -25,8 +25,8 @@ const Carusel = () => {
 						<br/>
 						<br/>
 						
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Here, you also provide the prices for the Tiers</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Each Tier represents a fraction of your company, and few additive options</p>
 					</div>
 				</div>
 				<div className="carousel-item">
@@ -36,9 +36,8 @@ const Carusel = () => {
 						alt="Second slide"
 					/>
 					<div className="carousel-caption">
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>BizBoost offers some examples for easing your task</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>In case your business is not handles, send us an email</p>
 						<br/>
 						
 						<br/>
@@ -48,8 +47,8 @@ const Carusel = () => {
 						<br/>
 						<br/>
 						
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Provide a catchy description, you need Investors to boost your business</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>What are the Marketing Strategies your company is using?</p>
 					</div>
 				</div>
 				<div className="carousel-item">
@@ -59,9 +58,8 @@ const Carusel = () => {
 						alt="Third slide"
 					/>
 					<div className="carousel-caption">
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Here you need to talk some numbers</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Provide accurate values about your company</p>
 						<br/>
 						
 						<br/>
@@ -71,8 +69,8 @@ const Carusel = () => {
 						<br/>
 						<br/>
 						
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Each of the fields will be taken into account to calculate the company's risk factor</p>
+						<p className="text-black" style={{ fontSize: "2rem" }}>Also, select the method used to evaluate the company</p>
 					</div>
 				</div>
 				<div className="carousel-item">
@@ -82,9 +80,8 @@ const Carusel = () => {
 						alt="Fourth slide"
 					/>
 					<div className="carousel-caption">
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "1.7rem" }}>Lastly, we get to see how the company embraces technology</p>
+						<p className="text-black" style={{ fontSize: "1.7rem" }}>Don't worry if the company hasn't had the chance to explore these options</p>
 						<br/>
 						
 						<br/>
@@ -94,8 +91,8 @@ const Carusel = () => {
 						<br/>
 						<br/>
 						
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
-						<p className="text-white" style={{ fontSize: "2rem" }}>This is the description for Image 1.</p>
+						<p className="text-black" style={{ fontSize: "1.7rem" }}>Select the options that best fit your company</p>
+						<p className="text-black" style={{ fontSize: "1.7rem" }}>Afterwards, the company can always come back and improve by adding those options as future improvements</p>
 					</div>
 				</div>
 			</div>

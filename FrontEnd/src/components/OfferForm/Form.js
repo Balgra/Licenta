@@ -206,7 +206,7 @@ const FormStep1 = ({
 					   cost_TierFour,
 				   }) => (
 	<>
-		<h3  className="text-dark">Step 1: Basic Information</h3>
+		<h4  className="text-dark">Step 1: Basic Information</h4>
 		<label className="form-label text-dark">
 			Author Name:
 			<input
@@ -640,7 +640,7 @@ const Form = () => {
 	
 	
 	return (
-		<form className="form bg-light-subtle"  onSubmit={handleSubmit}>
+		<form className=" row g-2 form bg-light-subtle"  onSubmit={handleSubmit}>
 			{step === 1 && (
 				<FormStep1
 					onNext={handleNext}

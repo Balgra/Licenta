@@ -68,7 +68,7 @@ const OfferPage = ({loggedIn}) => {
 	
 	if (!loggedIn) {
 		navigate('/login');
-		return null; // Return null or any placeholder while redirecting
+		return null;
 	}
 	
 	
@@ -84,9 +84,6 @@ const OfferPage = ({loggedIn}) => {
 		});
 	};
 	
-	/*const OfferStatus = ({ status, tier }) => {
-		return <p>Status Tier{tier}: {status ? "Taken" : "Empty"}</p>;
-	};*/
 
 	
 	

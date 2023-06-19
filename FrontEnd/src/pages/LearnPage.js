@@ -7,12 +7,11 @@ const LearnPage = ({loggedIn}) =>{
 	
 	if (!loggedIn) {
 		navigate('/login');
-		return null; // Return null or any placeholder while redirecting
+		return null;
 	}
 	
 	return (
-	<><Learn/></>
-	);
+	<Learn/>);
 };
 
 export default LearnPage;

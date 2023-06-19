@@ -14,14 +14,16 @@ const InvestingHelper = ({loggedIn}) => {
 		monthlyIncome: 0,
 		monthlySpendings: 0,
 		companyValue: 0,
-		marketingStrategies: ''
+		maxmonthlyIncome: 0,
+		maxmonthlySpendings: 0,
+		maxcompanyValue: 0,
 	};
 	
 	const [requiermentRequest, setRequiermentRequest] = useState(initialRequiermentRequest);
 	
 	if (!loggedIn) {
 		navigate('/login');
-		return null; // Return null or any placeholder while redirecting
+		return null;
 	}
 	
 	const fetchOffer = async () => {
@@ -67,7 +69,9 @@ const InvestingHelper = ({loggedIn}) => {
 				MonthlyIncome: requiermentRequest.monthlyIncome,
 				MonthlySpendings: requiermentRequest.monthlySpendings,
 				CompanyValue: requiermentRequest.companyValue,
-				MarketingStrategies: requiermentRequest.marketingStrategies
+				maxMonthlyIncome: requiermentRequest.maxmonthlyIncome,
+				maxMonthlySpendings: requiermentRequest.maxmonthlySpendings,
+				maxCompanyValue: requiermentRequest.maxcompanyValue,
 			});
 			const response = await fetch(`https://localhost:7239/api/offers/requierments?${queryParams}`, {
 				method: "GET",
@@ -103,9 +107,6 @@ const InvestingHelper = ({loggedIn}) => {
 		});
 	};
 	
-	const OfferStatus = ({ status, tier }) => {
-		return <p>Status Tier{tier}: {status ? "Taken" : "Empty"}</p>;
-	};
 	
 	const handleOfferClick = (offer) => {
 		navigate(`/offer/${offer.id}`);
@@ -114,8 +115,8 @@ const InvestingHelper = ({loggedIn}) => {
 	return (
 		<div className="bg-light-subtle">
 			<br/>
-			<div className="d-flex mr-5 justify-content-start">
-				<button onClick={fetchOffer}>Get Offer</button>
+			<div className="d-flex justify-content-center">
+				<button onClick={fetchOffer}>Get Offer of the week</button>
 			</div>
 		<div>
 			{offer ? (
@@ -154,8 +155,6 @@ const InvestingHelper = ({loggedIn}) => {
 					</div>
 			) : (
 				<div className="bg-light-subtle">
-					<p className="text-dark">No offers available</p>
-					<br/>
 				</div>
 			)}
 		</div>
@@ -163,14 +162,18 @@ const InvestingHelper = ({loggedIn}) => {
 			<div>
 				<br/>
 				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
 				<div className="container">
 					<div className="row justify-content-center">
 							<div className="text-center">
 								<h2 className="text-dark">Investing Requirements</h2>
 							</div>
-							<form className="form bg-light-subtle">
+							<form className="row form bg-light-subtle">
 								<div className="mb-3">
-									<label htmlFor="businessModel" className="form-label text-dark">Business Model:
+									<label htmlFor="businessModel" className="form-label text-dark">Business Model:</label>
 										<select
 											className="form-control border border-3 border-dark"
 											id="businessModel"
@@ -182,7 +185,7 @@ const InvestingHelper = ({loggedIn}) => {
 											<option value="Affiliate">Affiliate</option>
 											<option value="E-commerce">E-commerce</option>
 											<option value="Freemium">Freemium</option></select>
-									</label>
+									
 								</div>
 								<div className="mb-3">
 									<label htmlFor="targetAudience" className="form-label text-dark">Target Audience:</label>
@@ -201,9 +204,9 @@ const InvestingHelper = ({loggedIn}) => {
 										<option value="Elderly">Elderly</option></select>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="riskFactor" className="form-label text-dark">Risk Factor:</label>
+									<label htmlFor="riskFactor" className="form-label text-dark">Minimum Risk Factor:</label>
 									<input
-										type="number"
+										type="text"
 										className="form-control border border-3 border-dark"
 										id="riskFactor"
 										name="riskFactor"
@@ -212,9 +215,9 @@ const InvestingHelper = ({loggedIn}) => {
 									/>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="monthlyIncome" className="form-label text-dark">Monthly Income:</label>
+									<label htmlFor="monthlyIncome" className="form-label text-dark">Minimum Monthly Income:</label>
 									<input
-										type="number"
+										type="text"
 										className="form-control border border-3 border-dark"
 										id="monthlyIncome"
 										name="monthlyIncome"
@@ -223,9 +226,9 @@ const InvestingHelper = ({loggedIn}) => {
 									/>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="monthlySpendings" className="form-label text-dark">Monthly Spendings:</label>
+									<label htmlFor="monthlySpendings" className="form-label text-dark">Minimum Monthly Spendings:</label>
 									<input
-										type="number"
+										type="text"
 										className="form-control border border-3 border-dark"
 										id="monthlySpendings"
 										name="monthlySpendings"
@@ -234,9 +237,9 @@ const InvestingHelper = ({loggedIn}) => {
 									/>
 								</div>
 								<div className="mb-3">
-									<label htmlFor="companyValue" className="form-label text-dark">Company Value:</label>
+									<label htmlFor="companyValue" className="form-label text-dark">Minimum Company Value:</label>
 									<input
-										type="number"
+										type="text"
 										className="form-control border border-3 border-dark"
 										id="companyValue"
 										name="companyValue"
@@ -244,44 +247,104 @@ const InvestingHelper = ({loggedIn}) => {
 										onChange={handleInputChange}
 									/>
 								</div>
+								
+								<div className="mb-3">
+									<label htmlFor="monthlyIncome" className="form-label text-dark">Maximum Monthly Income:</label>
+									<input
+										type="text"
+										className="form-control border border-3 border-dark"
+										id="maxmonthlyIncome"
+										name="maxmonthlyIncome"
+										value={requiermentRequest.maxmonthlyIncome}
+										onChange={handleInputChange}
+									/>
+								</div>
+								<div className="mb-3">
+									<label htmlFor="monthlySpendings" className="form-label text-dark">Maximum Monthly Spendings:</label>
+									<input
+										type="text"
+										className="form-control border border-3 border-dark"
+										id="maxmonthlySpendings"
+										name="maxmonthlySpendings"
+										value={requiermentRequest.maxmonthlySpendings}
+										onChange={handleInputChange}
+									/>
+								</div>
+								<div className="mb-3">
+									<label htmlFor="companyValue" className="form-label text-dark">Maximum Company Value:</label>
+									<input
+										type="text"
+										className="form-control border border-3 border-dark"
+										id="maxcompanyValue"
+										name="maxcompanyValue"
+										value={requiermentRequest.maxcompanyValue}
+										onChange={handleInputChange}
+									/>
+								</div>
+								
 								<div className="text-center">
 									<button type="button" className="btn btn-primary" onClick={fetchOfferReq}>Get Offer</button>
 								</div>
 							   <br/>
+								<br/>
+								<br/>
+								<br/>
+								<br/>
+								<br/>
 							</form>
+						
 						
 					</div>
 				</div>
+				<div className="offers-container">
 				{offerreq && offerreq.length > 0 ? (
-					offerreq.map((offer, index) => (
-						<div key={index}>
-							<p>AuthorName: {offer.authorName}</p>
-							<p>CompanyEmail: {offer.company_Email}</p>
-							<p>CompanyName: {offer.company_Name}</p>
-							<p>Deadline: {formatDeadline(offer.deadline)}</p>
-							<p>MarketSize: {offer.description.marketSize}</p>
-							<p>BusinessModel: {offer.description.businessModel}</p>
-							<p>RiskFactors: {offer.description.riskFactors}</p>
-							<p>CostTierOne: {offer.transaction.cost_TierOne}</p>
-							<p>CostTierTwo: {offer.transaction.cost_TierTwo}</p>
-							<p>CostTierThree: {offer.transaction.cost_TierThree}</p>
-							<p>CostTierFour: {offer.transaction.cost_TierFour}</p>
-							<OfferStatus status={offer.transaction.tierOne} tier="One" />
-							<OfferStatus status={offer.transaction.tierTwo} tier="Two" />
-							<OfferStatus status={offer.transaction.tierThree} tier="Three" />
-							<OfferStatus status={offer.transaction.tierFour} tier="Four" />
-							<hr />
+					offerreq.map((offer) => (
+						<div className="col-lg-3 col-sm-6">
+							<div className="card mb-5 mb-lg-4 m-lg-3" >
+								<div
+									className="card bg-dark-subtle">
+									<div className="card-body " >
+										<h5 className="card-title text-muted text-uppercase text-center">{offer.company_Name}</h5>
+										<h6 className="card-price text-center"><span className="period"><strong>Business Model : </strong>{offer.description.businessModel}</span></h6>
+										<ul className="fa-ul">
+											<li><span className="fa-li"><i className="fas fa-user"></i></span><strong>AuthorName:</strong> {offer.authorName}</li>
+											<li><span className="fa-li"><i className="fas fa-envelope"></i></span><strong>CompanyEmail:</strong> {offer.company_Email}</li>
+											<li><span className="fa-li"><i className="fas fa-building"></i></span><strong>CompanyName:</strong> {offer.company_Name}</li>
+											<li><span className="fa-li"><i className="fas fa-calendar-alt"></i></span><strong>Deadline:</strong> {formatDeadline(offer.deadline)}</li>
+											<li><span className="fa-li"><i className="fas fa-chart-pie"></i></span><strong>MarketSize:</strong> {offer.description.marketSize}</li>
+											<li><span className="fa-li"><i className="fas fa-cogs"></i></span><strong>BusinessModel:</strong> {offer.description.businessModel}</li>
+											<li><span className="fa-li"><i className="fas fa-bullseye"></i></span><strong>TargetAudience:</strong> {offer.description.targetAudience}</li>
+											<li><span className="fa-li"><i className="fas fa-bullhorn"></i></span><strong>MarketingStrategies:</strong> {offer.description.marketingStrategies}</li>
+											<li><span className="fa-li"><i className="fas fa-file-alt"></i></span><strong>Description:</strong> {offer.description.descriptions}</li>
+										</ul>
+										<hr />
+										<div className="d-flex justify-content-center">
+											<button
+												className="btn btn-primary"
+												onClick={() => handleOfferClick(offer)}
+											>
+												Head to Offer
+											</button>
+										</div>
+									</div>
+								
+								</div>
+							
+							</div>
+						
 						</div>
 					))
 				) : (
-					<div className="bg-light-subtle">
-					<p className="text-dark">No offers fit the searching criteria</p>
 					<br/>
-					</div>
 				)}
+				</div>
 				
 			</div>
+			<br/>
+			<br/>
+			<br/>
 		</div>
+		
 	);
 };
 

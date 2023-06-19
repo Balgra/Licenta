@@ -10,24 +10,36 @@ const Navbar = ({loggedIn, setLoggedIn}) => {
 	}
 	
 	return (
-		<nav className="app__navbar">
-			<ul className="app__navbar-links">
-				<li className="p__opensans"><a href="/">Home</a></li>
-				<li className="p__opensans"><a href="/offermaker">OfferMaker</a></li>
-				<li className="p__opensans"><a href="/learning">Learning</a></li>
-				<li className="p__opensans"><a href="/offers">Offers</a></li>
-				<li className="p__opensans"><a href="/plan">Investing-Plan</a></li>
-			</ul>
-			<div className="app__navbar-login">
-				{loggedIn ?
-					<ul className="app__navbar-links">
-						 <li className="p__opensans"><a href="/" onClick={handleLogout} className="p__opensans">Log Out</a></li>
+		<nav className="navbar navbar-expand-lg navbar-light bg-dark">
+			<div className="container-fluid">
+				<a className="navbar-brand text-white" href="/">BizBoost</a>
+				<div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+					<ul className="navbar-nav">
+						<li className="nav-item">
+							<a className="nav-link text-white" href="/offermaker">OfferMaker</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link text-white" href="/learning">Learning</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link text-white" href="/offers" tabIndex="-1">Offers</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link text-white" href="/plan" tabIndex="-1">Investing-Plan</a>
+						</li>
 					</ul>
-					:
-					<ul className="app__navbar-links">
-						<li className="p__opensans"><a href="/login" className="p__opensans">Log In</a></li>
-					</ul>}
-					</div>
+				</div>
+				<div className="app__navbar-login">
+					{loggedIn ?
+						<ul className="navbar-nav">
+							<li className="nav-item"><a href="/" onClick={handleLogout} className="p__opensans">Log Out</a></li>
+						</ul>
+						:
+						<ul className="navbar-nav">
+							<li className="nav-item"><a href="/login" className="p__opensans">Log In</a></li>
+						</ul>}
+				</div>
+			</div>
 		</nav>
 	);
 };
