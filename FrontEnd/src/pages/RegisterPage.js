@@ -40,16 +40,16 @@ const RegisterPage = () => {
 	
 	
 	return (
-		<div className="bg-dark d-flex justify-content-center align-items-center vh-100">
-			<div className="p-4 shadow rounded">
-				<h2 className="text-white">Register</h2>
+		<div className="bg-white d-flex justify-content-center align-items-center vh-100">
+			<div className="p-4 shadow rounded border border-dark">
+				<h2 className="text-black">Register</h2>
 				<form onSubmit={handleRegister}>
 					<div className="form-group">
-						<label className="text-white">
+						<label className="text-black">
 							First Name:
 							<input
 								type="text"
-								className="form-control"
+								className="form-control border border-dark"
 								value={firstName}
 								onChange={(e) => setFirstName(e.target.value)}
 								style={{ backgroundColor: 'white' }}
@@ -57,11 +57,11 @@ const RegisterPage = () => {
 						</label>
 					</div>
 					<div className="form-group">
-						<label className="text-white">
+						<label className="text-black">
 							Last Name:
 							<input
 								type="text"
-								className="form-control"
+								className="form-control border border-dark"
 								value={lastName}
 								onChange={(e) => setLastName(e.target.value)}
 								style={{ backgroundColor: 'white' }}
@@ -69,11 +69,11 @@ const RegisterPage = () => {
 						</label>
 					</div>
 					<div className="form-group">
-						<label className="text-white">
+						<label className="text-black">
 							Email:
 							<input
 								type="email"
-								className="form-control"
+								className="form-control border border-dark"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 								style={{ backgroundColor: 'white' }}
@@ -81,10 +81,10 @@ const RegisterPage = () => {
 						</label>
 					</div>
 					<div className="form-group">
-						<label className="text-white">
+						<label className="text-black">
 							Role:
 							<select
-								className="form-control"
+								className="form-control border border-dark"
 								value={role}
 								onChange={(e) => setRole(e.target.value)}
 								style={{ backgroundColor: 'white' }}

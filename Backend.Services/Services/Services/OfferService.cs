@@ -134,14 +134,15 @@ namespace Backend.Services.Services.Services
 
             var offers = await _offerRepo.GetOffersAsync();
             
-
+            
             var filteredOffers = offers.Where(offer =>
-                offer.Description.RiskFactors <= req.RiskFactor ||
-                offer.Description.TargetAudience == req.targetAudience ||
-                offer.Financial.MonthlyIncome >= req.MonthlyIncome &&
-                offer.Financial.MonthlySpendings <= req.MonthlySpendings ||
-                offer.Financial.CompanyValue >= req.CompanyValue  ||
-                offer.Description.BusinessModel == req.businessModel).ToList();
+                offer.Description.RiskFactors <= req.RiskFactor &&
+                offer.Description.TargetAudience == req.targetAudience &&
+                offer.Description.BusinessModel == req.businessModel &&
+                offer.Financial.MonthlyIncome >= req.MonthlyIncome && offer.Financial.MonthlyIncome <= req.maxMonthlyIncome &&
+                offer.Financial.MonthlySpendings >= req.MonthlySpendings && offer.Financial.MonthlySpendings <= req.maxMonthlySpendings &&
+                offer.Financial.CompanyValue >= req.CompanyValue && offer.Financial.CompanyValue <= req.maxCompanyValue
+                ).ToList();
 
             return filteredOffers;
         }

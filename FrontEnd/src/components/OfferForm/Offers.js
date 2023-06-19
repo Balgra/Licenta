@@ -56,9 +56,7 @@ const Offers = () => {
 				<div className="col-lg-3 col-sm-6">
 					<div className="card mb-5 mb-lg-4 m-lg-3" >
 							<div
-								className="card bg-dark-subtle"
-								
-							>
+								className="card bg-dark-subtle">
 								<div className="card-body " >
 									<h5 className="card-title text-muted text-uppercase text-center">{offer.company_Name}</h5>
 									<h6 className="card-price text-center"><span className="period"><strong>Business Model : </strong>{offer.description.businessModel}</span></h6>

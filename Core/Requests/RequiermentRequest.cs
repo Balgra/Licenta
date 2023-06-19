@@ -20,5 +20,12 @@ namespace Core.Requests
 
         public int CompanyValue { get; set; }
 
+        public int maxMonthlyIncome { get; set; }
+
+        public int maxMonthlySpendings { get; set; }
+
+        public int maxCompanyValue { get; set; }
+
+
     }
 }

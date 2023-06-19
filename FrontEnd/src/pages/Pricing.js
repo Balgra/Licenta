@@ -1,8 +1,9 @@
 import React, {useCallback, useEffect, useState} from "react";
 import './Pricing.css';
+import  '../components/OfferForm/Offers.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
+import OfferDetails from "../components/OfferForm/OfferDetails";
 
 const Pricing = ({offer}) => {
 	
@@ -11,6 +12,7 @@ const Pricing = ({offer}) => {
 	const [tierTwo, setTierTwo] = useState(transaction.tierTwo);
 	const [tierThree, setTierThree] = useState(transaction.tierThree);
 	const [tierFour, setTierFour] = useState(transaction.tierFour);
+	const [showOfferDetails, setShowOfferDetails] = useState(false);
 	
 	
 	const handleSaveTiers = useCallback(async (payloads) => {
@@ -24,6 +26,8 @@ const Pricing = ({offer}) => {
 			},
 			body: JSON.stringify(payloads)
 		});
+		
+	
 		
 	}, []);
 	
@@ -43,24 +47,28 @@ const Pricing = ({offer}) => {
  const	TransactionOne = () =>
 	{
 		setTierOne(true);
-		alert("tier One accuiered")
+		setShowOfferDetails(true);
+		
 	}
 const	TransactionTwo = () =>
 	{
 		setTierTwo(true);
-		alert("tier Two accuiered")
+		setShowOfferDetails(true);
 	}
 const	TransactionThree = () =>
 	{
 		setTierThree(true)
-		alert("tier Three accuiered")
+		setShowOfferDetails(true);
 	}
 const	TransactionFour = () =>
 	{
 		setTierFour(true);
-		alert("tier Four accuiered")
+		setShowOfferDetails(true);
 	}
 	
+	const handleModifyTiers = () => {
+		setShowOfferDetails(false);
+	};
 	
 	return (
 		<div className="component app__header bg-light-subtle" >
@@ -88,12 +96,13 @@ const	TransactionFour = () =>
 									<li className="text-muted"><span className="fa-li"><i className="fas fa-times"/></span>Free Subdomain</li>
 									<li className="text-muted"><span className="fa-li"><i className="fas fa-times"/></span>Monthly Status Reports</li>
 								</ul>
+								<div className="d-flex justify-content-center">
 								<button
 									onClick={TransactionOne}
 									className="btn btn-block btn-primary"
 									disabled={tierOne}
 								> Acquire TierOne
-								</button>
+								</button></div>
 							</div>
 						</div>
 					</div>
@@ -114,7 +123,8 @@ const	TransactionFour = () =>
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Free Subdomain</li>
 									<li className="text-muted"><span className="fa-li"><i className="fas fa-times"/></span>Monthly Status Reports</li>
 								</ul>
-								<button onClick={TransactionTwo} className="btn btn-block btn-primary" disabled={tierTwo}>Acquire TierTwo</button>
+								<div className="d-flex justify-content-center">
+									<button onClick={TransactionTwo} className="btn btn-block btn-primary" disabled={tierTwo}>Acquire TierTwo</button></div>
 							</div>
 						</div>
 					</div>
@@ -135,7 +145,8 @@ const	TransactionFour = () =>
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Unlimited Free Subdomains</li>
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Monthly Status Reports</li>
 								</ul>
-								<button onClick={TransactionThree} disabled={tierThree} className="btn btn-block btn-primary">Acquire TierThree</button>
+								<div className="d-flex justify-content-center">
+									<button onClick={TransactionThree} disabled={tierThree} className="btn btn-block btn-primary">Acquire TierThree</button></div>
 							</div>
 						</div>
 					</div>
@@ -156,10 +167,16 @@ const	TransactionFour = () =>
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Unlimited Free Subdomains</li>
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Monthly Status Reports</li>
 								</ul>
-								<button onClick={TransactionFour} className="btn btn-block btn-primary" disabled={tierFour}>Acquire TierFour</button>
+								<div className="d-flex justify-content-center">
+									<button onClick={TransactionFour} className="btn btn-block btn-primary" disabled={tierFour}>Acquire TierFour</button></div>
 							</div>
 						</div>
 					</div>
+					{showOfferDetails && (
+						<div className="offer-popup">
+							<OfferDetails handleModifyTiers={handleModifyTiers}/>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

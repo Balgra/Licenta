@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace backend.Controllers
 {
     [ApiController ]
-    [Authorize(Roles ="Investor, Entrepreneur", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Roles ="Investor, Entrepreneur, Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("/api/offers")]
     public class OfferController : ControllerBase
     {
