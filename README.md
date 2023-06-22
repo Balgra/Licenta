@@ -23,6 +23,8 @@ After doing so, you run the command "dotnet watch run" and the backend will be u
 
 Frontend part.
 
+Requierments :  node js 18.x LTS
+
 In the file FrontEnd/src two commands need to be used:
 
 npm install to set up all the dependencies
