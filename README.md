@@ -31,4 +31,4 @@ npm install to set up all the dependencies
 npm run to run the application.
 
 
-
+Link to UPT GitLab : https://gitlab.upt.ro/andrei.balgradean/Licenta
