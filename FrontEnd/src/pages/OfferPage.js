@@ -173,19 +173,19 @@ const OfferPage = ({loggedIn}) => {
 								<div className="mx-3 my-4">
 									<ul className="list-group"  id="list-group-2">
 										<li className="list-group-item">
-											<strong>Company Value:</strong> {offer.financial.companyValue}
+											<strong>Company Value:</strong> {offer.financial.companyValue} $
 										</li>
 										<li className="list-group-item">
-											<strong>Monthly Spendings:</strong> {offer.financial.monthlySpendings}
+											<strong>Monthly Spendings:</strong> {offer.financial.monthlySpendings}  $
 										</li>
 										<li className="list-group-item">
-											<strong>Monthly Income:</strong> {offer.financial.monthlyIncome}
+											<strong>Monthly Income:</strong> {offer.financial.monthlyIncome} $
 										</li>
 										<li className="list-group-item">
-											<strong>Value of Debt:</strong> {offer.financial.valueOfDebt}
+											<strong>Value of Debt:</strong> {offer.financial.valueOfDebt} $
 										</li>
 										<li className="list-group-item">
-											<strong>Value of Loans:</strong> {offer.financial.valueOfLoans}
+											<strong>Value of Loans:</strong> {offer.financial.valueOfLoans} $
 										</li>
 										<li className="list-group-item">
 											<strong>Year on Market:</strong> {offer.financial.yearsOnMarket}

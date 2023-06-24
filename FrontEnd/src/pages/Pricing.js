@@ -83,8 +83,7 @@ const	TransactionFour = () =>
 						<div className="card mb-5 mb-lg-0">
 							<div className="card-body">
 								<h5 className="card-title text-muted text-uppercase text-center">Basic</h5>
-								<h6 className="card-price text-center">$9<span className="period">/month</span></h6>
-								<h6 className="card-price text-center">{offer.transaction.cost_TierOne} $<span className="period">/month</span></h6>
+								<h6 className="card-price text-center">{offer.transaction.cost_TierOne} $</h6>
 								<hr />
 								<ul className="fa-ul">
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Single User</li>
@@ -110,8 +109,7 @@ const	TransactionFour = () =>
 						<div className="card mb-5 mb-lg-0">
 							<div className="card-body">
 								<h5 className="card-title text-muted text-uppercase text-center">Plus</h5>
-								<h6 className="card-price text-center">$290<span className="period">/month</span></h6>
-								<h6 className="card-price text-center">$290<span className="period">/month</span></h6>
+								<h6 className="card-price text-center">{offer.transaction.cost_TierTwo} $</h6>
 								<hr />
 								<ul className="fa-ul">
 									<li><span className="fa-li"><i className="fas fa-check"/></span>5 Users</li>
@@ -132,8 +130,7 @@ const	TransactionFour = () =>
 						<div className="card mb-5 mb-lg-0">
 							<div className="card-body">
 								<h5 className="card-title text-muted text-uppercase text-center">Pro</h5>
-								<h6 className="card-price text-center">$49<span className="period">/month</span></h6>
-								<h6 className="card-price text-center">$49<span className="period">/month</span></h6>
+								<h6 className="card-price text-center">{offer.transaction.cost_TierThree} $</h6>
 								<hr />
 								<ul className="fa-ul">
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Unlimited Users</li>
@@ -154,8 +151,7 @@ const	TransactionFour = () =>
 						<div className="card mb-5 mb-lg-0">
 							<div className="card-body">
 								<h5 className="card-title text-muted text-uppercase text-center">Premium</h5>
-								<h6 className="card-price text-center">$99<span className="period">/month</span></h6>
-								<h6 className="card-price text-center">$99<span className="period">/month</span></h6>
+								<h6 className="card-price text-center">{offer.transaction.cost_TierFour} $</h6>
 								<hr />
 								<ul className="fa-ul">
 									<li><span className="fa-li"><i className="fas fa-check"/></span>Unlimited Users</li>

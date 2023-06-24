@@ -79,27 +79,31 @@ namespace Backend.Services.Services.Services
                }
             };
 
-            if (offer.Financial.CompanyValue <= 10000 && offer.Financial.YearsOnMarket >=  3)
+            decimal averageRisk = (
+                ((offer.Financial.CompanyValue -50000)/ (750000 - 50000) * 100 ) +
+                ((offer.Financial.MonthlyIncome - 25000) / (100000 - 25000) * 100) +
+                ((offer.Financial.MonthlySpendings - 25000) / (100000 - 25000) * 100) +
+                ((offer.Financial.ValueOfLoans - 25000) / (250000 - 25000) * 100) +
+                ((offer.Financial.ValueOfDebt - 25000) / (250000 - 25000) * 100) 
+                ) / 5;
+
+            if (averageRisk <= 20)
             {
-                offer.Description.RiskFactors = 80;
+                offer.Description.RiskFactors = 15;
             }
-           else if(offer.Financial.CompanyValue >= 50000 && offer.Financial.YearsOnMarket <= 3 
-                && offer.Financial.ValueOfLoans <= 3000 &&  offer.Financial.ValueOfDebt <= 3000)
+            else if (averageRisk > 20 && averageRisk <= 40)
             {
                 offer.Description.RiskFactors = 25;
             }
-            else if(offer.Financial.CompanyValue >= 50000 && offer.Financial.YearsOnMarket >= 3
-                && offer.Financial.ValueOfLoans >= 5000 && offer.Financial.ValueOfDebt >= 5000)
-            {
-                offer.Description.RiskFactors = 50;
-            }
-            else  if (offer.Financial.CompanyValue <= 30000 && offer.Financial.YearsOnMarket <= 3
-                && offer.Financial.ValueOfLoans <= 4000 && offer.Financial.ValueOfDebt <= 4000)
+            else if (averageRisk > 40 && averageRisk <= 60)
             {
                 offer.Description.RiskFactors = 35;
             }
-            else if(offer.Financial.CompanyValue <= 20000 && offer.Financial.YearsOnMarket >= 3
-                && offer.Financial.ValueOfLoans >= 3000 && offer.Financial.ValueOfDebt >= 3000)
+            else if (averageRisk > 60 && averageRisk <= 80)
+            {
+                offer.Description.RiskFactors = 45;
+            }
+            else if (averageRisk > 80 && averageRisk <= 100)
             {
                 offer.Description.RiskFactors = 60;
             }
@@ -257,13 +261,14 @@ namespace Backend.Services.Services.Services
         {
             var Offers = await _offerRepo.GetOffersAsync();
 
-            Random rnd = new Random();
+            var lowestRiskFactor = Offers.Min(offer => offer.Description.RiskFactors);
+            var lowestRiskFactorCompanies = Offers.Where(offer => offer.Description.RiskFactors == lowestRiskFactor).ToList();
 
-            int randIndex = rnd.Next(Offers.Count);
+            var Company_Value_filter = lowestRiskFactorCompanies.OrderByDescending(offer =>
+                offer.Financial.CompanyValue)
+                .FirstOrDefault();
 
-            var random = Offers[randIndex];
-
-            return random;
+            return Company_Value_filter;
         }
     }
 }

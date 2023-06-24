@@ -17,10 +17,17 @@ const Learn = () => {
 				<div className="app__wrapper_videos section__padding">
 					<div className="row">
 						<div className="col-md-6 mb-4">
+							<iframe className="responsive-iframe" src="https://www.youtube.com/embed/gNRGkMeITVU"
+									frameBorder="0"
+									title="YouTube Video Player"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen/>
+						</div>
+						<div className="col-md-6 mb-4">
 							<iframe
 								className="responsive-iframe"
-								src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-								title="YouTube video player"
+								src="https://www.youtube.com/embed/07oBBPR61kA"
+								title="YouTube Video Player"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
 							/>
@@ -28,8 +35,17 @@ const Learn = () => {
 						<div className="col-md-6 mb-4">
 							<iframe
 								className="responsive-iframe"
-								src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-								title="YouTube video player"
+								src="https://www.youtube.com/embed/GwyzBt5V9Jc"
+								title="YouTube Video Player"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowFullScreen
+							/>
+						</div>
+						<div className="col-md-6 mb-4">
+							<iframe
+								className="responsive-iframe"
+								src="https://www.youtube.com/embed/8X0KIQniCj0"
+								title="YouTube Video Player"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
 							/>
@@ -67,10 +83,17 @@ const Learn = () => {
 				<div className="app__wrapper_videos section__padding">
 					<div className="row">
 						<div className="col-md-6 mb-4">
+							<iframe className="responsive-iframe" src="https://www.youtube.com/embed/DAvGB6UWbQ4"
+									frameBorder="0"
+									title="YouTube Video Player"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen/>
+						</div>
+						<div className="col-md-6 mb-4">
 							<iframe
 								className="responsive-iframe"
-								src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-								title="YouTube video player"
+								src="https://www.youtube.com/embed/9-D4n9-7UA0"
+								title="YouTube Video Player"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
 							/>
@@ -78,8 +101,17 @@ const Learn = () => {
 						<div className="col-md-6 mb-4">
 							<iframe
 								className="responsive-iframe"
-								src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-								title="YouTube video player"
+								src="https://www.youtube.com/embed/IAaTnl1B5Yg"
+								title="YouTube Video Player"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowFullScreen
+							/>
+						</div>
+						<div className="col-md-6 mb-4">
+							<iframe
+								className="responsive-iframe"
+								src="https://www.youtube.com/embed/SknQnpXjw4o"
+								title="YouTube Video Player"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
 							/>
@@ -103,6 +135,71 @@ const Learn = () => {
 					</p>
 				</div>
 			</div>
+			<div className="d-flex flex-wrap flex__center">
+			<ul className="list-group list-group-horizontal">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-sm">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-md">
+				<li className="list-group-item">Aaaaan item</li>
+				<li className="list-group-item">Aaaaaaa second item</li>
+				<li className="list-group-item">Aaaaa third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-lg">
+				<li className="list-group-item">Aaan item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-xl">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-xxl">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-sm">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-md">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-lg">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-xl">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			<ul className="list-group list-group-horizontal-xxl">
+				<li className="list-group-item">An item</li>
+				<li className="list-group-item">A second item</li>
+				<li className="list-group-item">A third item</li>
+			</ul>
+			</div>
+			<br/>
+		    <br/>
+			<br/>
 		</div>
 	);
 };
